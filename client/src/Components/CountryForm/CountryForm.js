@@ -1,9 +1,11 @@
 import "./CountryForm.css";
 import { useState } from "react";
 import { HolidayAPI } from "./../../HolidayAPI/HolidayAPI";
+import { useNavigate } from "react-router-dom";
 
 export default function CountryForm({ countries, setHolidays }) {
   const [selectedCountry, setSelectedCountry] = useState();
+  let navigate = useNavigate();
 
   async function handleSubmit(event) {
     //Prevent default on submission
@@ -19,6 +21,7 @@ export default function CountryForm({ countries, setHolidays }) {
     setHolidays(
       locationHolidays.holidays.filter((holiday) => holiday.public == true)
     );
+    navigate("/Calendar");
   }
 
   async function handleChange(event) {
