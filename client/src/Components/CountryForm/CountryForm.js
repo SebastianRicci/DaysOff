@@ -1,0 +1,64 @@
+import "./CountryForm.css";
+import { useState } from "react";
+import { HolidayAPI } from "./../../HolidayAPI/HolidayAPI";
+
+export default function CountryForm({ countries, setHolidays }) {
+  const [selectedCountry, setSelectedCountry] = useState();
+
+  async function handleSubmit(event) {
+    //Prevent default on submission
+    event.preventDefault();
+    //Collect form values
+    const country = event.target.country.value;
+    const region = event.target.region.value;
+    //If the country has no regions choose country code else choose region code e.g Madrid,Spain => ES-MD, Aruba => AW
+    const location = region || country;
+    //Fetch bank holidays from API
+    const locationHolidays = await HolidayAPI.getHolidays(location);
+    //Filter by non-working holidays (public=true) and set as state
+    setHolidays(
+      locationHolidays.holidays.filter((holiday) => holiday.public == true)
+    );
+  }
+
+  async function handleChange(event) {
+    //Prevent default on submission
+    event.preventDefault();
+    //Collect form values
+    setSelectedCountry(event.target.value);
+    return selectedCountry;
+  }
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <div className="leftSide">
+          <h1>Choose your location</h1>
+          <p>Country:</p>
+          <div className="submit-input-align">
+            <select id="country" name="country" onChange={handleChange}>
+              {countries.map((country) => (
+                <option value={country.code}>{country.name}</option>
+              ))}
+            </select>
+            <div className="rightSide">
+              <input name="btn" id="btn" type="submit" />
+            </div>
+          </div>
+          {selectedCountry && (
+            <>
+              <p>Region:</p>
+              <select id="region" name="region">
+                {countries
+                  .filter((country) => country.code === selectedCountry)[0]
+                  .subdivisions.map((region) => (
+                    <option value={region.code}>{region.name}</option>
+                  ))}
+              </select>
+            </>
+          )}
+        </div>
+      </form>
+    </>
+  );
+}

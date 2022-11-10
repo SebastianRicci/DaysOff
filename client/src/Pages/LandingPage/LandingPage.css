@@ -1,0 +1,12 @@
+.presentation{
+    display: flex;
+    flex-direction: column;
+}
+img{
+    max-width: 55rem;
+    margin: 5rem;
+}
+.container{
+    margin-left: 1.5rem;
+    display: flex;
+}
