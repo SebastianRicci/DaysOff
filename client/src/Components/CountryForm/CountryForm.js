@@ -12,7 +12,7 @@ export default function CountryForm({ countries, setHolidays }) {
     event.preventDefault();
     //Collect form values
     const country = event.target.country.value;
-    const region = event.target.region.value;
+    const region = event.target.region && event.target.region.value;
     //If the country has no regions choose country code else choose region code e.g Madrid,Spain => ES-MD, Aruba => AW
     const location = region || country;
     //Fetch bank holidays from API
@@ -29,7 +29,6 @@ export default function CountryForm({ countries, setHolidays }) {
     event.preventDefault();
     //Collect form values
     setSelectedCountry(event.target.value);
-    return selectedCountry;
   }
 
   return (
@@ -48,7 +47,9 @@ export default function CountryForm({ countries, setHolidays }) {
               <input name="btn" id="btn" type="submit" />
             </div>
           </div>
-          {selectedCountry && (
+          {selectedCountry &&
+          countries.filter((country) => country.code === selectedCountry)[0]
+            .subdivisions.length ? (
             <>
               <p>Region:</p>
               <select id="region" name="region">
@@ -59,6 +60,8 @@ export default function CountryForm({ countries, setHolidays }) {
                   ))}
               </select>
             </>
+          ) : (
+            <></>
           )}
         </div>
       </form>

@@ -12,3 +12,8 @@
     max-width: 50rem;
     padding-top: 2rem;
 }
+@media (max-width: 1450px) {
+    .title{
+        font-size: 3.2rem;
+    }
+}

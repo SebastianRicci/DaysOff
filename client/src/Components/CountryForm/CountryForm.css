@@ -5,8 +5,9 @@ form{
     align-items: center;
     margin-left: 3rem;
 }
-form > p{
-    font-size: 1.5rem;
+
+p{
+    font-size: 1rem;
 }
 
 .submit-input-align {
@@ -14,12 +15,12 @@ form > p{
 }
 #country{
     height: 4rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
     cursor:pointer
 }
 #region{
     height: 4rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
     cursor:pointer
 }
 #btn{
@@ -33,4 +34,10 @@ form > p{
     font-size: 1.5rem;
     margin-left: 2rem;
     cursor:pointer
+}
+
+@media (max-width: 1450px) {
+    h1{
+        font-size: 2rem;
+    }
 }

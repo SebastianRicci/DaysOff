@@ -1,12 +1,22 @@
-.presentation{
-    display: flex;
-    flex-direction: column;
+.presentation {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
 }
-img{
-    max-width: 55rem;
-    margin: 5rem;
+
+img {
+  width: 45%;
+  margin: 5em;
 }
-.container{
-    margin-left: 1.5rem;
-    display: flex;
+.container {
+  margin-left: 1.5em;
+  display: flex;
 }
+/* @media (max-width: 1250px) {
+
+    img{
+        width: 55rem;
+        margin: 5rem;
+    }
+    
+} */
