@@ -1,5 +1,5 @@
 import "../LandingPage/LandingPage.css";
-import CountryForm from "./../../Components/CountryForm/CountryForm";
+import Form from "./../../Components/Form/Form";
 import Navbar from "./../../Components//Navbar/Navbar";
 import Hero from "./../../Components/Hero/Hero";
 
@@ -10,10 +10,7 @@ export default function LandingPage({ countries, setHolidays }) {
       <div className="container">
         <div className="presentation">
           <Hero></Hero>
-          <CountryForm
-            countries={countries}
-            setHolidays={setHolidays}
-          ></CountryForm>
+          <Form countries={countries} setHolidays={setHolidays}></Form>
         </div>
         <img src={require("./../../Assets/HeroImg.png")} />
       </div>

@@ -1,0 +1,60 @@
+.calendarNavbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  height: 15%;
+  border-radius: 2rem;
+  margin-left: 2.5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  min-width: 70%;
+}
+
+.menuView {
+  display: flex;
+}
+
+.menuView > div {
+  margin-left: 1rem;
+}
+.actions {
+  display: flex;
+}
+.actions > div {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.selections {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.selections > div {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.selections > .menuView:hover {
+  background-color: #ebf2fb;
+  cursor: pointer;
+}
+.actions > div {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.actions > div:hover {
+  background-color: #ebf2fb;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  padding: 1.4rem;
+  font-size: 10rem;
+  margin-right: 5%;
+}

@@ -1,9 +1,9 @@
-import "./CountryForm.css";
+import "./Form.css";
 import { useState } from "react";
-import { HolidayAPI } from "./../../HolidayAPI/HolidayAPI";
+import { HolidayAPI } from "../../HolidayAPI/HolidayAPI";
 import { useNavigate } from "react-router-dom";
 
-export default function CountryForm({ countries, setHolidays }) {
+export default function Form({ countries, setHolidays }) {
   const [selectedCountry, setSelectedCountry] = useState();
   let navigate = useNavigate();
 

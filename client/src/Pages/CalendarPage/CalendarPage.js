@@ -3,6 +3,7 @@ import SideMenu from "../../Components/SideMenu/SideMenu";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
 import "../CalendarPage/CalendarPage.css";
+import CalendarNavbar from "../../Components/CalendarNavbar/CalendarNavbar";
 
 export default function CalendarPage({ holidays }) {
   const holidayDates = holidays.map((holiday) => holiday.date);
@@ -93,6 +94,18 @@ export default function CalendarPage({ holidays }) {
       ) {
         calendar[i - 1].algoWeekend = 1;
         calendar[i - 2].algoWeekend = 1;
+      } else if (
+        calendar[i].value == 1 &&
+        new Date(calendar[i].date).getDay() == 5
+      ) {
+        calendar[i + 1].algoWeekend = 1;
+        calendar[i + 2].algoWeekend = 1;
+      } else if (
+        calendar[i].value == 1 &&
+        new Date(calendar[i].date).getDay() == 1
+      ) {
+        calendar[i - 1].algoWeekend = 1;
+        calendar[i - 2].algoWeekend = 1;
       }
     }
     return calendar;
@@ -168,12 +181,15 @@ export default function CalendarPage({ holidays }) {
     <>
       <div className="dashboard">
         <SideMenu></SideMenu>
-        <div className="calendarContainer">
-          <Calendar
-            tileClassName={tileClassName}
-            tileContent={tileContent}
-            defaultValue={new Date(2021, 0, 1)}
-          ></Calendar>
+        <div>
+          <CalendarNavbar></CalendarNavbar>
+          <div className="calendarContainer">
+            <Calendar
+              tileClassName={tileClassName}
+              tileContent={tileContent}
+              defaultValue={new Date(2021, 0, 1)}
+            ></Calendar>
+          </div>
         </div>
       </div>
     </>

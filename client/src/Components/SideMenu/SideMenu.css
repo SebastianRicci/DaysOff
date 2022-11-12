@@ -1,5 +1,5 @@
 .menuContainer {
-  width: 25vw;
+  min-width: 17vw;
   height: 100vh;
   background-color: white;
   border-radius: 1rem;
