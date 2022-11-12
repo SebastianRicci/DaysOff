@@ -80,6 +80,14 @@ abbr[title] {
   font-weight: bold;
 }
 
+/* Algorithm picked weekend highlight */
+.react-calendar__tile-AlgoWeekend {
+  background-color: #ef0d86;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
 /* Neighboring month */
 .react-calendar__month-view__days__day--neighboringMonth {
   color: lightgray;

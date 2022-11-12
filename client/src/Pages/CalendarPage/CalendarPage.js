@@ -6,8 +6,16 @@ import "../CalendarPage/CalendarPage.css";
 
 export default function CalendarPage({ holidays }) {
   const holidayDates = holidays.map((holiday) => holiday.date);
-  const algorithmDates = Algorithm(setCalendarArray(), 15);
-  console.log(algorithmDates);
+
+  const algorithmDates = Algorithm(setCalendarArray(), 15)
+    .filter((day) => day.algo == 1)
+    .map((day) => day.date);
+
+  const weekendAlgorithmDates = checkWeekendsAlgorithm(
+    Algorithm(setCalendarArray(), 15)
+  )
+    .filter((day) => day.algoWeekend == 1)
+    .map((day) => day.date);
 
   function setCalendarArray() {
     //Set Initial array with dates and value as 0
@@ -68,7 +76,26 @@ export default function CalendarPage({ holidays }) {
       }
       bridge++;
     }
-    return calendar.filter((day) => day.algo == 1).map((day) => day.date);
+    return calendar;
+  }
+
+  function checkWeekendsAlgorithm(calendar) {
+    for (let i = 1; i < calendar.length - 1; i++) {
+      if (
+        calendar[i].algo == 1 &&
+        new Date(calendar[i + 1].date).getDay() == 6
+      ) {
+        calendar[i + 1].algoWeekend = 1;
+        calendar[i + 2].algoWeekend = 1;
+      } else if (
+        calendar[i].algo == 1 &&
+        new Date(calendar[i - 1].date).getDay() == 0
+      ) {
+        calendar[i - 1].algoWeekend = 1;
+        calendar[i - 2].algoWeekend = 1;
+      }
+    }
+    return calendar;
   }
 
   function tileClassName({ date, view }) {
@@ -83,6 +110,24 @@ export default function CalendarPage({ holidays }) {
         )
       ) {
         return "react-calendar__tile-Algorithm";
+      }
+      if (
+        holidayDates.find(
+          (holiday) =>
+            moment(new Date(holiday)).format("YYYY-MM-DD") ==
+            moment(new Date(date)).format("YYYY-MM-DD")
+        )
+      ) {
+        return "react-calendar__tile-Holiday";
+      }
+      if (
+        weekendAlgorithmDates.find(
+          (holiday) =>
+            moment(new Date(holiday)).format("YYYY-MM-DD") ==
+            moment(new Date(date)).format("YYYY-MM-DD")
+        )
+      ) {
+        return "react-calendar__tile-AlgoWeekend";
       }
     }
   }
