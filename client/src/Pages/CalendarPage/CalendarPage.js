@@ -6,6 +6,8 @@ import "../CalendarPage/CalendarPage.css";
 
 export default function CalendarPage({ holidays }) {
   const holidayDates = holidays.map((holiday) => holiday.date);
+  const algorithmDates = Algorithm(setCalendarArray(), 15);
+  console.log(algorithmDates);
 
   function setCalendarArray() {
     //Set Initial array with dates and value as 0
@@ -66,25 +68,40 @@ export default function CalendarPage({ holidays }) {
       }
       bridge++;
     }
-    return calendar.filter((day) => day.algo == 1);
+    return calendar.filter((day) => day.algo == 1).map((day) => day.date);
   }
-  console.log(Algorithm(setCalendarArray(), 27));
 
   function tileClassName({ date, view }) {
     // Add class to tiles in month view only
     if (view === "month") {
       // Check if a date React-Calendar wants to check is on the list of dates to add class to
       if (
-        holidayDates.find(
+        algorithmDates.find(
           (holiday) =>
             moment(new Date(holiday)).format("YYYY-MM-DD") ==
             moment(new Date(date)).format("YYYY-MM-DD")
         )
       ) {
-        return "react-calendar__tile-Holiday";
+        return "react-calendar__tile-Algorithm";
       }
     }
   }
+
+  // function tileClassName({ date, view }) {
+  //   // Add class to tiles in month view only
+  //   if (view === "month") {
+  //     // Check if a date React-Calendar wants to check is on the list of dates to add class to
+  //     if (
+  //       holidayDates.find(
+  //         (holiday) =>
+  //           moment(new Date(holiday)).format("YYYY-MM-DD") ==
+  //           moment(new Date(date)).format("YYYY-MM-DD")
+  //       )
+  //     ) {
+  //       return "react-calendar__tile-Holiday";
+  //     }
+  //   }
+  // }
 
   function tileContent({ date, view }) {
     // Add class to tiles in month view only

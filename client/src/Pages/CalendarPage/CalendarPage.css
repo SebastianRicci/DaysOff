@@ -72,6 +72,14 @@ abbr[title] {
   font-weight: bold;
 }
 
+/* Algorithm picked days highlight */
+.react-calendar__tile-Algorithm {
+  background-color: #72eb0f;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
 /* Neighboring month */
 .react-calendar__month-view__days__day--neighboringMonth {
   color: lightgray;
