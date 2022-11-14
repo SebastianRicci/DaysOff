@@ -60,7 +60,7 @@ export default function MonthView({
     <Calendar
       tileClassName={tileClassName}
       tileContent={tileContent}
-      defaultValue={new Date(2021, 0, 1)}
+      defaultActiveStartDate={new Date(2021, 0, 1)}
     ></Calendar>
   );
 }

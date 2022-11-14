@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
-import "../CalendarPage/CalendarPage.css";
-import CalendarNavbar from "../../Components/CalendarNavbar/CalendarNavbar";
-import MonthView from "../../Components/MonthView/MonthView";
+import "./Dashboard.css";
 import SideMenu from "../../Components/SideMenu/SideMenu";
-import YearView from "../../Components/YearView/YearView";
-export default function CalendarPage({ holidays, vacationDays }) {
-  const [view, setView] = useState("Monthly");
+import CalendarView from "../../Components/CalendarView/CalendarView";
+// import CalendarNavbar from "../../Components/CalendarNavbar/CalendarNavbar";
+// import MonthView from "../../Components/MonthView/MonthView";
+// import YearView from "../../Components/YearView/YearView";
+
+export default function Dashboard({ holidays, vacationDays }) {
+  const [action, setAction] = useState("Calendar");
 
   const availableLeaves = vacationDays
     ? vacationDays
@@ -124,26 +126,14 @@ export default function CalendarPage({ holidays, vacationDays }) {
   return (
     <main>
       <div className="dashboard">
-        <SideMenu></SideMenu>
-        <div>
-          <CalendarNavbar setView={setView}></CalendarNavbar>
-          <div className="calendarContainer">
-            {view == "Monthly" && (
-              <MonthView
-                holidayDates={holidayDates}
-                algorithmDates={algorithmDates}
-                weekendAlgorithmDates={weekendAlgorithmDates}
-              />
-            )}
-            {view == "Yearly" && (
-              <YearView
-                holidayDates={holidayDates}
-                algorithmDates={algorithmDates}
-                weekendAlgorithmDates={weekendAlgorithmDates}
-              />
-            )}
-          </div>
-        </div>
+        <SideMenu setAction={setAction}></SideMenu>
+        {action == "Calendar" && (
+          <CalendarView
+            holidayDates={holidayDates}
+            algorithmDates={algorithmDates}
+            weekendAlgorithmDates={weekendAlgorithmDates}
+          />
+        )}
       </div>
     </main>
   );

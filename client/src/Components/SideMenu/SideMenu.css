@@ -17,25 +17,7 @@
   font-weight: bold;
   margin-top: 2rem;
 }
-.home {
-  margin-top: 20%;
-  font-size: 2em;
-  margin-left: 1rem;
-  border-radius: 1em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
-}
-.home:hover {
-  background-color: #ebf2fb;
-  cursor: pointer;
-  color: #0d6aff;
-}
 
-.homeIcon {
-  margin-right: 0.5em;
-}
 .calendar {
   margin-top: 20%;
   font-size: 2em;

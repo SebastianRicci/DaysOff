@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HolidayAPI } from "./HolidayAPI/HolidayAPI";
 import LandingPage from "./Pages/LandingPage/LandingPage";
-import CalendarPage from "./Pages/CalendarPage/CalendarPage";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -33,7 +33,7 @@ function App() {
           <Route
             path="/Calendar"
             element={
-              <CalendarPage holidays={holidays} vacationDays={vacationDays} />
+              <Dashboard holidays={holidays} vacationDays={vacationDays} />
             }
           />
         </Routes>
