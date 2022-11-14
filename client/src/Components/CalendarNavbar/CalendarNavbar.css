@@ -25,20 +25,20 @@
   margin-left: 2rem;
   margin-right: 2rem;
 }
-.selections {
+.selectionsCalendar {
   display: flex;
   width: 100%;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
 }
-.selections > div {
+.selectionsCalendar > div {
   font-size: 1.3rem;
   font-weight: bold;
   padding: 2rem;
   border-radius: 1rem;
 }
-.selections > .menuView:hover {
+.selectionsCalendar > .menuView:hover {
   background-color: #ebf2fb;
   cursor: pointer;
 }
@@ -51,7 +51,7 @@
   background-color: #ebf2fb;
 }
 
-.account {
+.accountIcon {
   display: flex;
   align-items: center;
   padding: 1.4rem;

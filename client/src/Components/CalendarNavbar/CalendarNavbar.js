@@ -8,11 +8,12 @@ export default function CalendarNavbar() {
   return (
     <>
       <div className="calendarNavbar">
-        <div className="selections">
+        <div className="selectionsCalendar">
           <div className="menuView">
             <MenuIcon />
             <div>Month view</div>
           </div>
+
           <div className="actions">
             <div>
               <AttachEmailIcon />

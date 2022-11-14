@@ -1,43 +1,48 @@
-form{
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: 3rem;
+form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 3rem;
 }
 
-p{
-    font-size: 1rem;
+p {
+  font-size: 1rem;
 }
 
 .submit-input-align {
-    display: flex;
+  display: flex;
 }
-#country{
-    height: 4rem;
-    font-size: 1.3rem;
-    cursor:pointer
+#country {
+  height: 4rem;
+  font-size: 1.3rem;
+  cursor: pointer;
 }
-#region{
-    height: 4rem;
-    font-size: 1.3rem;
-    cursor:pointer
+#region {
+  height: 4rem;
+  font-size: 1.3rem;
+  cursor: pointer;
 }
-#btn{
-    background-color: #0d6aff ;
-    border-radius: .5rem;
-    color: white;
-    padding-top: 1.1rem;
-    padding-bottom: 1.1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    font-size: 1.5rem;
-    margin-left: 2rem;
-    cursor:pointer
+#btn {
+  background-color: #0d6aff;
+  border-radius: 0.5rem;
+  color: white;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-size: 1.5rem;
+  margin-left: 2rem;
+  cursor: pointer;
+}
+#btn:hover {
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+    rgba(50, 50, 93, 0.2) 0 6px 15px 0, rgba(0, 0, 0, 0.1) 0 2px 2px 0,
+    rgba(50, 151, 211, 0.3) 0 0 0 4px;
 }
 
 @media (max-width: 1450px) {
-    h1{
-        font-size: 2rem;
-    }
+  h1 {
+    font-size: 2rem;
+  }
 }
