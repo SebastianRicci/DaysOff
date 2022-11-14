@@ -1,19 +1,30 @@
-import Calendar from "react-calendar";
-import SideMenu from "../../Components/SideMenu/SideMenu";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
 import "../CalendarPage/CalendarPage.css";
 import CalendarNavbar from "../../Components/CalendarNavbar/CalendarNavbar";
-
+import MonthView from "../../Components/MonthView/MonthView";
+import SideMenu from "../../Components/SideMenu/SideMenu";
+import YearView from "../../Components/YearView/YearView";
 export default function CalendarPage({ holidays, vacationDays }) {
-  const holidayDates = holidays.map((holiday) => holiday.date);
+  const [view, setView] = useState("Monthly");
 
-  const algorithmDates = Algorithm(setCalendarArray(), vacationDays)
+  const availableLeaves = vacationDays
+    ? vacationDays
+    : JSON.parse(localStorage.getItem("vacationDays"));
+
+  const holidayDates = holidays.length
+    ? holidays.map((holiday) => holiday.date)
+    : JSON.parse(localStorage.getItem("holidays")).map(
+        (holiday) => holiday.date
+      );
+
+  const algorithmDates = Algorithm(setCalendarArray(), availableLeaves)
     .filter((day) => day.algo == 1)
     .map((day) => day.date);
 
   const weekendAlgorithmDates = checkWeekendsAlgorithm(
-    Algorithm(setCalendarArray(), vacationDays)
+    Algorithm(setCalendarArray(), availableLeaves)
   )
     .filter((day) => day.algoWeekend == 1)
     .map((day) => day.date);
@@ -64,7 +75,6 @@ export default function CalendarPage({ holidays, vacationDays }) {
           ) {
             for (let j = 0; j < bridge; j++) {
               if (vacationDays > 0) {
-                console.log("Vacation: ", calendar[i - j].date);
                 calendar[i - j].value = 1;
                 calendar[i - j].algo = 1;
                 vacationDays--;
@@ -111,71 +121,30 @@ export default function CalendarPage({ holidays, vacationDays }) {
     return calendar;
   }
 
-  function tileClassName({ date, view }) {
-    // Add class to tiles in month view only
-    if (view === "month") {
-      // Check if a date React-Calendar wants to check is on the list of dates to add class to
-      if (
-        algorithmDates.find(
-          (holiday) =>
-            moment(new Date(holiday)).format("YYYY-MM-DD") ==
-            moment(new Date(date)).format("YYYY-MM-DD")
-        )
-      ) {
-        return "react-calendar__tile-Algorithm";
-      }
-      if (
-        holidayDates.find(
-          (holiday) =>
-            moment(new Date(holiday)).format("YYYY-MM-DD") ==
-            moment(new Date(date)).format("YYYY-MM-DD")
-        )
-      ) {
-        return "react-calendar__tile-Holiday";
-      }
-      if (
-        weekendAlgorithmDates.find(
-          (holiday) =>
-            moment(new Date(holiday)).format("YYYY-MM-DD") ==
-            moment(new Date(date)).format("YYYY-MM-DD")
-        )
-      ) {
-        return "react-calendar__tile-AlgoWeekend";
-      }
-    }
-  }
-
-  function tileContent({ date, view }) {
-    // Add class to tiles in month view only
-    if (view === "month") {
-      // Check if a date React-Calendar wants to check is on the list of dates to add class to
-      if (
-        holidayDates.find(
-          (holiday) =>
-            moment(new Date(holiday)).format("MM DD YYYY") ==
-            moment(new Date(date)).format("MM DD YYYY")
-        )
-      ) {
-        return "";
-      }
-    }
-  }
-
   return (
-    <>
+    <main>
       <div className="dashboard">
         <SideMenu></SideMenu>
         <div>
-          <CalendarNavbar></CalendarNavbar>
+          <CalendarNavbar setView={setView}></CalendarNavbar>
           <div className="calendarContainer">
-            <Calendar
-              tileClassName={tileClassName}
-              tileContent={tileContent}
-              defaultValue={new Date(2021, 0, 1)}
-            ></Calendar>
+            {view == "Monthly" && (
+              <MonthView
+                holidayDates={holidayDates}
+                algorithmDates={algorithmDates}
+                weekendAlgorithmDates={weekendAlgorithmDates}
+              />
+            )}
+            {view == "Yearly" && (
+              <YearView
+                holidayDates={holidayDates}
+                algorithmDates={algorithmDates}
+                weekendAlgorithmDates={weekendAlgorithmDates}
+              />
+            )}
           </div>
         </div>
       </div>
-    </>
+    </main>
   );
 }

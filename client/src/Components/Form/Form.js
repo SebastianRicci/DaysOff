@@ -27,6 +27,17 @@ export default function Form({ countries, setHolidays, setVacationDays }) {
     setHolidays(
       locationHolidays.holidays.filter((holiday) => holiday.public == true)
     );
+    localStorage.setItem(
+      "holidays",
+      JSON.stringify(
+        locationHolidays.holidays.filter((holiday) => holiday.public == true)
+      )
+    );
+    setVacationDays(Number(event.target.vacationDays.value));
+    localStorage.setItem(
+      "vacationDays",
+      JSON.stringify(Number(event.target.vacationDays.value))
+    );
     navigate("/Calendar");
   }
 
@@ -74,6 +85,7 @@ export default function Form({ countries, setHolidays, setVacationDays }) {
               <p>Number of vacation days:</p>
               <input
                 id="vacationDays"
+                name="vacationDays"
                 type="number"
                 onChange={handleVacationDays}
               ></input>

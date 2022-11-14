@@ -1,0 +1,83 @@
+.yearContainer {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  height: 80vh;
+}
+
+.yearContainer > .react-calendar {
+  width: 33.333%;
+  height: 50%;
+}
+
+.yearContainer .react-calendar__navigation__label__labelText {
+  font-size: 100%;
+  font-family: "Gilroy";
+  font-weight: bold;
+}
+/* Navigation bar */
+.yearContainer .react-calendar__navigation button {
+  color: #6f48eb;
+  width: 50%;
+  background: none;
+  font-size: 100%;
+  font-family: "Gilroy";
+  font-weight: bold;
+  margin-top: 0.9%;
+}
+
+abbr[title] {
+  text-decoration: none;
+}
+/* Day of the week view */
+.yearContainer .react-calendar__month-view__weekdays__weekday {
+  margin-top: 1%;
+  font-size: 160%;
+  font-family: "Gilroy";
+  font-weight: bold;
+}
+
+.yearContainer .react-calendar__month-view__days__day {
+  padding: 4.4%;
+  font-size: 150%;
+  font-family: "Gilroy";
+}
+
+/* Tiles */
+/* Weekend highlight */
+.yearContainer .react-calendar__month-view__days__day--weekend {
+  color: #222;
+  font-weight: bold;
+}
+
+/* Holidays highlight */
+.yearContainer .react-calendar__tile-Holiday {
+  background-color: #0d6aff;
+  color: white;
+  font-weight: bold;
+}
+
+/* Algorithm picked days highlight */
+.yearContainer .react-calendar__tile-Algorithm {
+  background-color: #8cf00a;
+  color: white;
+  font-weight: bold;
+}
+
+/* Algorithm picked weekend highlight */
+.yearContainer .react-calendar__tile-AlgoWeekend {
+  background-color: #ef0d86;
+  color: white;
+  font-weight: bold;
+}
+
+/* Neighboring month */
+.yearContainer .react-calendar__month-view__days__day--neighboringMonth {
+  color: lightgray;
+}
+
+@media (max-width: 1450px) {
+  .yearContainer .react-calendar__month-view__days__day {
+    padding: 3.8%;
+  }
+}

@@ -6,90 +6,22 @@
 /* Calendar CSS */
 .calendarContainer {
   margin-top: 1rem;
-  width: 75vw;
+  width: 78vw;
   height: 80vh;
-  margin-left: 2.5rem;
+  margin-left: 1.5%;
   padding: 1rem;
 }
-.react-calendar {
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  color: #222;
-  font-family: "Gilroy";
-}
-.react-calendar__navigation__label__labelText {
-  font-size: 100%;
-  font-family: "Gilroy";
-  font-weight: bold;
-}
-/* Navigation bar */
-.react-calendar__navigation button {
-  color: #6f48eb;
-  width: 10em;
-  background: none;
-  font-size: 1.7em;
-  font-family: "Gilroy";
-  font-weight: bold;
-  margin-top: 0.4em;
-}
-.react-calendar__navigation button:enabled:hover,
-.react-calendar__navigation button:enabled:focus {
-  background-color: #f8f8fa;
-}
-.react-calendar__navigation button[disabled] {
-  background-color: #f0f0f0;
-}
-abbr[title] {
-  text-decoration: none;
-}
-/* Day of the week view */
-.react-calendar__month-view__weekdays__weekday {
-  margin-top: 0.5em;
-  font-size: 300%;
-  font-family: "Gilroy";
-  font-weight: bold;
+
+/* Animation on render */
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.react-calendar__month-view__days__day {
-  padding: 4%;
-  font-size: 300%;
-  font-family: "Gilroy";
-}
-
-/* Tiles */
-/* Weekend highlight */
-.react-calendar__month-view__days__day--weekend {
-  color: #222;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-/* Holidays highlight */
-.react-calendar__tile-Holiday {
-  background-color: #0d6aff;
-  color: white;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-/* Algorithm picked days highlight */
-.react-calendar__tile-Algorithm {
-  background-color: #8cf00a;
-  color: white;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-/* Algorithm picked weekend highlight */
-.react-calendar__tile-AlgoWeekend {
-  background-color: #ef0d86;
-  color: white;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-/* Neighboring month */
-.react-calendar__month-view__days__day--neighboringMonth {
-  color: lightgray;
+main {
+  animation: 1s ease-out 0s 1 FadeIn;
 }
