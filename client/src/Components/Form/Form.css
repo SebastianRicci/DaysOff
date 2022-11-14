@@ -23,6 +23,12 @@ p {
   font-size: 1.3rem;
   cursor: pointer;
 }
+#vacationDays {
+  height: 4rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  max-width: 5rem;
+}
 #btn {
   background-color: #0d6aff;
   border-radius: 0.5rem;
@@ -43,6 +49,40 @@ p {
 
 @media (max-width: 1450px) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+  form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 1rem;
+  }
+  #country {
+    font-size: 0.8;
+    height: 3rem;
+    max-width: 20rem;
+  }
+  #region {
+    font-size: 0.8;
+    height: 3rem;
+    max-width: 20rem;
+  }
+  #vacationDays {
+    font-size: 0.8;
+    height: 3rem;
+    max-width: 5rem;
+  }
+  #btn {
+    margin-left: 1rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
+    font-size: 1rem;
+  }
+  p {
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 }

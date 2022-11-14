@@ -13,6 +13,11 @@
   font-size: 1.3rem;
   font-weight: bold;
   padding: 1.4rem;
+  border-radius: 1rem;
+}
+.selections > div:hover {
+  background-color: #ebf2fb;
+  cursor: pointer;
 }
 .logo {
   color: #0d6aff;
@@ -27,10 +32,12 @@
   font-weight: bold;
   margin-right: 2rem;
 }
+
 .box {
   background-color: #0d6aff;
   padding: 0.8rem;
   border-radius: 1rem;
+  cursor: pointer;
 }
 .box > div {
   font-size: 1.2rem;

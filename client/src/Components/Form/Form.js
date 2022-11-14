@@ -3,8 +3,14 @@ import { useState } from "react";
 import { HolidayAPI } from "../../HolidayAPI/HolidayAPI";
 import { useNavigate } from "react-router-dom";
 
-export default function Form({ countries, setHolidays }) {
+export default function Form({ countries, setHolidays, setVacationDays }) {
   const [selectedCountry, setSelectedCountry] = useState();
+
+  function handleVacationDays(event) {
+    event.preventDefault();
+    setVacationDays(Number(event.target.value));
+  }
+
   let navigate = useNavigate();
 
   async function handleSubmit(event) {
@@ -62,6 +68,16 @@ export default function Form({ countries, setHolidays }) {
             </>
           ) : (
             <></>
+          )}
+          {selectedCountry && (
+            <>
+              <p>Number of vacation days:</p>
+              <input
+                id="vacationDays"
+                type="number"
+                onChange={handleVacationDays}
+              ></input>
+            </>
           )}
         </div>
       </form>

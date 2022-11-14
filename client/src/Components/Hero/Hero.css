@@ -1,19 +1,25 @@
-.title{
-    margin-top: 3rem;
-    margin-left: 3rem;
-    font-size: 5rem;
-
+.title {
+  margin-top: 3rem;
+  margin-left: 3rem;
+  font-size: 5rem;
 }
-.highlight{
-    color: #0d6aff ;
+.highlight {
+  color: #0d6aff;
 }
-.title > .description{
-    font-size: 2rem;
-    max-width: 50rem;
-    padding-top: 2rem;
+.title > .description {
+  font-size: 2rem;
+  max-width: 50rem;
+  padding-top: 2rem;
 }
 @media (max-width: 1450px) {
-    .title{
-        font-size: 3.2rem;
-    }
+  .title {
+    font-size: 4rem;
+    margin-left: 1rem;
+  }
+
+  .title > .description {
+    font-size: 1.55rem;
+    max-width: 50rem;
+    padding-top: 2rem;
+  }
 }

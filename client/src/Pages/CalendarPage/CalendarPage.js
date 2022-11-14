@@ -5,15 +5,15 @@ import "react-calendar/dist/Calendar.css";
 import "../CalendarPage/CalendarPage.css";
 import CalendarNavbar from "../../Components/CalendarNavbar/CalendarNavbar";
 
-export default function CalendarPage({ holidays }) {
+export default function CalendarPage({ holidays, vacationDays }) {
   const holidayDates = holidays.map((holiday) => holiday.date);
 
-  const algorithmDates = Algorithm(setCalendarArray(), 15)
+  const algorithmDates = Algorithm(setCalendarArray(), vacationDays)
     .filter((day) => day.algo == 1)
     .map((day) => day.date);
 
   const weekendAlgorithmDates = checkWeekendsAlgorithm(
-    Algorithm(setCalendarArray(), 15)
+    Algorithm(setCalendarArray(), vacationDays)
   )
     .filter((day) => day.algoWeekend == 1)
     .map((day) => day.date);
@@ -144,22 +144,6 @@ export default function CalendarPage({ holidays }) {
       }
     }
   }
-
-  // function tileClassName({ date, view }) {
-  //   // Add class to tiles in month view only
-  //   if (view === "month") {
-  //     // Check if a date React-Calendar wants to check is on the list of dates to add class to
-  //     if (
-  //       holidayDates.find(
-  //         (holiday) =>
-  //           moment(new Date(holiday)).format("YYYY-MM-DD") ==
-  //           moment(new Date(date)).format("YYYY-MM-DD")
-  //       )
-  //     ) {
-  //       return "react-calendar__tile-Holiday";
-  //     }
-  //   }
-  // }
 
   function tileContent({ date, view }) {
     // Add class to tiles in month view only

@@ -8,6 +8,7 @@ import CalendarPage from "./Pages/CalendarPage/CalendarPage";
 function App() {
   const [countries, setCountries] = useState([]);
   const [holidays, setHolidays] = useState([]);
+  const [vacationDays, setVacationDays] = useState();
 
   useEffect(() => {
     HolidayAPI.getCountries().then((request) =>
@@ -22,12 +23,18 @@ function App() {
           <Route
             path="/"
             element={
-              <LandingPage countries={countries} setHolidays={setHolidays} />
+              <LandingPage
+                countries={countries}
+                setHolidays={setHolidays}
+                setVacationDays={setVacationDays}
+              />
             }
           />
           <Route
             path="/Calendar"
-            element={<CalendarPage holidays={holidays} />}
+            element={
+              <CalendarPage holidays={holidays} vacationDays={vacationDays} />
+            }
           />
         </Routes>
       </BrowserRouter>
