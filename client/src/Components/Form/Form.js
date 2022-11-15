@@ -24,6 +24,7 @@ export default function Form({ countries, setHolidays, setVacationDays }) {
     //Fetch bank holidays from API
     const locationHolidays = await HolidayAPI.getHolidays(location);
     //Filter by non-working holidays (public=true) and set as state
+
     setHolidays(
       locationHolidays.holidays.filter((holiday) => holiday.public == true)
     );
@@ -88,6 +89,8 @@ export default function Form({ countries, setHolidays, setVacationDays }) {
                 name="vacationDays"
                 type="number"
                 onChange={handleVacationDays}
+                required
+                min={0}
               ></input>
             </>
           )}

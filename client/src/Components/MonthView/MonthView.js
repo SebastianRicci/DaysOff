@@ -3,10 +3,12 @@ import Calendar from "react-calendar";
 import moment from "moment";
 
 export default function MonthView({
+  holidays,
   holidayDates,
   algorithmDates,
   weekendAlgorithmDates,
 }) {
+  console.log(holidays);
   function tileClassName({ date, view }) {
     // Add class to tiles in month view only
     if (view === "month") {
@@ -45,14 +47,15 @@ export default function MonthView({
     // Add class to tiles in month view only
     if (view === "month") {
       // Check if a date React-Calendar wants to check is on the list of dates to add class to
+      let holidayFind;
       if (
-        holidayDates.find(
+        (holidayFind = holidays.find(
           (holiday) =>
-            moment(new Date(holiday)).format("MM DD YYYY") ==
+            moment(new Date(holiday.date)).format("MM DD YYYY") ==
             moment(new Date(date)).format("MM DD YYYY")
-        )
+        ))
       ) {
-        return "";
+        return holidayFind.name;
       }
     }
   }

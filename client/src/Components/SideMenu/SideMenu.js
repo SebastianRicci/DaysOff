@@ -2,9 +2,10 @@
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CelebrationIcon from "@mui/icons-material/Celebration";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
-import "./../SideMenu/SideMenu.css";
+import Legend from "../Legend/Legend";
+import "./SideMenu.css";
 
-export default function SideMenu({ setAction }) {
+export default function SideMenu({ action, setAction }) {
   return (
     <div className="menuContainer">
       <div className="brand">DaysOff</div>
@@ -21,6 +22,7 @@ export default function SideMenu({ setAction }) {
           <EqualizerIcon className="analyticsIcon" color="action" />
           Analytics
         </div>
+        {action == "Calendar" && <Legend />}
       </div>
     </div>
   );

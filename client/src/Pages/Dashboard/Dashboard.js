@@ -4,12 +4,13 @@ import "react-calendar/dist/Calendar.css";
 import "./Dashboard.css";
 import SideMenu from "../../Components/SideMenu/SideMenu";
 import CalendarView from "../../Components/CalendarView/CalendarView";
-// import CalendarNavbar from "../../Components/CalendarNavbar/CalendarNavbar";
-// import MonthView from "../../Components/MonthView/MonthView";
-// import YearView from "../../Components/YearView/YearView";
 
 export default function Dashboard({ holidays, vacationDays }) {
   const [action, setAction] = useState("Calendar");
+
+  holidays = holidays.length
+    ? holidays
+    : JSON.parse(localStorage.getItem("holidays"));
 
   const availableLeaves = vacationDays
     ? vacationDays
@@ -126,14 +127,17 @@ export default function Dashboard({ holidays, vacationDays }) {
   return (
     <main>
       <div className="dashboard">
-        <SideMenu setAction={setAction}></SideMenu>
+        <SideMenu setAction={setAction} action={action}></SideMenu>
         {action == "Calendar" && (
           <CalendarView
+            holidays={holidays}
             holidayDates={holidayDates}
             algorithmDates={algorithmDates}
             weekendAlgorithmDates={weekendAlgorithmDates}
           />
         )}
+        {action == "Holidays" && <h1>Holidays</h1>}
+        {action == "Analytics" && <h1>Analytics</h1>}
       </div>
     </main>
   );

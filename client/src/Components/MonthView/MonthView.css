@@ -53,21 +53,29 @@ abbr[title] {
 
 /* Holidays highlight */
 .react-calendar__tile-Holiday {
-  background-color: #0d6aff;
-  color: white;
+  background-color: #0ae8f0;
+  color: #006bff;
   font-weight: bold;
+  font-size: 1rem;
+  padding: 0;
+}
+.react-calendar__tile-Holiday > abbr {
+  background-color: #0ae8f0;
+  color: #0ae8f0;
+  font-weight: bold;
+  font-size: 0.001rem;
 }
 
 /* Algorithm picked days highlight */
 .react-calendar__tile-Algorithm {
-  background-color: #8cf00a;
+  background-color: #006bff;
   color: white;
   font-weight: bold;
 }
 
 /* Algorithm picked weekend highlight */
 .react-calendar__tile-AlgoWeekend {
-  background-color: #ef0d86;
+  background-color: #0ae8f0;
   color: white;
   font-weight: bold;
 }

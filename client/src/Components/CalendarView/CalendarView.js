@@ -5,6 +5,7 @@ import YearView from "../YearView/YearView";
 import React, { useState, useEffect } from "react";
 
 export default function CalendarView({
+  holidays,
   holidayDates,
   algorithmDates,
   weekendAlgorithmDates,
@@ -16,6 +17,7 @@ export default function CalendarView({
       <div className="calendarContainer">
         {view == "Monthly" && (
           <MonthView
+            holidays={holidays}
             holidayDates={holidayDates}
             algorithmDates={algorithmDates}
             weekendAlgorithmDates={weekendAlgorithmDates}
@@ -23,6 +25,7 @@ export default function CalendarView({
         )}
         {view == "Yearly" && (
           <YearView
+            holidays={holidays}
             holidayDates={holidayDates}
             algorithmDates={algorithmDates}
             weekendAlgorithmDates={weekendAlgorithmDates}
