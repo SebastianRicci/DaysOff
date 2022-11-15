@@ -4,7 +4,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import AttachEmailIcon from "@mui/icons-material/AttachEmail";
 import ToggleButtons from "../ToggleButton/ToggleButton";
 
-export default function CalendarNavbar({ setView }) {
+export default function CalendarNavbar({ setView, exportCalendar }) {
   return (
     <>
       <div className="calendarNavbar">
@@ -14,9 +14,8 @@ export default function CalendarNavbar({ setView }) {
               <ToggleButtons setView={setView} />
             </div>
           </div>
-
           <div className="actions">
-            <div>
+            <div onClick={() => exportCalendar()}>
               <AttachEmailIcon />
             </div>
             <div>

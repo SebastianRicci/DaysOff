@@ -8,7 +8,6 @@ export default function MonthView({
   algorithmDates,
   weekendAlgorithmDates,
 }) {
-  console.log(holidays);
   function tileClassName({ date, view }) {
     // Add class to tiles in month view only
     if (view === "month") {

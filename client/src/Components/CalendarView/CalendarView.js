@@ -11,9 +11,43 @@ export default function CalendarView({
   weekendAlgorithmDates,
 }) {
   const [view, setView] = useState("Monthly");
+
+  function convertToCSV(arr) {
+    const array = [Object.keys(arr[0])].concat(arr);
+
+    return array
+      .map((it) => {
+        return Object.values(it).toString();
+      })
+      .join("\n");
+  }
+
+  function createCalendarExport(algorithmDates, holidays) {
+    let arr = [];
+    for (let i = 0; i < algorithmDates.length; i++) {
+      arr.push({ Subject: "DaysOff", "Start Date": algorithmDates[i] });
+    }
+    for (let i = 0; i < holidays.length; i++) {
+      arr.push({ Subject: holidays[i].name, "Start Date": holidays[i].date });
+    }
+    arr.sort((a, b) => new Date(a["Start Date"]) - new Date(b["Start Date"]));
+    return arr;
+  }
+  console.log(createCalendarExport(algorithmDates, holidays));
+
+  function exportCalendar() {
+    const csv = convertToCSV(createCalendarExport(algorithmDates, holidays));
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "DaysOff_Calendar.csv");
+    link.click();
+  }
+
   return (
     <div>
-      <CalendarNavbar setView={setView}></CalendarNavbar>
+      <CalendarNavbar setView={setView} exportCalendar={exportCalendar} />
       <div className="calendarContainer">
         {view == "Monthly" && (
           <MonthView
