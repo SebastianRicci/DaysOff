@@ -20,7 +20,7 @@ To use DaysOff, follow these steps:
 
 ## Tech Stack
 
-- Front End: ![React logo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png) React
+- Front End: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" width="100"> React
 - Back End: ![Node JS with Express logo](https://raw.githubusercontent.com/expressjs/express/master/Media/favicon.png) Node JS with Express
 
 ## Contributing
