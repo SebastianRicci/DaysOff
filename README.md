@@ -9,6 +9,10 @@ Welcome to the Daysoff project! This project aims to help employees make the mos
 - The suggested schedule will maximize the number of consecutive days off, so you can take longer, more enjoyable trips.
 - Export your suggested schedule into Google calendar.
 
+## Demo
+
+Try out our project at the following link: [DaysOff](https://www.daysoff.me/)
+
 ## Usage
 
 To use DaysOff, follow these steps:
