@@ -29,5 +29,5 @@ We welcome contributions to the DaysOff project! If you have an idea for a new f
 
 ## License
 
-The Optimize PTO project is licensed under the [MIT License](LICENSE.txt).
+DaysOff is licensed under the [MIT License](LICENSE.txt).
 
