@@ -6,12 +6,11 @@ require("dotenv").config();
 
 //Set the port to use and create an instance of Express
 const app = express();
-const PORT = 3001;
 
 //Body Parser and CORS
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.CLIENT_URL,
   })
 );
 app.use(express.json());
@@ -19,7 +18,3 @@ app.use(express.urlencoded({ extended: true }));
 
 //Apply the router
 app.use(router);
-
-app.listen(PORT, () => {
-  console.log(`DaysOff server is listening on port ${PORT}`);
-});

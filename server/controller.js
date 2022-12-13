@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const getCountries = async (req, res) => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BASE_URL}countries?pretty&key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.BASE_URL}countries?pretty&key=${process.env.API_KEY}`
     );
     const countries = await response.json();
     res.status(200).send(countries);
@@ -17,7 +17,7 @@ const getHolidays = async (req, res) => {
   const location = req.params.location;
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BASE_URL}holidays?pretty&key=${process.env.REACT_APP_API_KEY}&country=${location}&year=2021`
+      `${process.env.BASE_URL}holidays?pretty&key=${process.env.API_KEY}&country=${location}&year=2021`
     );
     const holidays = await response.json();
     res.status(200).send(holidays);
