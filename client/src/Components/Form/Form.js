@@ -3,13 +3,8 @@ import { useState } from "react";
 import { HolidayAPI } from "../../HolidayAPI/HolidayAPI";
 import { useNavigate } from "react-router-dom";
 
-export default function Form({ countries, setHolidays, setVacationDays }) {
+export default function Form({ countries }) {
   const [selectedCountry, setSelectedCountry] = useState();
-
-  function handleVacationDays(event) {
-    event.preventDefault();
-    setVacationDays(Number(event.target.value));
-  }
 
   let navigate = useNavigate();
 
@@ -25,16 +20,13 @@ export default function Form({ countries, setHolidays, setVacationDays }) {
     const locationHolidays = await HolidayAPI.getHolidays(location);
     //Filter by non-working holidays (public=true) and set as state
 
-    setHolidays(
-      locationHolidays.holidays.filter((holiday) => holiday.public == true)
-    );
     localStorage.setItem(
       "holidays",
       JSON.stringify(
         locationHolidays.holidays.filter((holiday) => holiday.public == true)
       )
     );
-    setVacationDays(Number(event.target.vacationDays.value));
+
     localStorage.setItem(
       "vacationDays",
       JSON.stringify(Number(event.target.vacationDays.value))
@@ -88,9 +80,9 @@ export default function Form({ countries, setHolidays, setVacationDays }) {
                 id="vacationDays"
                 name="vacationDays"
                 type="number"
-                onChange={handleVacationDays}
                 required
                 min={0}
+                max={90}
               ></input>
             </>
           )}

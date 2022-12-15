@@ -5,17 +5,13 @@ import SideMenu from "../../Components/SideMenu/SideMenu";
 import CalendarView from "../../Components/CalendarView/CalendarView";
 import { HolidayAPI } from "../../HolidayAPI/HolidayAPI";
 
-export default function Dashboard({ holidays, vacationDays }) {
+export default function Dashboard() {
   const [action, setAction] = useState("Calendar");
   const [calendar, setCalendar] = useState([]);
 
-  holidays = holidays.length
-    ? holidays
-    : JSON.parse(localStorage.getItem("holidays"));
+  const holidays = JSON.parse(localStorage.getItem("holidays"));
 
-  const availableLeaves = vacationDays
-    ? vacationDays
-    : JSON.parse(localStorage.getItem("vacationDays"));
+  const availableLeaves = JSON.parse(localStorage.getItem("vacationDays"));
 
   const holidayDates = holidays.length
     ? holidays.map((holiday) => holiday.date)
@@ -24,9 +20,16 @@ export default function Dashboard({ holidays, vacationDays }) {
       );
 
   useEffect(() => {
-    HolidayAPI.getCalendar(availableLeaves, holidayDates).then((calendar) =>
-      setCalendar(calendar)
-    );
+    const country = JSON.parse(localStorage.getItem("holidays"))[0].country;
+    if (localStorage.getItem(`calendar:${country}`)) {
+      setCalendar(JSON.parse(localStorage.getItem(`calendar:${country}`)));
+      return;
+    }
+
+    HolidayAPI.getCalendar(availableLeaves, holidayDates).then((calendar) => {
+      setCalendar(calendar);
+      localStorage.setItem(`calendar:${country}`, JSON.stringify(calendar));
+    });
   }, []);
 
   const pickedDays = calendar
