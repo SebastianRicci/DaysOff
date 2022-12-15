@@ -7,8 +7,7 @@ import { HolidayAPI } from "../../HolidayAPI/HolidayAPI";
 
 export default function Dashboard({ holidays, vacationDays }) {
   const [action, setAction] = useState("Calendar");
-  const [pickedDays, setPickedDays] = useState([]);
-  const [weekendDates, setWeekendDates] = useState([]);
+  const [calendar, setCalendar] = useState([]);
 
   holidays = holidays.length
     ? holidays
@@ -25,22 +24,17 @@ export default function Dashboard({ holidays, vacationDays }) {
       );
 
   useEffect(() => {
-    HolidayAPI.getPickedDays(availableLeaves, holidayDates).then(
-      (arrayPickedDays) =>
-        setPickedDays(
-          arrayPickedDays.filter((day) => day.algo == 1).map((day) => day.date)
-        )
-    );
-
-    HolidayAPI.getWeekends(availableLeaves, holidayDates).then(
-      (arrayWeekends) =>
-        setWeekendDates(
-          arrayWeekends
-            .filter((day) => day.algoWeekend == 1)
-            .map((day) => day.date)
-        )
+    HolidayAPI.getCalendar(availableLeaves, holidayDates).then((calendar) =>
+      setCalendar(calendar)
     );
   }, []);
+
+  const pickedDays = calendar
+    .filter((day) => day.algo == 1)
+    .map((day) => day.date);
+  const weekendDates = calendar
+    .filter((day) => day.algoWeekend == 1)
+    .map((day) => day.date);
 
   return (
     <main>

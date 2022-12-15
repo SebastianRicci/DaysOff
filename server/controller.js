@@ -28,22 +28,7 @@ const getHolidays = async (req, res) => {
   }
 };
 
-const getPickedDays = async (req, res) => {
-  const availableLeaves = req.params.leaves;
-  const holidayDates = req.params.holidayDates.split(",");
-  try {
-    const pickedDays = utils.pickedDays(
-      utils.setCalendarArray(holidayDates),
-      availableLeaves
-    );
-    res.status(200).send(pickedDays);
-  } catch (err) {
-    res.status(500);
-    res.send(err.message);
-  }
-};
-
-const getWeekends = async (req, res) => {
+const getCalendar = async (req, res) => {
   const holidayDates = req.params.holidayDates.split(",");
   const availableLeaves = req.params.leaves;
   try {
@@ -51,12 +36,12 @@ const getWeekends = async (req, res) => {
       utils.setCalendarArray(holidayDates),
       availableLeaves
     );
-    const weekends = utils.highlightWeekends(pickedDays);
-    res.status(200).send(weekends);
+    const calendar = utils.highlightWeekends(pickedDays);
+    res.status(200).send(calendar);
   } catch (err) {
     res.status(500);
     res.send(err.message);
   }
 };
 
-module.exports = { getCountries, getHolidays, getPickedDays, getWeekends };
+module.exports = { getCountries, getHolidays, getCalendar };
