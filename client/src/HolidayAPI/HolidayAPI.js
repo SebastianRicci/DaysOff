@@ -20,4 +20,28 @@ export const HolidayAPI = {
       console.warn("Error in getHolidays: ", err);
     }
   },
+
+  getPickedDays: async function (leaves, holidayDates) {
+    try {
+      const pickedDays = await fetch(
+        `${this.url}pickedDays/${leaves}/${holidayDates.join(",")})}`
+      );
+      const pickedDaysArray = await pickedDays.json();
+      return pickedDaysArray;
+    } catch (err) {
+      console.warn("Error in getPickedDays: ", err);
+    }
+  },
+
+  getWeekends: async function (leaves, holidayDates) {
+    try {
+      const holidays = await fetch(
+        `${this.url}weekends/${leaves}/${holidayDates.join(",")})}`
+      );
+      const holidaysArray = await holidays.json();
+      return holidaysArray;
+    } catch (err) {
+      console.warn("Error in getHolidays: ", err);
+    }
+  },
 };
