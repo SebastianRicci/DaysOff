@@ -24,7 +24,7 @@ export const HolidayAPI = {
   getCalendar: async function (leaves, holidayDates) {
     try {
       const calendar = await fetch(
-        `${this.url}calendar/${leaves}/${holidayDates.join(",")})}`
+        `${this.url}calendar/${leaves}/${holidayDates.join(",")}`
       );
       const calendarArray = await calendar.json();
       return calendarArray;
