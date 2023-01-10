@@ -3,8 +3,8 @@ const moment = require("moment");
 module.exports = {
   setCalendarArray: function (holidayDates) {
     //Set Initial array with dates and value as 0
-    let startDate = new Date("01/01/2021");
-    const endDate = new Date("12/31/2021");
+    let startDate = new Date("01/01/2022");
+    const endDate = new Date("12/31/2022");
     let calendar = [];
     while (startDate <= endDate) {
       calendar.push({
