@@ -18,7 +18,7 @@ const getHolidays = async (req, res) => {
   const location = req.params.location;
   try {
     const response = await fetch(
-      `${process.env.BASE_URL}holidays?pretty&key=${process.env.API_KEY}&country=${location}&year=2021`
+      `${process.env.BASE_URL}holidays?pretty&key=${process.env.API_KEY}&country=${location}&year=2022`
     );
     const holidays = await response.json();
     res.status(200).send(holidays);
