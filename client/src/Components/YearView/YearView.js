@@ -64,7 +64,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 0, 1)}
+          activeStartDate={new Date(2022, 0, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
@@ -74,7 +74,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 1, 1)}
+          activeStartDate={new Date(2022, 1, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
@@ -84,7 +84,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 2, 1)}
+          activeStartDate={new Date(2022, 2, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
@@ -94,7 +94,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 3, 1)}
+          activeStartDate={new Date(2022, 3, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
@@ -104,7 +104,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 4, 1)}
+          activeStartDate={new Date(2022, 4, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
@@ -114,7 +114,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 5, 1)}
+          activeStartDate={new Date(2022, 5, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
@@ -124,7 +124,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 6, 1)}
+          activeStartDate={new Date(2022, 6, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
@@ -134,7 +134,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 7, 1)}
+          activeStartDate={new Date(2022, 7, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
@@ -144,7 +144,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 8, 1)}
+          activeStartDate={new Date(2022, 8, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
@@ -154,7 +154,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 9, 1)}
+          activeStartDate={new Date(2022, 9, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
@@ -164,7 +164,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 10, 1)}
+          activeStartDate={new Date(2022, 10, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
@@ -174,7 +174,7 @@ export default function YearView({
         <Calendar
           tileClassName={tileClassName}
           tileContent={tileContent}
-          activeStartDate={new Date(2021, 11, 1)}
+          activeStartDate={new Date(2022, 11, 1)}
           showNeighboringMonth={false}
           nextLabel={""}
           next2Label={""}
