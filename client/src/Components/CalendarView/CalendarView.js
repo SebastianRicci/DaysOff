@@ -33,7 +33,6 @@ export default function CalendarView({
     arr.sort((a, b) => new Date(a["Start Date"]) - new Date(b["Start Date"]));
     return arr;
   }
-  console.log(createCalendarExport(algorithmDates, holidays));
 
   function exportCalendar() {
     const csv = convertToCSV(createCalendarExport(algorithmDates, holidays));

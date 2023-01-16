@@ -8,11 +8,6 @@ export default function MonthView({
   algorithmDates,
   weekendAlgorithmDates,
 }) {
-  console.log("holidays", holidays);
-  console.log("holidayDates", holidayDates);
-  console.log("algorithmDates", algorithmDates);
-  console.log("weekendAlgorithmDates", weekendAlgorithmDates);
-
   function tileClassName({ date, view }) {
     // Add class to tiles in month view only
     if (view === "month") {
@@ -24,11 +19,6 @@ export default function MonthView({
             moment.utc(new Date(date)).format("YYYY-MM-DD")
         )
       ) {
-        console.log("algorithmDates", algorithmDates);
-        console.log(
-          "date Algorithms",
-          moment(new Date(date)).format("YYYY-MM-DD")
-        );
         return "react-calendar__tile-Algorithm";
       }
       if (
