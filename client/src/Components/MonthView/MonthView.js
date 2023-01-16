@@ -20,8 +20,8 @@ export default function MonthView({
       if (
         algorithmDates.find(
           (holiday) =>
-            moment(new Date(holiday)).format("YYYY-MM-DD") ==
-            moment(new Date(date)).format("YYYY-MM-DD")
+            moment.utc(new Date(holiday)).format("YYYY-MM-DD") ==
+            moment.utc(new Date(date)).format("YYYY-MM-DD")
         )
       ) {
         console.log("algorithmDates", algorithmDates);
@@ -34,8 +34,8 @@ export default function MonthView({
       if (
         holidayDates.find(
           (holiday) =>
-            moment(new Date(holiday)).format("YYYY-MM-DD") ==
-            moment(new Date(date)).format("YYYY-MM-DD")
+            moment.utc(new Date(holiday)).format("YYYY-MM-DD") ==
+            moment.utc(new Date(date)).format("YYYY-MM-DD")
         )
       ) {
         return "react-calendar__tile-Holiday";
@@ -43,8 +43,8 @@ export default function MonthView({
       if (
         weekendAlgorithmDates.find(
           (holiday) =>
-            moment(new Date(holiday)).format("YYYY-MM-DD") ==
-            moment(new Date(date)).format("YYYY-MM-DD")
+            moment.utc(new Date(holiday)).format("YYYY-MM-DD") ==
+            moment.utc(new Date(date)).format("YYYY-MM-DD")
         )
       ) {
         return "react-calendar__tile-AlgoWeekend";
@@ -60,8 +60,8 @@ export default function MonthView({
       if (
         (holidayFind = holidays.find(
           (holiday) =>
-            moment(new Date(holiday.date)).format("MM DD YYYY") ==
-            moment(new Date(date)).format("MM DD YYYY")
+            moment.utc(new Date(holiday.date)).format("MM DD YYYY") ==
+            moment.utc(new Date(date)).format("MM DD YYYY")
         ))
       ) {
         return holidayFind.name;
