@@ -24,7 +24,11 @@ export default function MonthView({
             moment(new Date(date)).format("YYYY-MM-DD")
         )
       ) {
-        console.log("date Algorithms", date);
+        console.log("algorithmDates", algorithmDates);
+        console.log(
+          "date Algorithms",
+          moment(new Date(date)).format("YYYY-MM-DD")
+        );
         return "react-calendar__tile-Algorithm";
       }
       if (
