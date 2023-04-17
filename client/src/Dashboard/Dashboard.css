@@ -39,13 +39,13 @@ main {
   font-size: 20px;
   font-family: "Gilroy";
   font-weight: bold;
-  color: #ff1079;
+  color: rgb(140, 4, 219);
 }
 .react-calendar__navigation__arrow {
   font-size: 35px;
   font-family: "Gilroy";
   font-weight: bold;
-  color: #ff1079;
+  color: rgb(140, 4, 219);
 }
 
 abbr[title] {
@@ -53,7 +53,7 @@ abbr[title] {
 }
 /* Day of the week view */
 .react-calendar__month-view__weekdays__weekday {
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Gilroy";
   font-weight: bold;
 }

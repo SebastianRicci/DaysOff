@@ -2,9 +2,9 @@
   background-color: white;
   width: 95%;
   border-radius: 10px;
-  height: 100px;
+  height: fit-content;
 }
 
 .HolidaysContainer > * {
-  padding-left: 20px;
+  margin-left: 20px;
 }

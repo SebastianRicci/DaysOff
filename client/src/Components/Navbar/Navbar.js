@@ -7,9 +7,9 @@ export default function Navbar({ setView, exportCalendar }) {
   return (
     <div className="calendarNavbar">
       <div className="selections">
-        <MenuSharpIcon color="action"></MenuSharpIcon>
+        <MenuSharpIcon color="white"></MenuSharpIcon>
         <h3>Optimized Calendar 🎉</h3>
-        <SettingsIcon color="action"></SettingsIcon>
+        <SettingsIcon color="white"></SettingsIcon>
       </div>
     </div>
   );
