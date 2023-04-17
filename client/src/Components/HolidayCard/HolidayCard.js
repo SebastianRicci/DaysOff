@@ -1,12 +1,12 @@
 import "./HolidayCard.css";
 
-export default function HolidayCard({ Name, Date }) {
+export default function HolidayCard({ holidayName, holidayDate }) {
   return (
     <div className="cardContainer">
-      <h1 className="cardDate">23</h1>
+      <h1 className="cardDate">{holidayDate.split("/")[0]}</h1>
       <div className="cardDescription">
-        <div className="HolidayName">{Name}</div>
-        <div className="HolidayDate">{Date} 25th</div>
+        <div className="HolidayName">{holidayName}</div>
+        <div className="HolidayDate">{holidayDate}</div>
       </div>
     </div>
   );
