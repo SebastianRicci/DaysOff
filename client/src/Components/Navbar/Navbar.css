@@ -1,46 +1,26 @@
-.navbar {
+.calendarNavbar {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  background-color: white;
+  width: 100%;
+  height: 60px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .selections {
   display: flex;
-  align-items: center;
   flex-direction: row;
-}
-.selections > div {
-  font-size: 1.3rem;
-  font-weight: bold;
-  padding: 1.4rem;
-  border-radius: 1rem;
-}
-.selections > div:hover {
-  background-color: #ebf2fb;
-  cursor: pointer;
-}
-.logo {
-  color: #0d6aff;
-  padding: 1.4rem;
-  margin-left: 2rem;
-}
-.account {
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 1.4rem;
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-right: 2rem;
+  width: 95%;
+  height: 50%;
+}
+.selections > * {
+  cursor: pointer;
 }
 
-.box {
-  background-color: #0d6aff;
-  padding: 0.8rem;
-  border-radius: 1rem;
-  cursor: pointer;
-}
-.box > div {
-  font-size: 1.2rem;
-  color: white;
-  font-weight: normal;
+.selections > h3 {
+  cursor: default;
+  color: #ff1079;
 }

@@ -1,25 +1,16 @@
 import "./Navbar.css";
-export default function Navbar() {
+import SettingsIcon from "@mui/icons-material/Settings";
+import MenuSharpIcon from "@mui/icons-material/MenuSharp";
+import ToggleButtons from "../ToggleButton/ToggleButton";
+
+export default function Navbar({ setView, exportCalendar }) {
   return (
-    <>
-      <div className="navbar">
-        <div className="logo">
-          <h1>DaysOff</h1>
-        </div>
-        <div className="selections">
-          <div>Individuals</div>
-          <div>Teams</div>
-          <div>Enterprise</div>
-          <div>Product</div>
-          <div>Pricing</div>
-          <div>Resources</div>
-        </div>
-        <div className="account">
-          <div className="box">
-            <div>My account</div>
-          </div>
-        </div>
+    <div className="calendarNavbar">
+      <div className="selections">
+        <MenuSharpIcon color="action"></MenuSharpIcon>
+        <h3>Optimized Calendar 🎉</h3>
+        <SettingsIcon color="action"></SettingsIcon>
       </div>
-    </>
+    </div>
   );
 }

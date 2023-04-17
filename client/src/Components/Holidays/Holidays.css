@@ -1,0 +1,10 @@
+.HolidaysContainer {
+  background-color: white;
+  width: 95%;
+  border-radius: 10px;
+  height: 100px;
+}
+
+.HolidaysContainer > * {
+  padding-left: 20px;
+}
