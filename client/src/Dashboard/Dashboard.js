@@ -3,8 +3,10 @@ import "./Dashboard.css";
 import React, { useState, useEffect } from "react";
 import { HolidayAPI } from "../HolidayAPI/HolidayAPI";
 import Navbar from "../Components/Navbar/Navbar";
-import Calendar from "react-calendar";
 import Holidays from "../Components/Holidays/Holidays";
+import MonthCalendar from "../Components/MonthCalendar/MonthCalendar";
+import YearCalendar from "../Components/YearCalendar/YearCalendar";
+import CalendarOverview from "../Components/CalendarOverview/CalendarOverview";
 
 export default function Dashboard() {
   // const [action, setAction] = useState("Calendar");
@@ -44,12 +46,10 @@ export default function Dashboard() {
     <>
       <div className="CalendarContainer">
         <Navbar></Navbar>
-        <Calendar
-          onClickDay={(value, event) => console.log(value)}
-          maxDate={new Date("12/31/2024")}
-          minDate={new Date("01/01/2023")}
-        ></Calendar>
+        <MonthCalendar></MonthCalendar>
+        {/* <YearCalendar></YearCalendar> */}
         <Holidays></Holidays>
+        <CalendarOverview></CalendarOverview>
       </div>
     </>
   );

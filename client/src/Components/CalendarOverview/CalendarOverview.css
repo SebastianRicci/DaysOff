@@ -1,4 +1,4 @@
-.HolidaysContainer {
+.OverviewContainer {
   background-color: white;
   width: 95%;
   border-radius: 10px;
@@ -7,6 +7,14 @@
   padding-bottom: 20px;
 }
 
-.HolidaysContainer > * {
+.OverviewContainer > h3 {
   margin-left: 20px;
+}
+
+.OverviewContainer > div {
+  margin-left: 20px;
+}
+
+.TextFieldContainer {
+  width: 90%;
 }
