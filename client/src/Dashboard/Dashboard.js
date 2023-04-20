@@ -2,14 +2,23 @@ import "react-calendar/dist/Calendar.css";
 import "./Dashboard.css";
 import React, { useState, useEffect } from "react";
 import { HolidayAPI } from "../HolidayAPI/HolidayAPI";
-import Navbar from "../Components/Navbar/Navbar";
-import Holidays from "../Components/Holidays/Holidays";
-import MonthCalendar from "../Components/MonthCalendar/MonthCalendar";
-import YearCalendar from "../Components/YearCalendar/YearCalendar";
-import CalendarOverview from "../Components/CalendarOverview/CalendarOverview";
+import CalendarView from "../Actions/CalendarView/CalendarView";
+import BottomNav from "../Components/BottomNav/BottomNav";
+import Header from "../Components/Header/Header";
 
 export default function Dashboard() {
-  // const [action, setAction] = useState("Calendar");
+  const [action, setAction] = useState(0);
+
+  function renderAction(action) {
+    switch (action) {
+      case 0:
+        return <CalendarView></CalendarView>;
+      case 1:
+        return <h1>AI</h1>;
+      case 2:
+        return <h1>stats</h1>;
+    }
+  }
   // const [calendar, setCalendar] = useState([]);
 
   // const holidays = JSON.parse(localStorage.getItem("holidays"));
@@ -44,13 +53,11 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="CalendarContainer">
-        <Navbar></Navbar>
-        <MonthCalendar></MonthCalendar>
-        {/* <YearCalendar></YearCalendar> */}
-        <Holidays></Holidays>
-        <CalendarOverview></CalendarOverview>
+      <div className="Dashboard">
+        <Header action={action}></Header>
+        {renderAction(action)}
       </div>
+      <BottomNav action={action} setAction={setAction}></BottomNav>
     </>
   );
 }

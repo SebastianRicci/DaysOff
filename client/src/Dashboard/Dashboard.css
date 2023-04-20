@@ -1,6 +1,9 @@
-.dashboard {
+.Dashboard {
   display: flex;
+  flex-direction: column;
   background-color: #efefef;
+  width: 100%;
+  height: 100%;
 }
 .CalendarContainer {
   display: flex;
