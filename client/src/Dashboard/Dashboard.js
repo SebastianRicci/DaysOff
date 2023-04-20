@@ -8,6 +8,7 @@ import Header from "../Components/Header/Header";
 
 export default function Dashboard() {
   const [action, setAction] = useState(0);
+  const [settings, setSettings] = useState(false);
 
   function renderAction(action) {
     switch (action) {
@@ -54,8 +55,12 @@ export default function Dashboard() {
   return (
     <>
       <div className="Dashboard">
-        <Header action={action}></Header>
-        {renderAction(action)}
+        <Header
+          action={action}
+          setSettings={setSettings}
+          settings={settings}
+        ></Header>
+        {settings ? <h1>settings</h1> : renderAction(action)}
       </div>
       <BottomNav action={action} setAction={setAction}></BottomNav>
     </>
