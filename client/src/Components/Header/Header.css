@@ -23,13 +23,13 @@
   width: 95%;
   height: 50%;
 }
-.selections,
+.selections > *,
 .settingsSelections > * {
   cursor: pointer;
   color: white;
 }
 
-.selections,
+.selections > h3,
 .settingsSelections > h3 {
   cursor: default;
 }
