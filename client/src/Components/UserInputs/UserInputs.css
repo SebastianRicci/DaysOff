@@ -1,0 +1,53 @@
+.settingsBody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  width: 95%;
+  border-radius: 10px;
+  height: fit-content;
+  margin-bottom: 70px;
+  padding-bottom: 20px;
+}
+
+.settingsBody > * {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.Location > *,
+.VacationDays > *,
+.CalendarDates > *,
+.Weekends > *,
+.HolidayLanguage > * {
+  margin: 5px;
+}
+.LocationHeader,
+.VacationDaysHeader,
+.CalendarDatesHeader,
+.WeekendsHeader,
+.HolidayLanguageHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.LocationHeader > svg,
+.VacationDaysHeader > svg,
+.CalendarDatesHeader > svg,
+.WeekendsHeader > svg,
+.HolidayLanguageHeader > svg {
+  margin-right: 10px;
+}
+
+.CalendarDatesRange {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.CalendarDatesRange > * {
+  margin-top: 10px;
+}

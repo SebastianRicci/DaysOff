@@ -1,0 +1,9 @@
+.settingsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settingsContainer > * {
+  margin-top: 10px;
+}

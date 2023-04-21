@@ -32,7 +32,7 @@ export default function Navbar({ action, setSettings, settings }) {
       ) : (
         <div className="dashboardHeader">
           <div className="selections">
-            <DashboardDrawer />
+            <p>Logo</p>
             <h3>{renderTitle(action)}</h3>
             <SettingsIcon
               color="white"

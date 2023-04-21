@@ -5,6 +5,7 @@ import { HolidayAPI } from "../HolidayAPI/HolidayAPI";
 import CalendarView from "../Actions/CalendarView/CalendarView";
 import BottomNav from "../Components/BottomNav/BottomNav";
 import Header from "../Components/Header/Header";
+import Settings from "../Actions/Settings/Settings";
 
 export default function Dashboard() {
   const [action, setAction] = useState(0);
@@ -60,7 +61,7 @@ export default function Dashboard() {
           setSettings={setSettings}
           settings={settings}
         ></Header>
-        {settings ? <h1>settings</h1> : renderAction(action)}
+        {settings ? <Settings /> : renderAction(action)}
       </div>
       <BottomNav action={action} setAction={setAction}></BottomNav>
     </>
