@@ -11,7 +11,8 @@ import moment from "moment";
 export default function Dashboard() {
   const [action, setAction] = useState(0);
   const [settings, setSettings] = useState(false);
-  const [location, setLocation] = useState("");
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
   const [PTO, setPTO] = useState("");
   const [startDate, setStartDate] = useState(moment());
   const [endDate, setEndDate] = useState(moment(`${moment().year()}-12-31`));
@@ -23,7 +24,8 @@ export default function Dashboard() {
       case 0:
         return (
           <CalendarView
-            location={location}
+            country={country}
+            region={region}
             PTO={PTO}
             startDate={startDate}
             endDate={endDate}
@@ -79,13 +81,15 @@ export default function Dashboard() {
         ></Header>
         {settings ? (
           <Settings
-            location={location}
+            country={country}
+            region={region}
             PTO={PTO}
             startDate={startDate}
             endDate={endDate}
             weekends={weekends}
             holidayLanguage={holidayLanguage}
-            setLocation={setLocation}
+            setCountry={setCountry}
+            setRegion={setRegion}
             setPTO={setPTO}
             setStartDate={setStartDate}
             setEndDate={setEndDate}

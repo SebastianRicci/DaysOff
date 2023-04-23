@@ -3,13 +3,15 @@ import User from "../../Components/User/User";
 import UserInputs from "./UserInputs/UserInputs";
 
 export default function Settings({
-  location,
+  country,
+  region,
   PTO,
   startDate,
   endDate,
   weekends,
   holidayLanguage,
-  setLocation,
+  setCountry,
+  setRegion,
   setPTO,
   setStartDate,
   setEndDate,
@@ -21,13 +23,15 @@ export default function Settings({
       <div className="settingsContainer">
         <User />
         <UserInputs
-          location={location}
+          country={country}
+          region={region}
           PTO={PTO}
           startDate={startDate}
           endDate={endDate}
           weekends={weekends}
           holidayLanguage={holidayLanguage}
-          setLocation={setLocation}
+          setCountry={setCountry}
+          setRegion={setRegion}
           setPTO={setPTO}
           setStartDate={setStartDate}
           setEndDate={setEndDate}

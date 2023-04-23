@@ -1,9 +1,15 @@
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import PublicIcon from "@mui/icons-material/Public";
 
-export default function LocationInput({ location, setLocation }) {
+export default function LocationInput({
+  country,
+  setCountry,
+  region,
+  setRegion,
+}) {
   const countries = [
     {
       code: "BE",
@@ -21428,10 +21434,19 @@ export default function LocationInput({ location, setLocation }) {
       ],
     },
   ];
+  const [regionActive, setRegionActive] = useState(false);
 
-  const handleLocation = (event, newLocation) => {
-    setLocation(newLocation);
+  const handleCountry = (event, newCountry) => {
+    setCountry(newCountry);
+    setRegion(null);
+    // show the region input only if a location is selected and it has subdivisions
+    setRegionActive(Boolean(newCountry));
   };
+
+  const handleRegion = (event, newRegion) => {
+    setRegion(newRegion);
+  };
+
   return (
     <div className="Location">
       <div className="LocationHeader">
@@ -21439,10 +21454,10 @@ export default function LocationInput({ location, setLocation }) {
         Location
       </div>
       <Autocomplete
-        id="country-select-demo"
+        id="country-select"
         sx={{ width: 300 }}
         options={countries}
-        onChange={handleLocation}
+        onChange={handleCountry}
         autoHighlight
         getOptionLabel={(option) => option.name}
         renderOption={(props, option) => (
@@ -21464,7 +21479,7 @@ export default function LocationInput({ location, setLocation }) {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Choose a country"
+            label="Choose your country"
             inputProps={{
               ...params.inputProps,
               autoComplete: "new-password", // disable autocomplete and autofill
@@ -21472,6 +21487,27 @@ export default function LocationInput({ location, setLocation }) {
           />
         )}
       />
+      {country && country.subdivisions.length > 0 && (
+        <Autocomplete
+          id="region-select"
+          sx={{ width: 300 }}
+          value={region}
+          options={country.subdivisions}
+          onChange={handleRegion}
+          autoHighlight
+          getOptionLabel={(option) => option.name}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Choose your region"
+              inputProps={{
+                ...params.inputProps,
+                autoComplete: "new-password", // disable autocomplete and autofill
+              }}
+            />
+          )}
+        />
+      )}
     </div>
   );
 }
