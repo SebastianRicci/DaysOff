@@ -5,7 +5,14 @@ import CalendarOverview from "../../Components/CalendarOverview/CalendarOverview
 import Fab from "@mui/material/Fab";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
-export default function CalendarView() {
+export default function CalendarView({
+  location,
+  PTO,
+  startDate,
+  endDate,
+  weekends,
+  holidayLanguage,
+}) {
   const style = {
     background: "#fd1079",
     color: "white",
@@ -18,7 +25,11 @@ export default function CalendarView() {
   };
   return (
     <div className="CalendarContainer">
-      <MonthCalendar></MonthCalendar>
+      <MonthCalendar
+        startDate={startDate}
+        endDate={endDate}
+        weekends={weekends}
+      ></MonthCalendar>
       <Holidays></Holidays>
       <CalendarOverview></CalendarOverview>
       <Fab variant="extended" style={style}>
