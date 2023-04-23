@@ -1,9 +1,9 @@
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { styled, lighten, darken } from "@mui/system";
 import Box from "@mui/material/Box";
+import PublicIcon from "@mui/icons-material/Public";
 
-export default function LocationInput() {
+export default function LocationInput({ location, setLocation }) {
   const countries = [
     {
       code: "BE",
@@ -21429,39 +21429,49 @@ export default function LocationInput() {
     },
   ];
 
+  const handleLocation = (event, newLocation) => {
+    setLocation(newLocation);
+  };
   return (
-    <Autocomplete
-      id="country-select-demo"
-      sx={{ width: 300 }}
-      options={countries}
-      autoHighlight
-      getOptionLabel={(option) => option.name}
-      renderOption={(props, option) => (
-        <Box
-          component="li"
-          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-          {...props}
-        >
-          <img
-            loading="lazy"
-            width="20"
-            src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
-            srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
-            alt=""
+    <div className="Location">
+      <div className="LocationHeader">
+        <PublicIcon />
+        Location
+      </div>
+      <Autocomplete
+        id="country-select-demo"
+        sx={{ width: 300 }}
+        options={countries}
+        onChange={handleLocation}
+        autoHighlight
+        getOptionLabel={(option) => option.name}
+        renderOption={(props, option) => (
+          <Box
+            component="li"
+            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+            {...props}
+          >
+            <img
+              loading="lazy"
+              width="20"
+              src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+              srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
+              alt=""
+            />
+            {option.name}
+          </Box>
+        )}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Choose a country"
+            inputProps={{
+              ...params.inputProps,
+              autoComplete: "new-password", // disable autocomplete and autofill
+            }}
           />
-          {option.name}
-        </Box>
-      )}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          label="Choose a country"
-          inputProps={{
-            ...params.inputProps,
-            autoComplete: "new-password", // disable autocomplete and autofill
-          }}
-        />
-      )}
-    />
+        )}
+      />
+    </div>
   );
 }

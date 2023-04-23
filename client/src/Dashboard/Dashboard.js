@@ -6,15 +6,31 @@ import CalendarView from "../Actions/CalendarView/CalendarView";
 import BottomNav from "../Components/BottomNav/BottomNav";
 import Header from "../Components/Header/Header";
 import Settings from "../Actions/Settings/Settings";
+import moment from "moment";
 
 export default function Dashboard() {
   const [action, setAction] = useState(0);
   const [settings, setSettings] = useState(false);
+  const [location, setLocation] = useState("");
+  const [PTO, setPTO] = useState("");
+  const [startDate, setStartDate] = useState(moment());
+  const [endDate, setEndDate] = useState(moment(`${moment().year()}-12-31`));
+  const [weekends, setWeekends] = useState(["Saturday", "Sunday"]);
+  const [holidayLanguage, setHolidayLanguage] = useState("en");
 
   function renderAction(action) {
     switch (action) {
       case 0:
-        return <CalendarView></CalendarView>;
+        return (
+          <CalendarView
+            location={location}
+            PTO={PTO}
+            startDate={startDate}
+            endDate={endDate}
+            weekends={weekends}
+            holidayLanguage={holidayLanguage}
+          ></CalendarView>
+        );
       case 1:
         return <h1>AI</h1>;
       case 2:
@@ -61,7 +77,24 @@ export default function Dashboard() {
           setSettings={setSettings}
           settings={settings}
         ></Header>
-        {settings ? <Settings /> : renderAction(action)}
+        {settings ? (
+          <Settings
+            location={location}
+            PTO={PTO}
+            startDate={startDate}
+            endDate={endDate}
+            weekends={weekends}
+            holidayLanguage={holidayLanguage}
+            setLocation={setLocation}
+            setPTO={setPTO}
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
+            setWeekends={setWeekends}
+            setHolidayLanguage={setHolidayLanguage}
+          />
+        ) : (
+          renderAction(action)
+        )}
       </div>
       <BottomNav action={action} setAction={setAction}></BottomNav>
     </>

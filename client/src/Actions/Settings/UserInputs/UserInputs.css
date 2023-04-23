@@ -18,12 +18,13 @@
 }
 
 .Location > *,
-.VacationDays > *,
+.VacationDays > div,
 .CalendarDates > *,
 .Weekends > *,
 .HolidayLanguage > * {
   margin: 5px;
 }
+
 .LocationHeader,
 .VacationDaysHeader,
 .CalendarDatesHeader,
@@ -48,6 +49,6 @@
   align-items: flex-start;
 }
 
-.CalendarDatesRange > * {
+.CalendarDatesRange > div {
   margin-top: 10px;
 }
