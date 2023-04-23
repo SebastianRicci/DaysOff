@@ -16,7 +16,7 @@ export default function Dashboard() {
   const [PTO, setPTO] = useState("");
   const [startDate, setStartDate] = useState(moment());
   const [endDate, setEndDate] = useState(moment(`${moment().year()}-12-31`));
-  const [weekends, setWeekends] = useState(["Saturday", "Sunday"]);
+  const [weekends, setWeekends] = useState(["6", "0"]);
   const [holidayLanguage, setHolidayLanguage] = useState("en");
 
   function renderAction(action) {

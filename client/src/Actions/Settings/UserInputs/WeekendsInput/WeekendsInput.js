@@ -17,25 +17,25 @@ export default function WeekendsInput({ weekends, setWeekends }) {
         onChange={handleWeekend}
         aria-label="Days of the week"
       >
-        <ToggleButton value="Monday" aria-label="Monday">
+        <ToggleButton value="1" aria-label="Monday">
           M
         </ToggleButton>
-        <ToggleButton value="Tuesday" aria-label="Tuesday">
+        <ToggleButton value="2" aria-label="Tuesday">
           T
         </ToggleButton>
-        <ToggleButton value="Wednesday" aria-label="Wednesday">
+        <ToggleButton value="3" aria-label="Wednesday">
           W
         </ToggleButton>
-        <ToggleButton value="Thursday" aria-label="Thursday">
+        <ToggleButton value="4" aria-label="Thursday">
           T
         </ToggleButton>
-        <ToggleButton value="Friday" aria-label="Friday">
+        <ToggleButton value="5" aria-label="Friday">
           F
         </ToggleButton>
-        <ToggleButton value="Saturday" aria-label="Saturday">
+        <ToggleButton value="6" aria-label="Saturday">
           S
         </ToggleButton>
-        <ToggleButton value="Sunday" aria-label="Sunday">
+        <ToggleButton value="0" aria-label="Sunday">
           S
         </ToggleButton>
       </ToggleButtonGroup>

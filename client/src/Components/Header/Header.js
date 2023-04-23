@@ -1,6 +1,5 @@
 import "./Header.css";
 import SettingsIcon from "@mui/icons-material/Settings";
-import DashboardDrawer from "../DashboardDrawer/DashboardDrawer";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 export default function Navbar({ action, setSettings, settings }) {

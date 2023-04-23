@@ -52,8 +52,9 @@ abbr[title] {
 .react-calendar__tile--active:enabled:focus {
   background: #ff1079;
 }
+
 /* Weekend highlight */
-.react-calendar__month-view__days__day--weekend {
+.react-calendar__tile-ChosenWeekend {
   color: #222;
   font-weight: bold;
 }
