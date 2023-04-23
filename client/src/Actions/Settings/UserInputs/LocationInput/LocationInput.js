@@ -21456,6 +21456,7 @@ export default function LocationInput({
       <Autocomplete
         id="country-select"
         sx={{ width: 300 }}
+        value={country}
         options={countries}
         onChange={handleCountry}
         autoHighlight

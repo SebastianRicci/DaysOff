@@ -11,14 +11,132 @@ import moment from "moment";
 export default function Dashboard() {
   const [action, setAction] = useState(0);
   const [settings, setSettings] = useState(false);
-  const [country, setCountry] = useState("");
-  const [region, setRegion] = useState("");
+  const [country, setCountry] = useState({
+    code: "ES",
+    name: "Spain",
+    codes: {
+      "alpha-2": "ES",
+      "alpha-3": "ESP",
+      numeric: "724",
+    },
+    languages: ["ca", "es", "eu", "gl"],
+    currencies: [
+      {
+        alpha: "EUR",
+      },
+    ],
+    flag: "https://flagsapi.com/ES/flat/64.png",
+    subdivisions: [
+      {
+        code: "ES-AN",
+        name: "Andalucía",
+        languages: ["es"],
+      },
+      {
+        code: "ES-AR",
+        name: "Aragón",
+        languages: ["es"],
+      },
+      {
+        code: "ES-AS",
+        name: "Asturias, Principado de",
+        languages: ["es"],
+      },
+      {
+        code: "ES-CB",
+        name: "Cantabria",
+        languages: ["es"],
+      },
+      {
+        code: "ES-CE",
+        name: "Ceuta",
+        languages: ["es"],
+      },
+      {
+        code: "ES-CL",
+        name: "Castilla y León",
+        languages: ["es"],
+      },
+      {
+        code: "ES-CM",
+        name: "Castilla-La Mancha",
+        languages: ["es"],
+      },
+      {
+        code: "ES-CN",
+        name: "Canarias",
+        languages: ["es"],
+      },
+      {
+        code: "ES-CT",
+        name: "Catalunya",
+        languages: ["ca"],
+      },
+      {
+        code: "ES-EX",
+        name: "Extremadura",
+        languages: ["es"],
+      },
+      {
+        code: "ES-GA",
+        name: "Galicia",
+        languages: ["gl"],
+      },
+      {
+        code: "ES-IB",
+        name: "Illes Balears",
+        languages: ["ca"],
+      },
+      {
+        code: "ES-MC",
+        name: "Murcia, Región de",
+        languages: ["es"],
+      },
+      {
+        code: "ES-MD",
+        name: "Madrid, Comunidad de",
+        languages: ["es"],
+      },
+      {
+        code: "ES-ML",
+        name: "Melilla",
+        languages: ["es"],
+      },
+      {
+        code: "ES-NC",
+        name: "Nafarroako Foru Komunitatea*",
+        languages: ["es", "eu"],
+      },
+      {
+        code: "ES-PV",
+        name: "Euskal Herria",
+        languages: ["es", "eu"],
+      },
+      {
+        code: "ES-RI",
+        name: "La Rioja",
+        languages: ["es"],
+      },
+      {
+        code: "ES-VC",
+        name: "Valenciana, Comunidad",
+        languages: ["ca", "es"],
+      },
+    ],
+  });
+  const [region, setRegion] = useState({
+    code: "ES-MD",
+    name: "Madrid, Comunidad de",
+    languages: ["es"],
+  });
   const [PTO, setPTO] = useState("");
   const [startDate, setStartDate] = useState(moment());
   const [endDate, setEndDate] = useState(moment(`${moment().year()}-12-31`));
   const [weekends, setWeekends] = useState(["6", "0"]);
   const [holidayLanguage, setHolidayLanguage] = useState("en");
-
+  console.log(country);
+  console.log(region);
+  region ? console.log(region) : console.log(country);
   function renderAction(action) {
     switch (action) {
       case 0:
