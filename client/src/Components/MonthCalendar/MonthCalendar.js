@@ -2,11 +2,13 @@ import "./MonthCalendar.css";
 import moment from "moment";
 import Calendar from "react-calendar";
 export default function MonthCalendar({
+  setOpenModal,
   setActiveDate,
   holidays,
   startDate,
   endDate,
   weekends,
+  setSelectedDate,
 }) {
   const handleDateChange = (date) => {
     setActiveDate(date.activeStartDate);
@@ -68,14 +70,13 @@ export default function MonthCalendar({
   }
   return (
     <Calendar
+      onClickDay={(date) => setOpenModal(true)}
+      onChange={(date) => setSelectedDate(date)}
       defaultValue={startDate._d}
       showNeighboringMonth={false}
       onActiveStartDateChange={handleDateChange}
       tileContent={tileContent}
       tileClassName={tileClassName}
-      onClickDay={(value, event) =>
-        console.log(moment.utc(new Date(value)).format("YYYY-MM-DD"))
-      }
       maxDate={new Date(endDate._d.toDateString())}
       minDate={new Date(startDate._d.toDateString())}
     ></Calendar>

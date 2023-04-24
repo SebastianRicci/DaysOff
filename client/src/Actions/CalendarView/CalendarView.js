@@ -5,6 +5,7 @@ import MonthCalendar from "../../Components/MonthCalendar/MonthCalendar";
 import CalendarOverview from "../../Components/CalendarOverview/CalendarOverview";
 import Fab from "@mui/material/Fab";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import CalendarModal from "../../Components/CalendarModal/CalendarModal";
 
 export default function CalendarView({
   holidays,
@@ -26,14 +27,24 @@ export default function CalendarView({
     position: "fixed",
   };
   const [activeDate, setActiveDate] = useState(startDate._d);
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+
   return (
     <div className="CalendarContainer">
+      <CalendarModal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        selectedDate={selectedDate}
+      />
       <MonthCalendar
+        setOpenModal={setOpenModal}
         setActiveDate={setActiveDate}
         holidays={holidays}
         startDate={startDate}
         endDate={endDate}
         weekends={weekends}
+        setSelectedDate={setSelectedDate}
       ></MonthCalendar>
       <Holidays activeDate={activeDate} holidays={holidays}></Holidays>
       <CalendarOverview></CalendarOverview>
