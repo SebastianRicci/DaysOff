@@ -8,6 +8,7 @@ import ListItemText from "@mui/material/ListItemText";
 import WorkIcon from "@mui/icons-material/Work";
 import PublicIcon from "@mui/icons-material/Public";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
+import UndoIcon from "@mui/icons-material/Undo";
 
 const style = {
   position: "absolute",
@@ -60,6 +61,12 @@ export default function CalendarModal({
                 <PublicIcon />
               </ListItemIcon>
               <ListItemText primary="Mark as Public Holiday" />
+            </ListItem>
+            <ListItem button onClick={() => handleChoice("default")}>
+              <ListItemIcon>
+                <UndoIcon />
+              </ListItemIcon>
+              <ListItemText primary="Mark as default Value" />
             </ListItem>
           </List>
         </Box>
