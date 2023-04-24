@@ -526,7 +526,7 @@ export default function HolidayLanguageInput({
         sx={{ width: 300 }}
         options={languages}
         autoHighlight
-        defaultValue={languages[22]}
+        defaultValue={languages[24]}
         getOptionLabel={(option) => option.name}
         renderOption={(props, option) => (
           <Box

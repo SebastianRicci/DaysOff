@@ -64,11 +64,11 @@ abbr[title] {
   background-color: #0ae8f0;
   color: #006bff;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: px;
   padding: 0;
 }
 .react-calendar__tile-Holiday > abbr {
-  visibility: hidden;
+  display: none;
 }
 
 /* Algorithm picked days highlight */
