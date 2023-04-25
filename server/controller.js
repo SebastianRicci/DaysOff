@@ -16,9 +16,10 @@ const getCountries = async (req, res) => {
 
 const getHolidays = async (req, res) => {
   const location = req.params.location;
+  const language = req.params.language;
   try {
     const response = await fetch(
-      `${process.env.BASE_URL}holidays?pretty&key=${process.env.API_KEY}&country=${location}&year=2022`
+      `${process.env.BASE_URL}holidays?pretty&key=${process.env.API_KEY}&country=${location}&language=${language}&year=2022`
     );
     const holidays = await response.json();
     res.status(200).send(holidays);
@@ -29,8 +30,13 @@ const getHolidays = async (req, res) => {
 };
 
 const getCalendar = async (req, res) => {
-  const holidayDates = req.params.holidayDates.split(",");
+  const weekends = req.params.weekends;
   const availableLeaves = req.params.leaves;
+  const holidayDates = req.params.holidayDates.split(",");
+  const mandatoryDates = req.params.mandatoryDates.split(",");
+  const desiredDates = req.params.desiredDates.split(",");
+  const defaultDates = req.params.defaultDates.split(",");
+
   try {
     const pickedDays = utils.pickedDays(
       utils.setCalendarArray(holidayDates),

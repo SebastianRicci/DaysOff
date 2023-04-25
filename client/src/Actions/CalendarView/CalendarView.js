@@ -43,8 +43,11 @@ export default function CalendarView({
       setError(
         "You have more vacation days selected than available PTO, please change your selections."
       );
+    } else {
+      console.log("Optimize");
     }
   }
+
   return (
     <div className="CalendarContainer">
       <CalendarModal

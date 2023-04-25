@@ -11,9 +11,11 @@ export const HolidayAPI = {
     }
   },
 
-  getHolidays: async function (location) {
+  getHolidays: async function (location, language) {
     try {
-      const holidays = await fetch(`${this.url}holidays/${location}`);
+      const holidays = await fetch(
+        `${this.url}holidays/${location}&${language}`
+      );
       const holidaysArray = await holidays.json();
       return holidaysArray;
     } catch (err) {
@@ -21,10 +23,21 @@ export const HolidayAPI = {
     }
   },
 
-  getCalendar: async function (leaves, holidayDates) {
+  getCalendar: async function (
+    weekends,
+    leaves,
+    holidayDates,
+    mandatoryDates,
+    desiredDates,
+    defaultDates
+  ) {
     try {
       const calendar = await fetch(
-        `${this.url}calendar/${leaves}/${holidayDates.join(",")}`
+        `${this.url}calendar/${weekends}/${leaves}/${holidayDates.join(
+          ","
+        )}/${mandatoryDates.join(",")}/${desiredDates.join(
+          ","
+        )}/${defaultDates.join(",")}`
       );
       const calendarArray = await calendar.json();
       return calendarArray;

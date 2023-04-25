@@ -5,8 +5,11 @@ const controller = require("./controller");
 
 //Set router endpoints
 router.get("/countries", controller.getCountries);
-router.get("/holidays/:location", controller.getHolidays);
-router.get("/calendar/:leaves/:holidayDates", controller.getCalendar);
+router.get("/holidays/:location/:language", controller.getHolidays);
+router.get(
+  "/calendar/:weekends/:leaves/:holidayDates/:mandatoryDates/:desiredDates/:defaultDates",
+  controller.getCalendar
+);
 
 //Export router
 module.exports = router;
