@@ -411,12 +411,15 @@ export default function Dashboard() {
       },
     },
   ]);
+  const [choices, setChoices] = useState([]);
 
   function renderAction(action) {
     switch (action) {
       case 0:
         return (
           <CalendarView
+            choices={choices}
+            setChoices={setChoices}
             holidays={holidays}
             country={country}
             region={region}

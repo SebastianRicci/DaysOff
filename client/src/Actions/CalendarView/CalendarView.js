@@ -6,8 +6,11 @@ import CalendarOverview from "../../Components/CalendarOverview/CalendarOverview
 import Fab from "@mui/material/Fab";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CalendarModal from "../../Components/CalendarModal/CalendarModal";
+import ErrorModal from "../../Components/ErrorModal/ErrorModal";
 
 export default function CalendarView({
+  choices,
+  setChoices,
   holidays,
   location,
   PTO,
@@ -29,8 +32,19 @@ export default function CalendarView({
   const [activeDate, setActiveDate] = useState(startDate._d);
   const [openModal, setOpenModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [choices, setChoices] = useState([]);
+  const [error, setError] = useState("");
 
+  function handleOptimize() {
+    if (PTO <= 0) {
+      setError("You have no PTO available, please change your selections.");
+    } else if (
+      choices.filter((choice) => choice.choice === "vacation").length > PTO
+    ) {
+      setError(
+        "You have more vacation days selected than available PTO, please change your selections."
+      );
+    }
+  }
   return (
     <div className="CalendarContainer">
       <CalendarModal
@@ -40,6 +54,7 @@ export default function CalendarView({
         choices={choices}
         setChoices={setChoices}
       />
+      <ErrorModal error={error} setError={setError} />
       <MonthCalendar
         choices={choices}
         setOpenModal={setOpenModal}
@@ -52,11 +67,7 @@ export default function CalendarView({
       ></MonthCalendar>
       <Holidays activeDate={activeDate} holidays={holidays}></Holidays>
       <CalendarOverview></CalendarOverview>
-      <Fab
-        variant="extended"
-        style={style}
-        onClick={() => console.log("Hello")}
-      >
+      <Fab variant="extended" style={style} onClick={() => handleOptimize()}>
         <CalendarMonthIcon sx={{ mr: 1 }} />
         Optimize
       </Fab>
