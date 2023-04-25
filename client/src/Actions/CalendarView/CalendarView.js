@@ -29,6 +29,7 @@ export default function CalendarView({
   const [activeDate, setActiveDate] = useState(startDate._d);
   const [openModal, setOpenModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [choices, setChoices] = useState([]);
 
   return (
     <div className="CalendarContainer">
@@ -36,8 +37,11 @@ export default function CalendarView({
         openModal={openModal}
         setOpenModal={setOpenModal}
         selectedDate={selectedDate}
+        choices={choices}
+        setChoices={setChoices}
       />
       <MonthCalendar
+        choices={choices}
         setOpenModal={setOpenModal}
         setActiveDate={setActiveDate}
         holidays={holidays}
@@ -48,7 +52,11 @@ export default function CalendarView({
       ></MonthCalendar>
       <Holidays activeDate={activeDate} holidays={holidays}></Holidays>
       <CalendarOverview></CalendarOverview>
-      <Fab variant="extended" style={style}>
+      <Fab
+        variant="extended"
+        style={style}
+        onClick={() => console.log("Hello")}
+      >
         <CalendarMonthIcon sx={{ mr: 1 }} />
         Optimize
       </Fab>

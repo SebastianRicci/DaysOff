@@ -9,6 +9,7 @@ import WorkIcon from "@mui/icons-material/Work";
 import PublicIcon from "@mui/icons-material/Public";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import UndoIcon from "@mui/icons-material/Undo";
+import moment from "moment";
 
 const style = {
   position: "absolute",
@@ -26,11 +27,26 @@ const style = {
 
 export default function CalendarModal({
   openModal,
+  choices,
   setOpenModal,
   selectedDate,
+  setChoices,
 }) {
   const handleChoice = (choice) => {
-    console.log({ Date: selectedDate, Choice: choice });
+    const choiceIndex = choices.findIndex(
+      (choice) =>
+        moment.utc(new Date(choice.date)).format("YYYY-MM-DD") ===
+        moment.utc(new Date(selectedDate)).format("YYYY-MM-DD")
+    );
+
+    if (choiceIndex > -1) {
+      const updatedChoices = [...choices];
+      updatedChoices[choiceIndex] = { date: selectedDate, choice: choice };
+      setChoices(updatedChoices);
+    } else {
+      setChoices([...choices, { date: selectedDate, choice: choice }]);
+    }
+
     setOpenModal(false);
   };
 
