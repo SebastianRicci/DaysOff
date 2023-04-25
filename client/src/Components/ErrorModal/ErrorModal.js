@@ -25,7 +25,7 @@ export default function ErrorModal({ error, setError }) {
   return (
     <div>
       <Modal
-        open={error}
+        open={error !== ""}
         onClose={() => setError("")}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
