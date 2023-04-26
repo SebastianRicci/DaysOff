@@ -25,8 +25,8 @@ module.exports = {
       .map((choice) => moment(choice.date).format("YYYY-MM-DD"));
 
     //Set Initial array with dates and value as 0
-    let start = new Date("01/01/2022");
-    const end = new Date("12/31/2022");
+    let start = new Date(startDate);
+    const end = new Date(endDate);
     let calendar = [];
     while (start <= end) {
       calendar.push({
