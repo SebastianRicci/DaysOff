@@ -15,6 +15,10 @@
   margin-left: 20px;
 }
 
+.OverviewHeader {
+  display: flex;
+}
+
 .TextFieldContainer {
   width: 90%;
 }

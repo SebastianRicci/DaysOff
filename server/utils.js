@@ -168,7 +168,7 @@ module.exports = {
         vacationPeriodStrings.push(
           `Vacation period ${
             index + 1
-          }: Enjoy a long weekend of ${rangeLength} days without taking any days off (${moment(
+          }:\nEnjoy a long weekend of ${rangeLength} days without taking any days off (${moment(
             calendar[range.start].date
           ).format("dddd, MMMM Do YYYY")} to  ${moment(
             calendar[range.end].date
@@ -176,7 +176,7 @@ module.exports = {
         );
       } else if (pto === 1) {
         vacationPeriodStrings.push(
-          `Vacation period ${index + 1}: Take ${pto} day off (${ptoDates.map(
+          `Vacation period ${index + 1}:\nTake ${pto} day off (${ptoDates.map(
             (date) => {
               return moment(date).format("Do MMM");
             }
@@ -188,7 +188,7 @@ module.exports = {
         );
       } else {
         vacationPeriodStrings.push(
-          `Vacation period ${index + 1}: Take ${pto} days off (${ptoDates.map(
+          `Vacation period ${index + 1}:\nTake ${pto} days off (${ptoDates.map(
             (date) => {
               return moment(date).format("Do MMM");
             }

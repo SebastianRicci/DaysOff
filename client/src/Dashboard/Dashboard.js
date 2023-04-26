@@ -3,6 +3,7 @@ import "./Dashboard.css";
 import React, { useState, useEffect } from "react";
 import { HolidayAPI } from "../HolidayAPI/HolidayAPI";
 import CalendarView from "../Actions/CalendarView/CalendarView";
+import TripsView from "../Actions/TripsView/TripsView";
 import BottomNav from "../Components/BottomNav/BottomNav";
 import Header from "../Components/Header/Header";
 import Settings from "../Actions/Settings/Settings";
@@ -437,7 +438,7 @@ export default function Dashboard() {
           ></CalendarView>
         );
       case 1:
-        return <h1>AI</h1>;
+        return <TripsView />;
       case 2:
         return <h1>stats</h1>;
     }
