@@ -12,7 +12,7 @@ module.exports = {
       .filter((choice) => choice.choice === "mandatory")
       .map((choice) => moment(choice.date).format("YYYY-MM-DD"));
 
-    const vacationDates = choices
+    const desiredDates = choices
       .filter((choice) => choice.choice === "vacation")
       .map((choice) => moment(choice.date).format("YYYY-MM-DD"));
 
@@ -25,8 +25,8 @@ module.exports = {
       .map((choice) => moment(choice.date).format("YYYY-MM-DD"));
 
     //Set Initial array with dates and value as 0
-    let start = new Date(startDate);
-    const end = new Date(endDate);
+    let start = new Date("01/01/2022");
+    const end = new Date("12/31/2022");
     let calendar = [];
     while (start <= end) {
       calendar.push({
@@ -56,16 +56,37 @@ module.exports = {
         calendar[i].value = 1;
       }
       //Set mandatory work dates to be true and their value equal to 1
+      if (mandatoryDates.includes(calendar[i].date)) {
+        calendar[i].mandatory = true;
+      }
     }
     return calendar;
   },
 
-  pickedDays: function (calendar, vacationDays) {
+  pickedDays: function (calendar, vacationDays, choices) {
+    //Pick all desired vacationd days first
+    for (let i = 0; i < calendar.length - 1; i++) {
+      if (
+        calendar[i].value == 0 &&
+        vacationDays > 0 &&
+        choices.find(
+          (choice) =>
+            moment.utc(new Date(choice.date)).format("YYYY-MM-DD") ===
+              moment.utc(new Date(calendar[i].date)).format("YYYY-MM-DD") &&
+            choice.choice == "vacation"
+        )
+      ) {
+        calendar[i].value = 1;
+        calendar[i].algo = 1;
+        vacationDays--;
+      }
+    }
+
     let bridge = 1;
     while (vacationDays > 0) {
       let streak = 0;
       for (let i = 0; i < calendar.length - 1; i++) {
-        if (calendar[i].value == 0) {
+        if (calendar[i].value == 0 && calendar[i].mandatory == false) {
           streak++;
           if (
             streak == bridge &&
@@ -73,7 +94,7 @@ module.exports = {
             vacationDays > 0
           ) {
             for (let j = 0; j < bridge; j++) {
-              if (vacationDays > 0) {
+              if (vacationDays > 0 && calendar[i - j].mandatory == false) {
                 calendar[i - j].value = 1;
                 calendar[i - j].algo = 1;
                 vacationDays--;

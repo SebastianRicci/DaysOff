@@ -44,18 +44,18 @@ export default function MonthCalendar({
       );
 
       // Determine which class to apply
-      if (choice) {
-        switch (choice.choice) {
-          case "mandatory":
-            return "react-calendar__tile-Mandatory";
-          case "vacation":
-            return "react-calendar__tile-Vacation";
-          case "publicHoliday":
-            return "react-calendar__tile-PublicHoliday";
-          default:
-            return "react-calendar__tile";
-        }
-      } else if (isHoliday) {
+      // if (choice) {
+      //   switch (choice.choice) {
+      //     case "mandatory":
+      //       return "react-calendar__tile-Mandatory";
+      //     case "vacation":
+      //       return "react-calendar__tile-Vacation";
+      //     case "publicHoliday":
+      //       return "react-calendar__tile-PublicHoliday";
+      //     default:
+      //       return "react-calendar__tile";
+      //   }
+      if (isHoliday) {
         return "react-calendar__tile-Holiday";
       } else if (isWeekend) {
         return "react-calendar__tile-Weekend";
