@@ -27,18 +27,28 @@ export const HolidayAPI = {
     weekends,
     leaves,
     holidayDates,
-    mandatoryDates,
-    desiredDates,
-    defaultDates
+    choices,
+    startDate,
+    endDate
   ) {
     try {
-      const calendar = await fetch(
-        `${this.url}calendar/${weekends}/${leaves}/${holidayDates.join(
-          ","
-        )}/${mandatoryDates.join(",")}/${desiredDates.join(
-          ","
-        )}/${defaultDates.join(",")}`
-      );
+      const requestBody = {
+        weekends: weekends,
+        leaves: leaves,
+        holidayDates: holidayDates,
+        choices: choices,
+        startDate: startDate,
+        endDate: endDate,
+      };
+
+      const calendar = await fetch(`${this.url}calendar`, {
+        method: "POST",
+        body: JSON.stringify(requestBody),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
       const calendarArray = await calendar.json();
       return calendarArray;
     } catch (err) {

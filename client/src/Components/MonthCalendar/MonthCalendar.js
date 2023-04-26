@@ -2,6 +2,7 @@ import "./MonthCalendar.css";
 import moment from "moment";
 import Calendar from "react-calendar";
 export default function MonthCalendar({
+  calendar,
   choices,
   setOpenModal,
   setActiveDate,
@@ -15,43 +16,54 @@ export default function MonthCalendar({
     setActiveDate(date.activeStartDate);
   };
 
-  function tileClassName({ date }) {
-    // Check if the date is a chosen weekend
-    const dayOfWeek = date.getDay();
-    const isWeekend = weekends.includes(dayOfWeek.toString());
+  function tileClassName({ date, view }) {
+    if (view === "month") {
+      // Check if the date is a chosen weekend
+      const dayOfWeek = date.getDay();
+      const isWeekend = weekends.includes(dayOfWeek.toString());
 
-    // Check if the date is a chosen holiday
-    const isHoliday = holidays.find(
-      (holiday) =>
-        moment.utc(new Date(holiday.observed)).format("YYYY-MM-DD") ===
-        moment.utc(new Date(date)).format("YYYY-MM-DD")
-    );
+      // Check if the date is a holiday
+      const isHoliday = holidays.find(
+        (holiday) =>
+          moment.utc(new Date(holiday.observed)).format("YYYY-MM-DD") ===
+          moment.utc(new Date(date)).format("YYYY-MM-DD")
+      );
 
-    // Check if the date is a chosen choice
-    const choice = choices.find(
-      (choice) =>
-        moment.utc(new Date(choice.date)).format("YYYY-MM-DD") ===
-        moment.utc(new Date(date)).format("YYYY-MM-DD")
-    );
+      // Check if the date is a user choice
+      const choice = choices.find(
+        (choice) =>
+          moment.utc(new Date(choice.date)).format("YYYY-MM-DD") ===
+          moment.utc(new Date(date)).format("YYYY-MM-DD")
+      );
 
-    // Determine which class to apply
-    if (choice) {
-      switch (choice.choice) {
-        case "mandatory":
-          return "react-calendar__tile-Mandatory";
-        case "vacation":
-          return "react-calendar__tile-Vacation";
-        case "public_holiday":
-          return "react-calendar__tile-PublicHoliday";
-        default:
-          return "react-calendar__tile";
+      //Check if the date is a picked algorithm date
+      const isAlgorithm = calendar.find(
+        (el) =>
+          moment.utc(new Date(el.date)).format("YYYY-MM-DD") ===
+            moment.utc(new Date(date)).format("YYYY-MM-DD") && el.algo == 1
+      );
+
+      // Determine which class to apply
+      if (choice) {
+        switch (choice.choice) {
+          case "mandatory":
+            return "react-calendar__tile-Mandatory";
+          case "vacation":
+            return "react-calendar__tile-Vacation";
+          case "publicHoliday":
+            return "react-calendar__tile-PublicHoliday";
+          default:
+            return "react-calendar__tile";
+        }
+      } else if (isHoliday) {
+        return "react-calendar__tile-Holiday";
+      } else if (isWeekend) {
+        return "react-calendar__tile-Weekend";
+      } else if (isAlgorithm) {
+        return "react-calendar__tile-Algorithm";
+      } else {
+        return "react-calendar__tile";
       }
-    } else if (isHoliday) {
-      return "react-calendar__tile-Holiday";
-    } else if (isWeekend) {
-      return "react-calendar__tile-Weekend";
-    } else {
-      return "react-calendar__tile";
     }
   }
 
@@ -80,7 +92,7 @@ export default function MonthCalendar({
                 🌴
               </span>
             );
-          case "public_holiday":
+          case "publicHoliday":
             return (
               <span role="img" aria-label="public holiday">
                 🎉

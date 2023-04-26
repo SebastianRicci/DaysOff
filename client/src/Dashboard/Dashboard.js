@@ -9,8 +9,10 @@ import Settings from "../Actions/Settings/Settings";
 import moment from "moment";
 
 export default function Dashboard() {
+  //Navigation
   const [action, setAction] = useState(0);
   const [settings, setSettings] = useState(false);
+  //User Inputs
   const [country, setCountry] = useState({
     code: "ES",
     name: "Spain",
@@ -139,6 +141,8 @@ export default function Dashboard() {
     code: "es",
     name: "Spanish, Castilian",
   });
+  const [choices, setChoices] = useState([]);
+  //API Data
   const [holidays, setHolidays] = useState([
     {
       name: "Día de Año Nuevo",
@@ -411,23 +415,22 @@ export default function Dashboard() {
       },
     },
   ]);
-  const [choices, setChoices] = useState([]);
+  const [calendar, setCalendar] = useState([]);
 
   function renderAction(action) {
     switch (action) {
       case 0:
         return (
           <CalendarView
+            calendar={calendar}
+            setCalendar={setCalendar}
             choices={choices}
             setChoices={setChoices}
             holidays={holidays}
-            country={country}
-            region={region}
             PTO={PTO}
             startDate={startDate}
             endDate={endDate}
             weekends={weekends}
-            holidayLanguage={holidayLanguage}
           ></CalendarView>
         );
       case 1:

@@ -1,4 +1,5 @@
 const fetch = require("node-fetch");
+const moment = require("moment");
 const utils = require("./utils");
 
 const getCountries = async (req, res) => {
@@ -30,19 +31,21 @@ const getHolidays = async (req, res) => {
 };
 
 const getCalendar = async (req, res) => {
-  const weekends = req.params.weekends;
-  const availableLeaves = req.params.leaves;
-  const holidayDates = req.params.holidayDates.split(",");
-  const mandatoryDates = req.params.mandatoryDates.split(",");
-  const desiredDates = req.params.desiredDates.split(",");
-  const defaultDates = req.params.defaultDates.split(",");
+  const { weekends, leaves, holidayDates, choices, startDate, endDate } =
+    req.body;
 
   try {
     const pickedDays = utils.pickedDays(
-      utils.setCalendarArray(holidayDates),
-      availableLeaves
+      utils.setCalendarArray(
+        weekends,
+        holidayDates,
+        choices,
+        startDate,
+        endDate
+      ),
+      leaves
     );
-    const calendar = utils.highlightWeekends(pickedDays);
+    const calendar = utils.highlightWeekends(pickedDays, weekends);
     res.status(200).send(calendar);
   } catch (err) {
     res.status(500);

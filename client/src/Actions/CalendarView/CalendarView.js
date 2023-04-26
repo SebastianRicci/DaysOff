@@ -1,4 +1,6 @@
 import "./CalendarView.css";
+import moment from "moment";
+import { HolidayAPI } from "../../HolidayAPI/HolidayAPI";
 import { useState } from "react";
 import Holidays from "../../Components/Holidays/Holidays";
 import MonthCalendar from "../../Components/MonthCalendar/MonthCalendar";
@@ -9,15 +11,15 @@ import CalendarModal from "../../Components/CalendarModal/CalendarModal";
 import ErrorModal from "../../Components/ErrorModal/ErrorModal";
 
 export default function CalendarView({
+  calendar,
+  setCalendar,
   choices,
   setChoices,
   holidays,
-  location,
   PTO,
   startDate,
   endDate,
   weekends,
-  holidayLanguage,
 }) {
   const style = {
     background: "#fd1079",
@@ -33,6 +35,7 @@ export default function CalendarView({
   const [openModal, setOpenModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [error, setError] = useState("");
+  const holidayDates = holidays.map((holiday) => holiday.observed);
 
   function handleOptimize() {
     if (PTO <= 0) {
@@ -44,7 +47,14 @@ export default function CalendarView({
         "You have more vacation days selected than available PTO, please change your selections."
       );
     } else {
-      console.log("Optimize");
+      HolidayAPI.getCalendar(
+        weekends,
+        PTO,
+        holidayDates,
+        choices,
+        startDate,
+        endDate
+      ).then((calendar) => setCalendar(calendar));
     }
   }
 
@@ -59,6 +69,7 @@ export default function CalendarView({
       />
       <ErrorModal error={error} setError={setError} />
       <MonthCalendar
+        calendar={calendar}
         choices={choices}
         setOpenModal={setOpenModal}
         setActiveDate={setActiveDate}

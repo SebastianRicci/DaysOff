@@ -72,7 +72,7 @@ export default function CalendarModal({
               </ListItemIcon>
               <ListItemText primary="Mark as Desired Vacation Day" />
             </ListItem>
-            <ListItem button onClick={() => handleChoice("public_holiday")}>
+            <ListItem button onClick={() => handleChoice("publicHoliday")}>
               <ListItemIcon>
                 <PublicIcon />
               </ListItemIcon>

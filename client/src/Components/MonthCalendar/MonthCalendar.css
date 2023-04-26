@@ -55,6 +55,12 @@ abbr[title] {
   color: black;
 }
 
+/*Remove selected month highlight in year view*/
+.react-calendar__tile--hasActive {
+  background: white;
+  color: black;
+}
+
 /* .react-calendar__tile-Mandatory {
   background-color: #006bff;
   color: white;

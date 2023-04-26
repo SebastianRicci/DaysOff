@@ -1,34 +1,61 @@
 const moment = require("moment");
 
 module.exports = {
-  setCalendarArray: function (holidayDates) {
+  setCalendarArray: function (
+    weekends,
+    holidayDates,
+    choices,
+    startDate,
+    endDate
+  ) {
+    const mandatoryDates = choices
+      .filter((choice) => choice.choice === "mandatory")
+      .map((choice) => moment(choice.date).format("YYYY-MM-DD"));
+
+    const vacationDates = choices
+      .filter((choice) => choice.choice === "vacation")
+      .map((choice) => moment(choice.date).format("YYYY-MM-DD"));
+
+    const publicHolidayDates = choices
+      .filter((choice) => choice.choice === "publicHoliday")
+      .map((choice) => moment(choice.date).format("YYYY-MM-DD"));
+
+    const defaultDates = choices
+      .filter((choice) => choice.choice === "default")
+      .map((choice) => moment(choice.date).format("YYYY-MM-DD"));
+
     //Set Initial array with dates and value as 0
-    let startDate = new Date("01/01/2022");
-    const endDate = new Date("12/31/2022");
+    let start = new Date("01/01/2022");
+    const end = new Date("12/31/2022");
     let calendar = [];
-    while (startDate <= endDate) {
+    while (start <= end) {
       calendar.push({
-        date: moment(startDate).format("YYYY-MM-DD"),
+        date: moment(start).format("YYYY-MM-DD"),
         value: 0,
         algo: 0,
+        holiday: false,
+        mandatory: false,
+        vacation: false,
       });
-      startDate = new Date(startDate.setDate(startDate.getDate() + 1));
+      start = new Date(start.setDate(start.getDate() + 1));
     }
+
     //Set holidays to be true and their value equal to 1
     for (let i = 0; i < calendar.length; i++) {
-      if (holidayDates.includes(calendar[i].date)) {
+      if (
+        holidayDates.includes(calendar[i].date) ||
+        publicHolidayDates.includes(calendar[i].date)
+      ) {
         calendar[i].holiday = true;
         calendar[i].value = 1;
       } else {
         calendar[i].holiday = false;
       }
-      //Set Weekends values to 1
-      if (
-        new Date(calendar[i].date).getDay() == 0 ||
-        new Date(calendar[i].date).getDay() == 6
-      ) {
+      //Set Weekend values to 1
+      if (weekends.includes(moment(calendar[i].date).day().toString())) {
         calendar[i].value = 1;
       }
+      //Set mandatory work dates to be true and their value equal to 1
     }
     return calendar;
   },
@@ -62,7 +89,7 @@ module.exports = {
     return calendar;
   },
 
-  highlightWeekends: function (calendar) {
+  highlightWeekends: function (calendar, weekends) {
     for (let i = 1; i < calendar.length - 1; i++) {
       if (
         calendar[i].algo == 1 &&
