@@ -43,8 +43,7 @@ const getCalendar = async (req, res) => {
         startDate,
         endDate
       ),
-      leaves,
-      choices
+      leaves
     );
     const calendar = utils.highlightWeekends(pickedDays, weekends);
     res.status(200).send(calendar);

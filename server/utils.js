@@ -55,33 +55,28 @@ module.exports = {
       if (weekends.includes(moment(calendar[i].date).day().toString())) {
         calendar[i].value = 1;
       }
+      //Set desired vacation dates to be true and their value equal to 1
+      if (desiredDates.includes(calendar[i].date)) {
+        calendar[i].vacation = true;
+        calendar[i].value = 1;
+        calendar[i].algo = 1;
+      }
+
       //Set mandatory work dates to be true and their value equal to 1
       if (mandatoryDates.includes(calendar[i].date)) {
         calendar[i].mandatory = true;
+      }
+
+      //Override dates and set to default value
+      if (defaultDates.includes(calendar[i].date)) {
+        calendar[i].value = 0;
       }
     }
     return calendar;
   },
 
-  pickedDays: function (calendar, vacationDays, choices) {
-    //Pick all desired vacationd days first
-    for (let i = 0; i < calendar.length - 1; i++) {
-      if (
-        calendar[i].value == 0 &&
-        vacationDays > 0 &&
-        choices.find(
-          (choice) =>
-            moment.utc(new Date(choice.date)).format("YYYY-MM-DD") ===
-              moment.utc(new Date(calendar[i].date)).format("YYYY-MM-DD") &&
-            choice.choice == "vacation"
-        )
-      ) {
-        calendar[i].value = 1;
-        calendar[i].algo = 1;
-        vacationDays--;
-      }
-    }
-
+  pickedDays: function (calendar, vacationDays) {
+    vacationDays -= calendar.filter((day) => day.vacation == true).length;
     let bridge = 1;
     while (vacationDays > 0) {
       let streak = 0;
