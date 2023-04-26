@@ -41,7 +41,7 @@ export const HolidayAPI = {
         endDate: endDate,
       };
 
-      const calendar = await fetch(`${this.url}calendar`, {
+      const result = await fetch(`${this.url}calendar`, {
         method: "POST",
         body: JSON.stringify(requestBody),
         headers: {
@@ -49,8 +49,8 @@ export const HolidayAPI = {
         },
       });
 
-      const calendarArray = await calendar.json();
-      return calendarArray;
+      const calendarObject = await result.json();
+      return calendarObject;
     } catch (err) {
       console.warn("Error in getCalendar: ", err);
     }

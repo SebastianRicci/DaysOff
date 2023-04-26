@@ -46,7 +46,8 @@ const getCalendar = async (req, res) => {
       leaves
     );
     const calendar = utils.highlightWeekends(pickedDays, weekends);
-    res.status(200).send(calendar);
+    const calendarOverview = utils.generateVacationPeriodString(calendar);
+    res.status(200).send({ calendar: calendar, overview: calendarOverview });
   } catch (err) {
     res.status(500);
     res.send(err.message);

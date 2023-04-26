@@ -13,6 +13,8 @@ import ErrorModal from "../../Components/ErrorModal/ErrorModal";
 export default function CalendarView({
   calendar,
   setCalendar,
+  overview,
+  setOverview,
   choices,
   setChoices,
   holidays,
@@ -54,7 +56,10 @@ export default function CalendarView({
         choices,
         startDate,
         endDate
-      ).then((calendar) => setCalendar(calendar));
+      ).then((data) => {
+        setCalendar(data.calendar);
+        setOverview(data.overview);
+      });
     }
   }
 
@@ -80,7 +85,7 @@ export default function CalendarView({
         setSelectedDate={setSelectedDate}
       ></MonthCalendar>
       <Holidays activeDate={activeDate} holidays={holidays}></Holidays>
-      <CalendarOverview></CalendarOverview>
+      <CalendarOverview overview={overview}></CalendarOverview>
       <Fab variant="extended" style={style} onClick={() => handleOptimize()}>
         <CalendarMonthIcon sx={{ mr: 1 }} />
         Optimize

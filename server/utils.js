@@ -105,34 +105,101 @@ module.exports = {
     return calendar;
   },
 
-  highlightWeekends: function (calendar, weekends) {
-    for (let i = 1; i < calendar.length - 1; i++) {
-      if (
-        calendar[i].algo == 1 &&
-        new Date(calendar[i + 1].date).getDay() == 6
-      ) {
-        calendar[i + 1].algoWeekend = 1;
-        calendar[i + 2].algoWeekend = 1;
-      } else if (
-        calendar[i].algo == 1 &&
-        new Date(calendar[i - 1].date).getDay() == 0
-      ) {
-        calendar[i - 1].algoWeekend = 1;
-        calendar[i - 2].algoWeekend = 1;
-      } else if (
-        calendar[i].value == 1 &&
-        new Date(calendar[i].date).getDay() == 5
-      ) {
-        calendar[i + 1].algoWeekend = 1;
-        calendar[i + 2].algoWeekend = 1;
-      } else if (
-        calendar[i].value == 1 &&
-        new Date(calendar[i].date).getDay() == 1
-      ) {
-        calendar[i - 1].algoWeekend = 1;
-        calendar[i - 2].algoWeekend = 1;
+  // Function to find ranges of adjacent 1 elements with a length of 3 or more
+  findRanges: function (calendar) {
+    const ranges = [];
+    let start = null;
+    for (let i = 0; i < calendar.length; i++) {
+      const currentValue = calendar[i].value;
+      if (currentValue === 1) {
+        if (start === null) {
+          start = i;
+        } else if (i === calendar.length - 1) {
+          const end = i;
+          if (end - start >= 2) {
+            ranges.push({ start: start, end: end });
+          }
+        }
+      } else {
+        if (start !== null) {
+          const end = i - 1;
+          if (end - start >= 2) {
+            ranges.push({ start, end });
+          }
+          start = null;
+        }
       }
     }
+    return ranges;
+  },
+
+  highlightWeekends: function (calendar) {
+    // Call the findRanges function on the calendar array
+    const ranges = this.findRanges(calendar);
+
+    // Loop through each range and check holiday and algo properties
+    ranges.forEach((range) => {
+      for (let i = range.start; i <= range.end; i++) {
+        const currentObj = calendar[i];
+        if (currentObj.holiday === false && currentObj.algo === 0) {
+          currentObj.algoWeekend = 1;
+        }
+      }
+    });
     return calendar;
+  },
+
+  // Function to generate vacation period string for each range
+  generateVacationPeriodString: function (calendar) {
+    const ranges = this.findRanges(calendar);
+    const vacationPeriodStrings = [];
+    ranges.forEach((range, index) => {
+      let pto = 0;
+      let ptoDates = [];
+      for (let i = range.start; i <= range.end; i++) {
+        const currentObj = calendar[i];
+        if (currentObj.algo === 1) {
+          pto++;
+          ptoDates.push(currentObj.date);
+        }
+      }
+      const rangeLength = range.end - range.start + 1;
+      if (pto === 0) {
+        vacationPeriodStrings.push(
+          `Vacation period ${
+            index + 1
+          }: Enjoy a long weekend of ${rangeLength} days without taking any days off (${moment(
+            calendar[range.start].date
+          ).format("dddd, MMMM Do YYYY")} to  ${moment(
+            calendar[range.end].date
+          ).format("dddd, MMMM Do YYYY")}).`
+        );
+      } else if (pto === 1) {
+        vacationPeriodStrings.push(
+          `Vacation period ${index + 1}: Take ${pto} day off (${ptoDates.map(
+            (date) => {
+              return moment(date).format("Do MMM");
+            }
+          )}) and enjoy a long weekend of ${rangeLength} days (${moment(
+            calendar[range.start].date
+          ).format("dddd, MMMM Do YYYY")} to  ${moment(
+            calendar[range.end].date
+          ).format("dddd, MMMM Do YYYY")}).`
+        );
+      } else {
+        vacationPeriodStrings.push(
+          `Vacation period ${index + 1}: Take ${pto} days off (${ptoDates.map(
+            (date) => {
+              return moment(date).format("Do MMM");
+            }
+          )}) and enjoy a vacation of ${rangeLength} days (${moment(
+            calendar[range.start].date
+          ).format("dddd, MMMM Do YYYY")} to  ${moment(
+            calendar[range.end].date
+          ).format("dddd, MMMM Do YYYY")}).`
+        );
+      }
+    });
+    return vacationPeriodStrings;
   },
 };

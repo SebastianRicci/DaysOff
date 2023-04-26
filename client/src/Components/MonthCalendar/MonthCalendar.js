@@ -26,7 +26,13 @@ export default function MonthCalendar({
       const isHoliday = holidays.find(
         (holiday) =>
           moment.utc(new Date(holiday.observed)).format("YYYY-MM-DD") ===
-          moment.utc(new Date(date)).format("YYYY-MM-DD")
+            moment.utc(new Date(date)).format("YYYY-MM-DD") ||
+          choices.find(
+            (choice) =>
+              moment.utc(new Date(choice.date)).format("YYYY-MM-DD") ===
+                moment.utc(new Date(date)).format("YYYY-MM-DD") &&
+              choice.choice === "publicHoliday"
+          )
       );
 
       // Check if the date is a user choice
@@ -43,6 +49,14 @@ export default function MonthCalendar({
             moment.utc(new Date(date)).format("YYYY-MM-DD") && el.algo == 1
       );
 
+      //Check if the date is a highlighted weekend picked by the algorithm
+      const isAlgorithmWeekend = calendar.find(
+        (el) =>
+          moment.utc(new Date(el.date)).format("YYYY-MM-DD") ===
+            moment.utc(new Date(date)).format("YYYY-MM-DD") &&
+          el.algoWeekend == 1
+      );
+
       // Determine which class to apply
       // if (choice) {
       //   switch (choice.choice) {
@@ -57,6 +71,8 @@ export default function MonthCalendar({
       //   }
       if (isHoliday) {
         return "react-calendar__tile-Holiday";
+      } else if (isAlgorithmWeekend) {
+        return "react-calendar__tile-AlgoWeekend";
       } else if (isWeekend) {
         return "react-calendar__tile-Weekend";
       } else if (isAlgorithm) {

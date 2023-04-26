@@ -86,9 +86,9 @@ abbr[title] {
   font-weight: bold;
 } */
 
-.react-calendar__tile-PublicHoliday > abbr {
+/* .react-calendar__tile-PublicHoliday > abbr {
   display: none;
-}
+} */
 
 /* Weekend highlight */
 .react-calendar__tile-Weekend {

@@ -416,12 +416,15 @@ export default function Dashboard() {
     },
   ]);
   const [calendar, setCalendar] = useState([]);
+  const [overview, setOverview] = useState([]);
 
   function renderAction(action) {
     switch (action) {
       case 0:
         return (
           <CalendarView
+            overview={overview}
+            setOverview={setOverview}
             calendar={calendar}
             setCalendar={setCalendar}
             choices={choices}
