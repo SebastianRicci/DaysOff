@@ -202,4 +202,58 @@ module.exports = {
     });
     return vacationPeriodStrings;
   },
+
+  generateAnalytics: function (calendar) {
+    let result = {};
+    let startDate = null;
+
+    for (let i = 0; i < calendar.length; i++) {
+      const date = moment(calendar[i].date);
+      const month = date.format("MMMM");
+      const isHoliday = calendar[i].holiday;
+      const isWeekend = calendar[i].value == 1 && calendar[i].holiday == false;
+      const isWorkingDay = calendar[i].value == 0;
+      const isPickedDay = calendar[i].algo == 1;
+
+      if (startDate === null) {
+        startDate = date;
+      } else if (date.isBefore(startDate)) {
+        startDate = date;
+      }
+
+      if (!result[month]) {
+        result[month] = {
+          holidays: 0,
+          workingDays: 0,
+          weekends: 0,
+          pickedDays: 0,
+        };
+      }
+
+      if (isHoliday) {
+        result[month].holidays++;
+      } else if (isPickedDay) {
+        result[month].pickedDays++;
+      } else if (isWorkingDay) {
+        result[month].workingDays++;
+      } else if (isWeekend) {
+        result[month].weekends++;
+      }
+    }
+
+    const months = Object.keys(result);
+
+    const holidays = months.map((month) => result[month].holidays);
+    const workingDays = months.map((month) => result[month].workingDays);
+    const pickedDays = months.map((month) => result[month].pickedDays);
+    const weekends = months.map((month) => result[month].weekends);
+
+    return {
+      holidays,
+      workingDays,
+      pickedDays,
+      weekends,
+      startDate,
+    };
+  },
 };

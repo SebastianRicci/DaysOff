@@ -419,12 +419,14 @@ export default function Dashboard() {
   ]);
   const [calendar, setCalendar] = useState([]);
   const [overview, setOverview] = useState([]);
+  const [analytics, setAnalytics] = useState([]);
 
   function renderAction(action) {
     switch (action) {
       case 0:
         return (
           <CalendarView
+            setAnalytics={setAnalytics}
             overview={overview}
             setOverview={setOverview}
             calendar={calendar}
@@ -441,7 +443,7 @@ export default function Dashboard() {
       case 1:
         return <TripsView />;
       case 2:
-        return <AnalyticsView />;
+        return <AnalyticsView analytics={analytics} />;
     }
   }
   // const [calendar, setCalendar] = useState([]);

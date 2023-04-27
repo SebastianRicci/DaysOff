@@ -7,7 +7,8 @@
   background-color: #efefef;
 }
 
-.BarChart {
+.BarChart,
+.OptimizedVacations {
   background-color: white;
   width: 95%;
   border-radius: 10px;
@@ -15,4 +16,9 @@
   margin-top: 20px;
   margin-bottom: 10px;
   padding-bottom: 20px;
+}
+
+.BarChart {
+  display: flex;
+  min-height: 500px;
 }
