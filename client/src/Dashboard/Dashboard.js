@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { HolidayAPI } from "../HolidayAPI/HolidayAPI";
 import CalendarView from "../Actions/CalendarView/CalendarView";
 import TripsView from "../Actions/TripsView/TripsView";
+import AnalyticsView from "../Actions/AnalyticsView/AnalyticsView";
 import BottomNav from "../Components/BottomNav/BottomNav";
 import Header from "../Components/Header/Header";
 import Settings from "../Actions/Settings/Settings";
@@ -440,7 +441,7 @@ export default function Dashboard() {
       case 1:
         return <TripsView />;
       case 2:
-        return <h1>stats</h1>;
+        return <AnalyticsView />;
     }
   }
   // const [calendar, setCalendar] = useState([]);
