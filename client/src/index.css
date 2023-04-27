@@ -1,15 +1,15 @@
 @font-face {
-  font-family: 'Gilroy';
+  font-family: "Gilroy";
   src: url("../public/Gilroy-FREE/Gilroy-Light.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'Gilroy';
+  font-family: "Gilroy";
   font-weight: bold;
   src: url("../public/Gilroy-FREE/Gilroy-ExtraBold.otf") format("opentype");
 }
 
-body{
-  font-family: 'Gilroy';
+body {
+  font-family: "Gilroy";
   margin: 0;
 }

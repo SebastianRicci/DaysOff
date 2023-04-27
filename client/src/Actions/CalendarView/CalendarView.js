@@ -1,5 +1,4 @@
 import "./CalendarView.css";
-import moment from "moment";
 import { HolidayAPI } from "../../HolidayAPI/HolidayAPI";
 import { useState } from "react";
 import Holidays from "../../Components/Holidays/Holidays";
