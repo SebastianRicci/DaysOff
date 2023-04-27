@@ -5,20 +5,5 @@
   width: 100%;
   height: 100%;
   background-color: #efefef;
-}
-
-.BarChart,
-.OptimizedVacations {
-  background-color: white;
-  width: 95%;
-  border-radius: 10px;
-  height: fit-content;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  padding-bottom: 20px;
-}
-
-.BarChart {
-  display: flex;
-  min-height: 500px;
+  margin-bottom: 50px;
 }

@@ -1,0 +1,11 @@
+.BarChart {
+  background-color: white;
+  width: 95%;
+  border-radius: 10px;
+  height: fit-content;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  display: flex;
+  min-height: 500px;
+}

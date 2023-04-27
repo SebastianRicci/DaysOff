@@ -1,4 +1,5 @@
 import { Bar } from "react-chartjs-2";
+import "./StackedBarChart.css";
 
 export default function StackedBarChart({
   holidays,

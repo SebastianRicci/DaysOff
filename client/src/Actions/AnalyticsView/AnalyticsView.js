@@ -1,13 +1,15 @@
 import "./AnalyticsView.css";
 import "chart.js/auto";
 import StackedBarChart from "../../Components/StackedBarChart/StackedBarChart";
+import OptimizationCard from "../../Components/OptimizationCard/OptimizationCard";
 
 export default function AnalyticsView({ analytics }) {
   return (
     <div className="AnalyticsContainer">
-      <div className="OptimizedVacations">
-        <h1>Optimized Vacations</h1>
-      </div>
+      <OptimizationCard
+        pickedDays={analytics.totalPickedDays}
+        vacationEarned={analytics.vacationEarned}
+      />
       <StackedBarChart
         holidays={analytics.holidays}
         workingDays={analytics.workingDays}

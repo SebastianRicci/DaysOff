@@ -247,6 +247,12 @@ module.exports = {
     const workingDays = months.map((month) => result[month].workingDays);
     const pickedDays = months.map((month) => result[month].pickedDays);
     const weekends = months.map((month) => result[month].weekends);
+    const vacationEarned = this.findRanges(calendar).reduce((acc, range) => {
+      return acc + range.end - range.start + 1;
+    }, 0);
+    const totalPickedDays = pickedDays.reduce((acc, pickedDay) => {
+      return acc + pickedDay;
+    }, 0);
 
     return {
       holidays,
@@ -254,6 +260,8 @@ module.exports = {
       pickedDays,
       weekends,
       startDate,
+      vacationEarned,
+      totalPickedDays,
     };
   },
 };
