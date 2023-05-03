@@ -234,24 +234,22 @@ module.exports = {
 
   generateAnalytics: function (calendar) {
     let result = {};
-    let startDate = null;
 
     for (let i = 0; i < calendar.length; i++) {
       const date = moment(calendar[i].date);
+      const year = date.format("YYYY");
       const month = date.format("MMMM");
       const isHoliday = calendar[i].holiday;
       const isWeekend = calendar[i].value == 1 && calendar[i].holiday == false;
       const isWorkingDay = calendar[i].value == 0;
       const isPickedDay = calendar[i].algo == 1;
 
-      if (startDate === null) {
-        startDate = date;
-      } else if (date.isBefore(startDate)) {
-        startDate = date;
+      if (!result[year]) {
+        result[year] = {};
       }
 
-      if (!result[month]) {
-        result[month] = {
+      if (!result[year][month]) {
+        result[year][month] = {
           holidays: 0,
           workingDays: 0,
           weekends: 0,
@@ -260,35 +258,39 @@ module.exports = {
       }
 
       if (isHoliday) {
-        result[month].holidays++;
+        result[year][month].holidays++;
       } else if (isPickedDay) {
-        result[month].pickedDays++;
+        result[year][month].pickedDays++;
       } else if (isWorkingDay) {
-        result[month].workingDays++;
+        result[year][month].workingDays++;
       } else if (isWeekend) {
-        result[month].weekends++;
+        result[year][month].weekends++;
       }
     }
 
-    const months = Object.keys(result);
+    const years = Object.keys(result);
 
-    const holidays = months.map((month) => result[month].holidays);
-    const workingDays = months.map((month) => result[month].workingDays);
-    const pickedDays = months.map((month) => result[month].pickedDays);
-    const weekends = months.map((month) => result[month].weekends);
-    const vacationEarned = this.findRanges(calendar).reduce((acc, range) => {
-      return acc + range.end - range.start + 1;
-    }, 0);
+    const yearMonths = years.reduce((acc, year) => {
+      const months = Object.keys(result[year]);
+      const yearMonths = months.map((month) => `${year} - ${month}`);
+      return acc.concat(yearMonths);
+    }, []);
+
+    const pickedDays = yearMonths.map((yearMonth) => {
+      const [year, month] = yearMonth.split(" - ");
+      return result[year][month].pickedDays;
+    });
+
     const totalPickedDays = pickedDays.reduce((acc, pickedDay) => {
       return acc + pickedDay;
     }, 0);
 
+    const vacationEarned = this.findRanges(calendar).reduce((acc, range) => {
+      return acc + range.end - range.start + 1;
+    }, 0);
+
     return {
-      holidays,
-      workingDays,
-      pickedDays,
-      weekends,
-      startDate,
+      result,
       vacationEarned,
       totalPickedDays,
     };

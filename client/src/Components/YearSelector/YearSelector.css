@@ -1,11 +1,10 @@
-.BarChart {
+.yearSelector {
   background-color: white;
   width: 95%;
   border-radius: 10px;
   height: fit-content;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: 10px;
-  padding-bottom: 20px;
   display: flex;
-  min-height: 500px;
+  flex-direction: column;
 }

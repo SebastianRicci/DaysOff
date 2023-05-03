@@ -13,13 +13,7 @@ export default function AnalyticsView({ analytics }) {
             pickedDays={analytics.totalPickedDays}
             vacationEarned={analytics.vacationEarned}
           />
-          <StackedBarChart
-            holidays={analytics.holidays}
-            workingDays={analytics.workingDays}
-            pickedDays={analytics.pickedDays}
-            weekends={analytics.weekends}
-            startDate={analytics.startDate}
-          />
+          <StackedBarChart result={analytics.result} />
         </div>
       ) : (
         <EmptyState state={"Analytics"} />

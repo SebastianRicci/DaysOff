@@ -1,28 +1,26 @@
 import { Bar } from "react-chartjs-2";
+import { useState } from "react";
+import YearSelector from "../YearSelector/YearSelector";
 import "./StackedBarChart.css";
 
-export default function StackedBarChart({
-  holidays,
-  workingDays,
-  pickedDays,
-  weekends,
-  startDate,
-}) {
+export default function StackedBarChart({ result }) {
+  const [selectedYear, setSelectedYear] = useState(Object.keys(result)[0]);
+  const years = Object.keys(result);
+  const workingDays = Object.values(result[selectedYear]).map(
+    (month) => month.workingDays
+  );
+  const weekends = Object.values(result[selectedYear]).map(
+    (month) => month.weekends
+  );
+  const holidays = Object.values(result[selectedYear]).map(
+    (month) => month.holidays
+  );
+  const pickedDays = Object.values(result[selectedYear]).map(
+    (month) => month.pickedDays
+  );
+
   const data = {
-    labels: [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ],
+    labels: Object.keys(result[selectedYear]),
     datasets: [
       {
         label: "Work days",
@@ -54,7 +52,7 @@ export default function StackedBarChart({
       },
       title: {
         display: true,
-        text: "DaysOff Year Breakdown",
+        text: `DaysOff ${selectedYear} Breakdown`,
       },
     },
     scales: {
@@ -79,8 +77,15 @@ export default function StackedBarChart({
     height: "100%",
   };
   return (
-    <div className="BarChart">
-      <Bar data={data} options={options} />
-    </div>
+    <>
+      <YearSelector
+        selectedYear={selectedYear}
+        years={years}
+        setSelectedYear={setSelectedYear}
+      />
+      <div className="BarChart">
+        <Bar data={data} options={options} />
+      </div>
+    </>
   );
 }
