@@ -7,13 +7,13 @@ import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
 
-export default function TripCard() {
+export default function TripCard({ trip }) {
   return (
     <Card variant="outlined" sx={{ width: 320 }}>
       <Typography level="h2" fontSize="md" sx={{ mb: 0.5 }}>
-        Yosemite National Park
+        {trip.location}
       </Typography>
-      <Typography level="body2">April 24 to May 02, 2021</Typography>
+      <Typography level="body2">{trip.date}</Typography>
       <IconButton
         aria-label="bookmark Bahamas Islands"
         variant="plain"
@@ -35,7 +35,7 @@ export default function TripCard() {
         <div>
           <Typography level="body3">Total price:</Typography>
           <Typography fontSize="lg" fontWeight="lg">
-            $2,900
+            {trip.price}
           </Typography>
         </div>
         <Button

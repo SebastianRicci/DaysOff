@@ -295,4 +295,31 @@ module.exports = {
       totalPickedDays,
     };
   },
+
+  generateTrips: function (calendar) {
+    const ranges = this.findRanges(calendar);
+    let date;
+    const trips = [];
+    ranges.forEach((range) => {
+      if (
+        moment(calendar[range.start].date).year() ==
+        moment(calendar[range.end].date).year()
+      ) {
+        date = `${moment(calendar[range.start].date).format(
+          "MMMM Do"
+        )} to ${moment(calendar[range.end].date).format("MMMM Do, YYYY")}`;
+      } else {
+        date = `${moment(calendar[range.start].date).format(
+          "MMMM Do, YYYY"
+        )} to ${moment(calendar[range.end].date).format("MMMM Do, YYYY")}`;
+      }
+      trips.push({
+        location: "",
+        date: date,
+        price: "0$",
+        link: "",
+      });
+    });
+    return trips;
+  },
 };

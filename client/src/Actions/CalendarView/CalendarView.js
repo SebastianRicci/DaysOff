@@ -10,6 +10,7 @@ import CalendarModal from "../../Components/CalendarModal/CalendarModal";
 import ErrorModal from "../../Components/ErrorModal/ErrorModal";
 
 export default function CalendarView({
+  setTrips,
   setAnalytics,
   calendar,
   setCalendar,
@@ -60,6 +61,7 @@ export default function CalendarView({
         setCalendar(data.calendar);
         setOverview(data.overview);
         setAnalytics(data.analytics);
+        setTrips(data.trips);
       });
     }
   }

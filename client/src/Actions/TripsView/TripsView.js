@@ -1,14 +1,14 @@
 import "./TripsView.css";
 import TripCard from "../../Components/TripCard/TripCard";
-export default function TripsView() {
-  return (
+import EmptyState from "../../Components/EmptyState/EmptyState";
+export default function TripsView({ trips }) {
+  return trips.length > 0 ? (
     <div className="TripsContainer">
-      <TripCard />
-      <TripCard />
-      <TripCard />
-      <TripCard />
-      <TripCard />
-      <TripCard />
+      {trips.map((trip) => (
+        <TripCard trip={trip} key={trip.date} />
+      ))}
     </div>
+  ) : (
+    <EmptyState state={"Trips"} />
   );
 }

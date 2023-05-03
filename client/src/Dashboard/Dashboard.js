@@ -421,6 +421,7 @@ export default function Dashboard() {
   const [calendar, setCalendar] = useState([]);
   const [overview, setOverview] = useState([]);
   const [analytics, setAnalytics] = useState({});
+  const [trips, setTrips] = useState([]);
 
   //Set holiday data whenever location, start date, end date or language changes
   useEffect(() => {
@@ -440,6 +441,7 @@ export default function Dashboard() {
       case 0:
         return (
           <CalendarView
+            setTrips={setTrips}
             setAnalytics={setAnalytics}
             overview={overview}
             setOverview={setOverview}
@@ -455,17 +457,11 @@ export default function Dashboard() {
           ></CalendarView>
         );
       case 1:
-        return <TripsView />;
+        return <TripsView trips={trips} />;
       case 2:
         return <AnalyticsView analytics={analytics} />;
     }
   }
-  // useEffect(() => {
-  //   const country = JSON.parse(localStorage.getItem("holidays"))[0].country;
-  //   if (localStorage.getItem(`calendar:${country}`)) {
-  //     setCalendar(JSON.parse(localStorage.getItem(`calendar:${country}`)));
-  //     return;
-  //   }
 
   return (
     <>

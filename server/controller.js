@@ -47,10 +47,13 @@ const getCalendar = async (req, res) => {
     const calendar = utils.highlightWeekends(pickedDays, weekends);
     const calendarOverview = utils.generateVacationPeriodString(calendar);
     const analytics = utils.generateAnalytics(calendar);
+    const trips = utils.generateTrips(calendar);
+    console.log(trips);
     res.status(200).send({
       calendar: calendar,
       overview: calendarOverview,
       analytics: analytics,
+      trips: trips,
     });
   } catch (err) {
     res.status(500);
