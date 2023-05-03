@@ -531,7 +531,7 @@ export default function HolidayLanguageInput({
         isOptionEqualToValue={(option, value) => option.name === value.name}
         autoHighlight
         disableClearable
-        defaultValue={languages[24]}
+        value={holidayLanguage}
         getOptionLabel={(option) => option.name}
         renderOption={(props, option) => (
           <Box
