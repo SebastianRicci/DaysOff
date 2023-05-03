@@ -21456,11 +21456,13 @@ export default function LocationInput({
       <Autocomplete
         id="country-select"
         sx={{ width: 300 }}
+        disableClearable
         value={country}
         options={countries}
         onChange={handleCountry}
         autoHighlight
         getOptionLabel={(option) => option.name}
+        isOptionEqualToValue={(option, value) => option.name === value.name}
         renderOption={(props, option) => (
           <Box
             component="li"
@@ -21483,7 +21485,8 @@ export default function LocationInput({
             label="Choose your country"
             inputProps={{
               ...params.inputProps,
-              autoComplete: "new-password", // disable autocomplete and autofill
+              autoComplete: "new-password",
+              type: "search",
             }}
           />
         )}
@@ -21497,6 +21500,7 @@ export default function LocationInput({
           onChange={handleRegion}
           autoHighlight
           getOptionLabel={(option) => option.name}
+          isOptionEqualToValue={(option, value) => option.name === value.name}
           renderInput={(params) => (
             <TextField
               {...params}

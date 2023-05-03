@@ -8,6 +8,7 @@ import BottomNav from "../Components/BottomNav/BottomNav";
 import Header from "../Components/Header/Header";
 import Settings from "../Actions/Settings/Settings";
 import moment from "moment";
+import { HolidayAPI } from "../HolidayAPI/HolidayAPI";
 
 export default function Dashboard() {
   //Navigation
@@ -420,6 +421,19 @@ export default function Dashboard() {
   const [calendar, setCalendar] = useState([]);
   const [overview, setOverview] = useState([]);
   const [analytics, setAnalytics] = useState({});
+
+  //Set holiday data whenever location, start date, end date or language changes
+  useEffect(() => {
+    let location = region ? region.code : country.code;
+    async function fetchData() {
+      const response = await HolidayAPI.getHolidays(
+        location,
+        holidayLanguage.code
+      );
+      setHolidays(response);
+    }
+    fetchData();
+  }, [country, region, startDate, endDate, holidayLanguage]);
 
   function renderAction(action) {
     switch (action) {

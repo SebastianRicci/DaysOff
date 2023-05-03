@@ -524,8 +524,13 @@ export default function HolidayLanguageInput({
         id="language-select-demo"
         onChange={handleLanguage}
         sx={{ width: 300 }}
-        options={languages}
+        options={languages.map((language) => ({
+          name: language.name,
+          code: language.code,
+        }))}
+        isOptionEqualToValue={(option, value) => option.name === value.name}
         autoHighlight
+        disableClearable
         defaultValue={languages[24]}
         getOptionLabel={(option) => option.name}
         renderOption={(props, option) => (
@@ -543,7 +548,8 @@ export default function HolidayLanguageInput({
             label="Choose a language"
             inputProps={{
               ...params.inputProps,
-              autoComplete: "new-password", // disable autocomplete and autofill
+              autoComplete: "new-password",
+              type: "search",
             }}
           />
         )}

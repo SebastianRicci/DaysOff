@@ -14,7 +14,7 @@ export const HolidayAPI = {
   getHolidays: async function (location, language) {
     try {
       const holidays = await fetch(
-        `${this.url}holidays/${location}&${language}`
+        `${this.url}holidays/${location}/${language}`
       );
       const holidaysArray = await holidays.json();
       return holidaysArray;

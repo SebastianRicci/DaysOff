@@ -19,10 +19,10 @@ const getHolidays = async (req, res) => {
   const language = req.params.language;
   try {
     const response = await fetch(
-      `${process.env.BASE_URL}holidays?pretty&key=${process.env.API_KEY}&country=${location}&language=${language}&year=2022`
+      `${process.env.BASE_URL}holidays?pretty&key=${process.env.API_KEY}&country=${location}&language=${language}&public&year=2022`
     );
-    const holidays = await response.json();
-    res.status(200).send(holidays);
+    const data = await response.json();
+    res.status(200).send(data.holidays);
   } catch (err) {
     res.status(500);
     res.send(err.message);
