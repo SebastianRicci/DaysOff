@@ -76,7 +76,36 @@ module.exports = {
   },
 
   pickedDays: function (calendar, vacationDays) {
+    //Subtract desired vacation days from total pto available
     vacationDays -= calendar.filter((day) => day.vacation == true).length;
+
+    //Handle case where vacationDays is larger than available days to pick from, thus returning a completely picked calendar.
+    if (
+      vacationDays >
+      calendar.filter(
+        (day) =>
+          day.value == 0 &&
+          day.algo == 0 &&
+          day.holiday == false &&
+          day.mandatory == false &&
+          day.vacation == false
+      ).length
+    ) {
+      for (let i = 0; i < calendar.length; i++) {
+        if (
+          calendar[i].value == 0 &&
+          calendar[i].algo == 0 &&
+          calendar[i].holiday == false &&
+          calendar[i].mandatory == false &&
+          calendar[i].vacation == false
+        ) {
+          calendar[i].value = 1;
+          calendar[i].algo = 1;
+        }
+      }
+      return calendar;
+    }
+
     let bridge = 1;
     while (vacationDays > 0) {
       let streak = 0;

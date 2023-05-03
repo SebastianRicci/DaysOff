@@ -2,6 +2,7 @@ import "./AnalyticsView.css";
 import "chart.js/auto";
 import StackedBarChart from "../../Components/StackedBarChart/StackedBarChart";
 import OptimizationCard from "../../Components/OptimizationCard/OptimizationCard";
+import EmptyState from "../../Components/EmptyState/EmptyState";
 
 export default function AnalyticsView({ analytics }) {
   return (
@@ -21,7 +22,7 @@ export default function AnalyticsView({ analytics }) {
           />
         </div>
       ) : (
-        <h1>No data</h1>
+        <EmptyState state={"Analytics"} />
       )}
     </>
   );

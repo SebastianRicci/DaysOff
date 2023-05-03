@@ -1,5 +1,4 @@
 const fetch = require("node-fetch");
-const moment = require("moment");
 const utils = require("./utils");
 
 const getCountries = async (req, res) => {
@@ -48,13 +47,11 @@ const getCalendar = async (req, res) => {
     const calendar = utils.highlightWeekends(pickedDays, weekends);
     const calendarOverview = utils.generateVacationPeriodString(calendar);
     const analytics = utils.generateAnalytics(calendar);
-    res
-      .status(200)
-      .send({
-        calendar: calendar,
-        overview: calendarOverview,
-        analytics: analytics,
-      });
+    res.status(200).send({
+      calendar: calendar,
+      overview: calendarOverview,
+      analytics: analytics,
+    });
   } catch (err) {
     res.status(500);
     res.send(err.message);
