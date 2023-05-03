@@ -1,13 +1,14 @@
 .TripsContainer {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   background-color: #efefef;
   margin-bottom: 50px;
 }
 .TripsContainer > * {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin: 15px;
 }
