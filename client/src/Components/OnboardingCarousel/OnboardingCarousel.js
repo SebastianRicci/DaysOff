@@ -48,7 +48,7 @@ export default function OnboardingCarousel({ slide, setSlide, setOnboarding }) {
             <Button
               style={{
                 background:
-                  "linear-gradient(95deg, rgb(242, 113, 33) 0%, rgb(233, 64, 87) 50%, rgb(138, 35, 135) 100%)",
+                  "linear-gradient(135deg, rgb(46, 170, 250) 0%, rgb(140, 4, 219) 100%)",
                 color: "#fff",
               }}
               size="large"
