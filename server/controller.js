@@ -47,7 +47,8 @@ const getCalendar = async (req, res) => {
     const calendar = utils.highlightWeekends(pickedDays, weekends);
     const calendarOverview = utils.generateVacationPeriodString(calendar);
     const analytics = utils.generateAnalytics(calendar);
-    const trips = utils.generateTrips(calendar);
+    const trips = await utils.generateTrips(calendar);
+
     res.status(200).send({
       calendar: calendar,
       overview: calendarOverview,

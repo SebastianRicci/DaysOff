@@ -296,11 +296,175 @@ module.exports = {
     };
   },
 
-  generateTrips: function (calendar) {
+  generateTrips: async function (calendar) {
+    //OpenAI API Trip Recommendations
+    // const OpenAI = require("openai");
+    // const { Configuration, OpenAIApi } = OpenAI;
+    // const configuration = new Configuration({
+    //   organization: process.env.OPENAI_ORG,
+    //   apiKey: process.env.OPENAI_API_KEY,
+    // });
+    // const openai = new OpenAIApi(configuration);
+    //Build request object
+    // const ranges = this.findRanges(calendar);
+    // const request = {
+    //   Loc: "es-md",
+    //   Budg: "3000$",
+    //   Trips: ranges.length,
+    // };
+
+    //     const response = await openai.createCompletion({
+    //       model: "text-davinci-003",
+    //       prompt: `As a travel recommendation AI, I receive json objects with location and budget fields based on the user's current location, trip duration and budget for all trips. Here are two sample requests and responses:
+    //       Request: {Loc: es-md, Budg: 3000$, Trips: 3}
+    //       Response: [{Loc: "Ibiza",Price:"100$",Desc: "Ibiza is a beautiful Spanish island with stunning beaches, lively nightlife, rich history and culture."}, {Loc: "Amalfi Coast", Price: "1600$",Desc:"The Amalfi Coast is a picturesque region along the southern coast of Italy, famous for its dramatic cliffs and charming seaside towns."}, {Loc:"San Sebastian", Price: "400$", Desc:"San Sebastian is a stunning coastal city in northern Spain, known for its beautiful beaches, rich culture, and delicious cuisine."}]
+
+    //       Request: ${request}
+    //       Response:
+    // `,
+    //       max_tokens: 500,
+    //       temperature: 0,
+    //     });
+    //     const tripRecommendations = response.data.choices[0].text;
+
     const ranges = this.findRanges(calendar);
+    const tripRecommendations = [
+      {
+        Location: "Ibiza, Spain",
+        Price: "600$",
+        Description: `Ibiza is a beautiful Spanish island located in the Mediterranean Sea, known for its stunning beaches, lively nightlife, and beautiful landscapes. The island is a popular destination for party-goers, with many world-renowned nightclubs and DJ performances. In addition to its nightlife, Ibiza also offers a rich history and culture, with ancient ruins and museums to explore, as well as delicious local cuisine to indulge in.`,
+        img: "https://images.unsplash.com/photo-1605770539085-6964411f4611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      },
+      {
+        Location: "Amalfi Coast, Italy",
+        Price: "1600$",
+        Description: `The Amalfi Coast is a picturesque region along the southern coast of Italy, famous for its dramatic cliffs, sparkling turquoise waters, and charming seaside towns. Visitors to the Amalfi Coast can explore the beautiful villages of Positano, Amalfi, and Ravello, all nestled into the steep cliffs overlooking the sea. The region is also known for its delicious seafood and locally produced limoncello, as well as for its hiking trails and scenic drives that offer breathtaking views of the coastline.`,
+        img: "https://images.unsplash.com/photo-1612698093158-e07ac200d44e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "San Sebastian, Spain",
+        Price: "400$",
+        Description: `San Sebastian, located in the Basque Country of northern Spain, is a stunning coastal city known for its beautiful beaches, rich culture, and delicious cuisine. The city is famous for its "pintxos", a type of Basque tapas that are served in bars and restaurants throughout the city. Visitors can also explore the historic Old Town, which features beautiful architecture and narrow, winding streets, or relax on the city's stunning beaches, such as La Concha and Zurriola. San Sebastian also hosts a number of festivals throughout the year, including the San Sebastian International Film Festival and the Tamborrada drumming festival.`,
+        img: "https://images.unsplash.com/photo-1553455010-bdb488ac12e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+      },
+      {
+        Location: "Budapest, Hungary",
+        Price: "500$",
+        Description: `Budapest, the capital of Hungary, is a beautiful city located on the banks of the Danube River. Visitors to Budapest can explore the historic Buda Castle, soak in one of the city's many thermal baths, or stroll along the picturesque Andrássy Avenue. The city is also known for its vibrant nightlife and delicious local cuisine, including dishes like goulash and chimney cakes.`,
+        img: "https://images.unsplash.com/photo-1565426873118-a17ed65d74b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80",
+      },
+      {
+        Location: "Krakow, Poland",
+        Price: "300$",
+        Description: `Krakow, located in southern Poland, is a charming city with a rich history and culture. Visitors can explore the historic Old Town, including the beautiful Wawel Castle and Main Market Square. The city is also home to many museums and galleries, including the Wieliczka Salt Mine and the Schindler's Factory Museum. Krakow is known for its traditional Polish cuisine, including dishes like pierogi and kielbasa.`,
+        img: "https://images.unsplash.com/photo-1605645163392-f845d2a4a869?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Bali, Indonesia",
+        Price: "1200$",
+        Description: `Bali is a stunning Indonesian island known for its beautiful beaches, lush green rice terraces, and vibrant culture. Visitors to Bali can explore ancient temples and historic landmarks, such as the Ubud Palace and the Tirta Empul water temple. The island is also home to many world-class resorts and spas, as well as delicious local cuisine like nasi goreng and satay.`,
+        img: "https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Marrakech, Morocco",
+        Price: "800$",
+        Description: `Marrakech, located in Morocco, is a vibrant city known for its colorful souks, historic landmarks, and delicious cuisine. Visitors can explore the historic Medina, including the beautiful Bahia Palace and Koutoubia Mosque, or relax in one of the city's many hammams. Marrakech is also known for its local cuisine, which includes dishes like tagine and couscous.`,
+        img: "https://images.unsplash.com/photo-1618423205267-e95744f57edf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1746&q=80",
+      },
+      {
+        Location: "Tokyo, Japan",
+        Price: "2500$",
+        Description: `Tokyo, the capital of Japan, is a bustling metropolis with a unique blend of modern and traditional culture. Visitors to Tokyo can explore historic landmarks like the Senso-ji Temple and Tokyo Imperial Palace, or immerse themselves in the city's vibrant pop culture scene in areas like Shibuya and Harajuku. Tokyo is also known for its world-class cuisine, including sushi, ramen, and tempura.`,
+        img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1788&q=80",
+      },
+      {
+        Location: "Krabi, Thailand",
+        Price: "500$",
+        Description: `Krabi is a beautiful province in southern Thailand, known for its stunning limestone cliffs, crystal-clear waters, and pristine beaches. Visitors to Krabi can enjoy a wide range of outdoor activities, including rock climbing, kayaking, and scuba diving. The province also features several beautiful national parks, such as Khao Phanom Bencha National Park and Than Bok Khorani National Park, which are home to a variety of flora and fauna.`,
+        img: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1678&q=80x",
+      },
+      {
+        Location: "Cape Town, South Africa",
+        Price: "1200$",
+        Description: `Cape Town is a coastal city in South Africa, known for its stunning natural beauty, rich cultural heritage, and diverse wildlife. Visitors to Cape Town can explore the city's many historic landmarks, such as Table Mountain and Robben Island, or relax on one of the city's many beautiful beaches, such as Clifton Beach or Camps Bay. The city is also home to a variety of wildlife, including penguins, seals, and sharks, which can be seen on tours and excursions around the city.`,
+        img: "https://images.unsplash.com/photo-1581596326248-f55ac7852760?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
+      },
+      {
+        Location: "Reykjavik, Iceland",
+        Price: "1500$",
+        Description: `Reykjavik is the capital city of Iceland and is known for its stunning natural beauty, vibrant cultural scene, and unique geothermal features. Visitors to Reykjavik can explore the city's many museums and galleries, such as the National Museum of Iceland and the Reykjavik Art Museum, or take a dip in one of the city's many thermal pools, such as the famous Blue Lagoon. The city is also a popular base for exploring Iceland's many natural wonders, such as the Northern Lights, glaciers, and geysers.`,
+        img: "https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Cancun, Mexico",
+        Price: "$700",
+        Description: `Cancun is a popular beach destination located on the Caribbean coast of Mexico, known for its crystal-clear waters, white sandy beaches, and lively nightlife. Visitors to Cancun can relax on the beach, explore the ancient Mayan ruins of Chichen Itza, or take a boat trip to the nearby island of Isla Mujeres. The city is also famous for its nightlife, with many bars and nightclubs to choose from.`,
+        img: "https://images.unsplash.com/photo-1580846629083-02669741360a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1654&q=80",
+      },
+      {
+        Location: "Phuket, Thailand",
+        Price: "$600",
+        Description: `Phuket is a beautiful island located in Thailand, known for its stunning beaches, crystal-clear waters, and vibrant nightlife. Visitors to Phuket can relax on the beach, take a boat trip to nearby islands, or explore the old town of Phuket. The island is also famous for its cuisine, with many delicious Thai dishes to try.`,
+        img: "https://images.unsplash.com/photo-1587691254941-bbd1faa13154?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Rio de Janeiro, Brazil",
+        Price: "$1000",
+        Description: `Rio de Janeiro is a vibrant city located in Brazil, known for its beautiful beaches, lively music and dance, and colorful culture. Visitors to Rio can relax on the beaches of Copacabana and Ipanema, hike up to the iconic Christ the Redeemer statue, or dance the night away at a samba club. The city is also famous for its food, with many delicious Brazilian dishes to try.`,
+        img: "https://images.unsplash.com/photo-1619546952812-520e98064a52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
+      },
+      {
+        Location: "Amsterdam, Netherlands",
+        Price: "$800",
+        Description: `Amsterdam is a beautiful city located in the Netherlands, known for its picturesque canals, beautiful architecture, and vibrant culture. Visitors to Amsterdam can explore the many museums and galleries, bike along the canals, or visit the famous coffee shops and bars.`,
+        img: "https://images.unsplash.com/photo-1553105797-feac2b692dc5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Athens, Greece",
+        Price: "$1200",
+        Description: `Athens is the capital of Greece and a city steeped in history and culture. Visitors can explore the ancient ruins of the Acropolis and other historical landmarks, as well as enjoy the lively nightlife and delicious cuisine.`,
+        img: "https://plus.unsplash.com/premium_photo-1661963720399-b0d05bee9005?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Machu Picchu, Peru",
+        Price: "$1500",
+        Description: `Machu Picchu is a famous Incan archaeological site located high in the Andes Mountains of Peru. Visitors can hike the Inca Trail to reach the site and explore the ruins of this ancient civilization, as well as enjoy the stunning natural beauty of the surrounding area.`,
+        img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1748&q=80",
+      },
+      {
+        Location: "Sapa, Vietnam",
+        Price: "$800",
+        Description: `Sapa is a small town in the northwest of Vietnam, known for its beautiful rice terraces, stunning mountain landscapes, and colorful hill tribes. Visitors can trek through the hills, visit local markets, and immerse themselves in the unique culture of the region.`,
+        img: "https://images.unsplash.com/photo-1516484681091-7d83961805f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2556&q=80",
+      },
+      {
+        Location: "Petra, Jordan",
+        Price: "$1200",
+        Description: `Petra is an ancient city carved into the rock in the desert of Jordan, known for its stunning architecture and rich history. Visitors can explore the city's many temples, tombs, and buildings, including the famous Treasury and Monastery.`,
+      },
+      {
+        Location: "Edinburgh, Scotland",
+        Price: "$1500",
+        Description: `Edinburgh is a historic city in Scotland, known for its stunning architecture, rich history, and vibrant cultural scene. Visitors can explore the city's many museums and galleries, visit historic landmarks like Edinburgh Castle, or experience the city's famous festivals, such as the Edinburgh Fringe Festival.`,
+        img: "https://images.unsplash.com/photo-1567802942109-0a5d92ed35b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1622&q=80",
+      },
+      {
+        Location: "Zhangjiajie, China",
+        Price: "$900",
+        Description: `Zhangjiajie is a region in China known for its stunning natural landscapes, including towering sandstone pillars, deep gorges, and lush forests. Visitors can hike through the region's many trails, take a cable car to the top of the peaks, or explore the unique culture of the local Tujia people.`,
+        img: "https://images.unsplash.com/photo-1567266565446-d9c40ccf59a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Cinque Terre, Italy",
+        Price: "$1500",
+        Description: `Cinque Terre is a picturesque region along the coast of Italy, known for its colorful villages, stunning views, and delicious seafood. Visitors can hike along the coast, explore the charming towns of Vernazza and Riomaggiore, or relax on one of the region's many beautiful beaches.`,
+        img: "https://images.unsplash.com/photo-1538504841477-7c399f1f0dc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80",
+      },
+    ];
+
     let date;
     const trips = [];
-    ranges.forEach((range) => {
+    ranges.forEach((range, index) => {
       if (
         moment(calendar[range.start].date).year() ==
         moment(calendar[range.end].date).year()
@@ -313,13 +477,15 @@ module.exports = {
           "MMMM Do, YYYY"
         )} to ${moment(calendar[range.end].date).format("MMMM Do, YYYY")}`;
       }
+
       trips.push({
-        location: "Sevilla, Spain",
+        location: tripRecommendations[index].Location,
         date: date,
-        price: "245$",
-        link: "",
+        price: tripRecommendations[index].Price,
+        img: tripRecommendations[index].img,
       });
     });
+
     return trips;
   },
 };

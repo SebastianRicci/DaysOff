@@ -25,8 +25,8 @@ export default function TripCard({ trip }) {
       </IconButton>
       <AspectRatio minHeight="120px" maxHeight="200px" sx={{ my: 2 }}>
         <img
-          src="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286"
-          srcSet="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286&dpr=2 2x"
+          src={trip.img}
+          srcSet={`${trip.img} 1x, ${trip.img} 2x`}
           loading="lazy"
           alt=""
         />
