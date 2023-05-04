@@ -19,7 +19,9 @@ export default function YearSelector({ selectedYear, years, setSelectedYear }) {
             label="Year"
           >
             {years.map((year) => (
-              <MenuItem value={year}>{year}</MenuItem>
+              <MenuItem value={year} key={year}>
+                {year}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>

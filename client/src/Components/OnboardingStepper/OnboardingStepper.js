@@ -7,6 +7,7 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Check from "@mui/icons-material/Check";
+import CelebrationIcon from "@mui/icons-material/Celebration";
 import SettingsIcon from "@mui/icons-material/Settings";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -138,9 +139,10 @@ function ColorlibStepIcon(props) {
   const { active, completed, className } = props;
 
   const icons = {
-    1: <SettingsIcon />,
-    2: <BeachAccessIcon />,
-    3: <CalendarMonthIcon />,
+    1: <CelebrationIcon />,
+    2: <SettingsIcon />,
+    3: <BeachAccessIcon />,
+    4: <CalendarMonthIcon />,
   };
 
   return (
@@ -171,7 +173,7 @@ ColorlibStepIcon.propTypes = {
   icon: PropTypes.node,
 };
 
-const steps = ["Settings", "Customize", "Optimize"];
+const steps = ["Holidays", "Settings", "Customize", "Optimize"];
 
 export default function OnboardingStepper({ slide }) {
   return (

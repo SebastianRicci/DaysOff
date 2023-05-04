@@ -1,6 +1,7 @@
 import "./OnboardingCarousel.css";
 import React from "react";
 import Carousel from "react-material-ui-carousel";
+import CelebrationIcon from "@mui/icons-material/Celebration";
 import SettingsIcon from "@mui/icons-material/Settings";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -8,6 +9,12 @@ import Button from "@mui/material/Button";
 
 export default function OnboardingCarousel({ slide, setSlide, setOnboarding }) {
   var items = [
+    {
+      name: "Up-to-Date Holiday Data",
+      description:
+        "DaysOff takes into account observed holiday dates (when a public federal holiday is celebrated on a date that is not the actual event's anniversary date).",
+      icon: <CelebrationIcon />,
+    },
     {
       name: "Configure",
       description:
@@ -44,7 +51,7 @@ export default function OnboardingCarousel({ slide, setSlide, setOnboarding }) {
           <h1>{item.name}</h1>
           <div className="OnboardingCardIcon">{item.icon}</div>
           <p>{item.description}</p>
-          {slide === 2 && (
+          {slide === 3 && (
             <Button
               style={{
                 background:

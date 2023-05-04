@@ -6,6 +6,7 @@
   min-height: 70vh;
   display: flex;
   margin-top: 10px;
+  max-width: 900px;
 }
 
 .css-1l7c0cy > * {

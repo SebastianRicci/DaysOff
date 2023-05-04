@@ -1,11 +1,15 @@
 .StepperContainer {
   background-color: white;
-  height: 15vh;
   width: 95%;
   border-radius: 10px;
   height: fit-content;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
+  max-width: 900px;
+}
+
+.css-1hv8oq8-MuiStepLabel-label.MuiStepLabel-alternativeLabel {
+  margin-top: 10px !important;
 }
