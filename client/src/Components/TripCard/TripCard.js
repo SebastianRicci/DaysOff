@@ -5,7 +5,6 @@ import Button from "@mui/joy/Button";
 import Card from "@mui/joy/Card";
 import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
-import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
 
 export default function TripCard({ trip }) {
   return (
@@ -14,21 +13,12 @@ export default function TripCard({ trip }) {
         {trip.location}
       </Typography>
       <Typography level="body2">{trip.date}</Typography>
-      <IconButton
-        aria-label="bookmark Bahamas Islands"
-        variant="plain"
-        color="neutral"
-        size="sm"
-        sx={{ position: "absolute", top: "0.5rem", right: "0.5rem" }}
-      >
-        <BookmarkAdd />
-      </IconButton>
       <AspectRatio minHeight="120px" maxHeight="200px" sx={{ my: 2 }}>
         <img
           src={trip.img}
           srcSet={`${trip.img} 1x, ${trip.img} 2x`}
           loading="lazy"
-          alt=""
+          alt="trip images"
         />
       </AspectRatio>
       <Box sx={{ display: "flex" }}>

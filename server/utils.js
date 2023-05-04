@@ -333,7 +333,7 @@ module.exports = {
         Location: "Ibiza, Spain",
         Price: "600$",
         Description: `Ibiza is a beautiful Spanish island located in the Mediterranean Sea, known for its stunning beaches, lively nightlife, and beautiful landscapes. The island is a popular destination for party-goers, with many world-renowned nightclubs and DJ performances. In addition to its nightlife, Ibiza also offers a rich history and culture, with ancient ruins and museums to explore, as well as delicious local cuisine to indulge in.`,
-        img: "https://images.unsplash.com/photo-1605770539085-6964411f4611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+        img: "https://images.unsplash.com/photo-1563784462386-044fd95e9852?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
       },
       {
         Location: "Amalfi Coast, Italy",
