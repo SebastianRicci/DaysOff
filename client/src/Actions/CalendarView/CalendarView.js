@@ -8,6 +8,7 @@ import Fab from "@mui/material/Fab";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CalendarModal from "../../Components/CalendarModal/CalendarModal";
 import ErrorModal from "../../Components/ErrorModal/ErrorModal";
+import CalendarLegend from "../../Components/CalendarLegend/CalendarLegend";
 
 export default function CalendarView({
   setTrips,
@@ -75,6 +76,7 @@ export default function CalendarView({
         choices={choices}
         setChoices={setChoices}
       />
+
       <ErrorModal error={error} setError={setError} />
 
       <MonthCalendar
@@ -88,6 +90,7 @@ export default function CalendarView({
         weekends={weekends}
         setSelectedDate={setSelectedDate}
       ></MonthCalendar>
+      {calendar.length > 0 && <CalendarLegend calendar={calendar} />}
       <Holidays activeDate={activeDate} holidays={holidays}></Holidays>
       <CalendarOverview overview={overview}></CalendarOverview>
       <Fab variant="extended" style={style} onClick={() => handleOptimize()}>
