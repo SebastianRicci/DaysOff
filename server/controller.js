@@ -48,7 +48,6 @@ const getCalendar = async (req, res) => {
     const calendarOverview = utils.generateVacationPeriodString(calendar);
     const analytics = utils.generateAnalytics(calendar);
     const trips = utils.generateTrips(calendar);
-    console.log(trips);
     res.status(200).send({
       calendar: calendar,
       overview: calendarOverview,

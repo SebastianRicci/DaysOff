@@ -76,6 +76,7 @@ export default function CalendarView({
         setChoices={setChoices}
       />
       <ErrorModal error={error} setError={setError} />
+
       <MonthCalendar
         calendar={calendar}
         choices={choices}

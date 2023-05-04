@@ -314,9 +314,9 @@ module.exports = {
         )} to ${moment(calendar[range.end].date).format("MMMM Do, YYYY")}`;
       }
       trips.push({
-        location: "",
+        location: "Sevilla, Spain",
         date: date,
-        price: "0$",
+        price: "245$",
         link: "",
       });
     });

@@ -1,0 +1,61 @@
+.css-ohwg9z {
+  width: 95%;
+  height: 85vh;
+  background: white;
+  border-radius: 10px;
+  min-height: 70vh;
+  display: flex;
+  margin-top: 10px;
+}
+
+.css-1l7c0cy > * {
+  transform: none !important;
+}
+.css-1l7c0cy > div > div > div {
+  display: flex;
+  justify-content: center;
+}
+
+.OnboardingCard {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 95%;
+  border-radius: 10px;
+}
+
+.OnboardingCard > p {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 20px;
+}
+.OnboardingCard > h1 {
+  text-align: center;
+  font-weight: 500;
+  color: rgb(140, 4, 219);
+}
+
+.OnboardingCardIcon {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 300px;
+  height: 300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgb(46, 170, 250) 0%,
+    rgb(140, 4, 219) 100%
+  );
+}
+
+.OnboardingCardIcon > svg {
+  width: 200px;
+  height: 200px;
+  fill: white;
+}

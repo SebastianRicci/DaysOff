@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import CalendarView from "../Actions/CalendarView/CalendarView";
 import TripsView from "../Actions/TripsView/TripsView";
 import AnalyticsView from "../Actions/AnalyticsView/AnalyticsView";
+import OnboardingView from "../Actions/OnboardingView/OnboardingView";
 import BottomNav from "../Components/BottomNav/BottomNav";
 import Header from "../Components/Header/Header";
 import Settings from "../Actions/Settings/Settings";
@@ -12,6 +13,7 @@ import { HolidayAPI } from "../HolidayAPI/HolidayAPI";
 
 export default function Dashboard() {
   //Navigation
+  const [onboarding, setOnboarding] = useState(true);
   const [action, setAction] = useState(0);
   const [settings, setSettings] = useState(false);
   //User Inputs
@@ -465,34 +467,38 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="Dashboard">
-        <Header
-          action={action}
-          setSettings={setSettings}
-          settings={settings}
-        ></Header>
-        {settings ? (
-          <Settings
-            country={country}
-            region={region}
-            PTO={PTO}
-            startDate={startDate}
-            endDate={endDate}
-            weekends={weekends}
-            holidayLanguage={holidayLanguage}
-            setCountry={setCountry}
-            setRegion={setRegion}
-            setPTO={setPTO}
-            setStartDate={setStartDate}
-            setEndDate={setEndDate}
-            setWeekends={setWeekends}
-            setHolidayLanguage={setHolidayLanguage}
+      {onboarding ? (
+        <OnboardingView setOnboarding={setOnboarding} />
+      ) : (
+        <div className="Dashboard">
+          <Header
+            action={action}
+            setSettings={setSettings}
+            settings={settings}
           />
-        ) : (
-          renderAction(action)
-        )}
-      </div>
-      <BottomNav action={action} setAction={setAction}></BottomNav>
+          {settings ? (
+            <Settings
+              country={country}
+              region={region}
+              PTO={PTO}
+              startDate={startDate}
+              endDate={endDate}
+              weekends={weekends}
+              holidayLanguage={holidayLanguage}
+              setCountry={setCountry}
+              setRegion={setRegion}
+              setPTO={setPTO}
+              setStartDate={setStartDate}
+              setEndDate={setEndDate}
+              setWeekends={setWeekends}
+              setHolidayLanguage={setHolidayLanguage}
+            />
+          ) : (
+            renderAction(action)
+          )}
+          <BottomNav action={action} setAction={setAction} />
+        </div>
+      )}
     </>
   );
 }
