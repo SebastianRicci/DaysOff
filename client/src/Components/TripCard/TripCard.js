@@ -3,10 +3,9 @@ import AspectRatio from "@mui/joy/AspectRatio";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Card from "@mui/joy/Card";
-import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 
-export default function TripCard({ trip }) {
+export default function TripCard({ trip, setExploreTrip }) {
   return (
     <Card variant="outlined" sx={{ width: 320 }}>
       <Typography level="h2" fontSize="md" sx={{ mb: 0.5 }}>
@@ -29,10 +28,13 @@ export default function TripCard({ trip }) {
           </Typography>
         </div>
         <Button
+          onClick={() => {
+            setExploreTrip(trip);
+          }}
           variant="solid"
           size="sm"
           color="primary"
-          aria-label="Explore Bahamas Islands"
+          aria-label="Explore Trip"
           sx={{ ml: "auto", fontWeight: 600 }}
         >
           Explore

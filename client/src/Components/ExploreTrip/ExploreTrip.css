@@ -1,0 +1,106 @@
+.exploreTripContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+.exploreTripCard {
+  width: 95%;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  max-width: 500px;
+}
+
+.exploreTripImage img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.exploreTripImage svg {
+  position: absolute;
+  color: white;
+  margin-top: 15px;
+  margin-left: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.exploreTripHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+}
+
+.exploreTripHeaderLeft h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.exploreTripHeaderLeft h2 {
+  margin: 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.exploreTripHeaderRight h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #006bff;
+}
+
+.exploreTripBody {
+  background: white;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+}
+
+.exploreTripDescription {
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.comingSoonSection {
+  align-self: center;
+  width: 95%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+.comingSoonTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comingSoonSubtitle {
+  font-size: 18px;
+  max-width: 90%;
+  margin-bottom: 10px;
+  font-weight: 100;
+  text-align: center;
+}
+
+.comingSoonIntegrations {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+}
+
+.comingSoonIntegrations > * {
+  margin-top: 5px;
+}

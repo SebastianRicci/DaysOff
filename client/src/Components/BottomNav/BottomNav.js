@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -12,7 +11,7 @@ export default function BottomNav({ action, setAction }) {
   return (
     <Box sx={{ width: 400 }}>
       <Paper
-        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+        sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 1 }}
         elevation={3}
       >
         <BottomNavigation

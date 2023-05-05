@@ -441,6 +441,7 @@ module.exports = {
         Location: "Petra, Jordan",
         Price: "$1200",
         Description: `Petra is an ancient city carved into the rock in the desert of Jordan, known for its stunning architecture and rich history. Visitors can explore the city's many temples, tombs, and buildings, including the famous Treasury and Monastery.`,
+        img: "https://images.unsplash.com/photo-1615811648503-479d06197ff3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80",
       },
       {
         Location: "Edinburgh, Scotland",
@@ -460,7 +461,114 @@ module.exports = {
         Description: `Cinque Terre is a picturesque region along the coast of Italy, known for its colorful villages, stunning views, and delicious seafood. Visitors can hike along the coast, explore the charming towns of Vernazza and Riomaggiore, or relax on one of the region's many beautiful beaches.`,
         img: "https://images.unsplash.com/photo-1538504841477-7c399f1f0dc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80",
       },
+      {
+        Location: "Siem Reap, Cambodia",
+        Price: "$300",
+        Description:
+          "Siem Reap is a city in Cambodia, famous for the stunning Angkor Wat temple complex. Visitors can explore the ancient temples and ruins, learn about the history of the Khmer Empire, and experience the vibrant culture of Cambodia. The city is also home to a lively nightlife and delicious local cuisine.",
+        img: "https://plus.unsplash.com/premium_photo-1661963188432-5de8a11f21a7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Kyoto, Japan",
+        Price: "$4000",
+        Description:
+          "Kyoto is a city in Japan, famous for its traditional culture and stunning temples and gardens. Visitors can explore the historic district of Gion, visit the Fushimi Inari Shrine, and immerse themselves in the culture of Japan. The city is also home to world-renowned restaurants and luxurious accommodations.",
+        img: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Cartagena, Colombia",
+        Price: "$700",
+        Description:
+          "Cartagena is a beautiful city on the Caribbean coast of Colombia, known for its colonial architecture, vibrant culture, and stunning beaches. Visitors can explore the old city, relax on the beach, and indulge in the delicious local cuisine. The city also has a lively nightlife and is a popular destination for music festivals.",
+        img: "https://images.unsplash.com/photo-1666977461267-c0e924696510?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1688&q=80",
+      },
+      {
+        Location: "Banff National Park, Canada",
+        Price: "$3500",
+        Description:
+          "Banff National Park is a stunning natural wonderland in Canada, known for its breathtaking scenery and outdoor activities. Visitors can explore the stunning lakes and mountains, hike through the wilderness, and experience the beauty of the Canadian Rockies. The park is also home to luxurious lodges and world-class restaurants.",
+        img: "https://images.unsplash.com/photo-1558818061-547b1114aa6a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Santorini, Greece",
+        Price: "$2000",
+        Description:
+          "Santorini is a beautiful Greek island, known for its whitewashed buildings, stunning sunsets, and crystal-clear waters. Visitors can explore the charming villages of Oia and Fira, relax on the beaches, and indulge in the delicious local cuisine.",
+        img: "https://plus.unsplash.com/premium_photo-1661963643348-e95c6387ee8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Sienna, Italy",
+        Price: "$800",
+        Description:
+          "Sienna is a city in Tuscany, Italy, famous for its beautiful medieval architecture and stunning countryside. Visitors can explore the historic city center, visit the Cathedral of Santa Maria Assunta, and enjoy the delicious local cuisine and wine.",
+        img: "https://images.unsplash.com/photo-1638002533177-364be2f53c4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Dubrovnik, Croatia",
+        Price: "$900",
+        Description:
+          "Dubrovnik is a beautiful city on the Adriatic coast of Croatia, known for its stunning old town and beautiful beaches. Visitors can explore the ancient walls and fortifications of the old city, relax on the beach, and indulge in the delicious local cuisine.",
+        img: "https://images.unsplash.com/photo-1414862625453-d87604a607e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2532&q=80",
+      },
+      {
+        Location: "Queenstown, New Zealand",
+        Price: "$4000",
+        Description:
+          "Queenstown is a beautiful town on the South Island of New Zealand, known for its stunning natural scenery and outdoor activities. Visitors can explore the surrounding mountains and lakes, go hiking or skiing, and experience the unique culture of the local Maori people.",
+        img: "https://images.unsplash.com/photo-1557589747-a830b99db298?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1325&q=80",
+      },
+      {
+        Location: "Oaxaca, Mexico",
+        Price: "$300",
+        Description:
+          "Oaxaca is a charming city in southern Mexico known for its vibrant culture and rich history. Visitors can explore the beautiful colonial architecture, such as the Santo Domingo Church and the Macedonio Alcala Theater, or visit the fascinating Museum of Oaxacan Cultures. Oaxaca is also famous for its delicious cuisine, including dishes like mole and tlayudas.",
+        img: "https://images.unsplash.com/photo-1578170222009-c7893aa20afd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Siargao Island, Philippines",
+        Price: "$500",
+        Description:
+          "Siargao Island is a beautiful tropical paradise in the Philippines, known for its stunning beaches, crystal-clear waters, and world-class surfing. Visitors can explore the island's many beaches, such as Cloud 9 and Magpupungko Beach, or go island-hopping to nearby islands. Siargao Island also offers a laid-back atmosphere and delicious local cuisine.",
+        img: "https://images.unsplash.com/photo-1565565978731-f9e8cd35a317?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1375&q=80",
+      },
+      {
+        Location: "Ljubljana, Slovenia",
+        Price: "$400",
+        Description:
+          "Ljubljana is a charming city in Slovenia known for its beautiful architecture, vibrant culture, and scenic riverfront. Visitors can explore the historic Ljubljana Castle, stroll through the beautiful Tivoli Park, or visit the fascinating National Museum of Slovenia. Ljubljana is also known for its delicious cuisine, such as traditional Slovenian dumplings and stews.",
+        img: "https://images.unsplash.com/photo-1602619025915-073b0594d662?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+      },
+      {
+        Location: "Havana, Cuba",
+        Price: "$600",
+        Description:
+          "Havana is the capital city of Cuba, known for its vibrant culture, beautiful architecture, and lively nightlife. Visitors can explore the historic Old Havana, visit the stunning El Capitolio building, or relax on the beautiful beaches. Havana is also known for its delicious Cuban cuisine, such as classic dishes like ropa vieja and lechon asado.",
+        img: "https://images.unsplash.com/photo-1520995749626-73103c69a7d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Porto, Portugal",
+        Price: "$500",
+        Description:
+          "Porto is a beautiful city in northern Portugal known for its stunning riverfront, historic architecture, and delicious wine. Visitors can explore the historic Ribeira district, visit the beautiful Palacio da Bolsa, or take a wine tasting tour of the famous Port wine cellars. Porto is also known for its delicious cuisine, such as grilled sardines and bacalhau (salt cod).",
+        img: "https://images.unsplash.com/photo-1569959595862-1c84553361c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2554&q=80",
+      },
+      {
+        Location: "Hoi An, Vietnam",
+        Price: "$400",
+        Description:
+          "Hoi An is a charming city in central Vietnam known for its historic architecture, beautiful beaches, and vibrant culture. Visitors can explore the ancient town of Hoi An, visit the stunning Japanese Covered Bridge, or relax on the beautiful An Bang Beach. Hoi An is also known for its delicious cuisine, such as the local specialty dish cao lau.",
+        img: "https://images.unsplash.com/photo-1558334466-afce6bf36c69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
+      {
+        Location: "Luang Prabang, Laos",
+        Price: "$300",
+        Description:
+          "Luang Prabang is a beautiful city in Laos known for its historic temples, stunning waterfalls, and laid-back atmosphere. Visitors can explore the many ancient temples, such as Wat Xieng Thong and Wat Mai, visit the stunning Kuang Si Falls, or take a boat ride on the Mekong River. Luang Prabang is also known for its delicious cuisine, such as the local specialty dish laap.",
+        img: "https://images.unsplash.com/photo-1633984904221-29bb70dffef8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      },
     ];
+    //Shuffle the array
+    tripRecommendations.sort(() => Math.random() - 0.5);
 
     let date;
     const trips = [];
@@ -482,6 +590,7 @@ module.exports = {
         location: tripRecommendations[index].Location,
         date: date,
         price: tripRecommendations[index].Price,
+        description: tripRecommendations[index].Description,
         img: tripRecommendations[index].img,
       });
     });
