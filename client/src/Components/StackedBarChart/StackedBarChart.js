@@ -69,7 +69,7 @@ export default function StackedBarChart({ result }) {
         position: "left",
         title: {
           display: true,
-          text: "Number of Days",
+          text: "Days",
         },
       },
     },

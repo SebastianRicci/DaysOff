@@ -1,8 +1,6 @@
 import "./ExploreTrip.css";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import HotelIcon from "@mui/icons-material/Hotel";
-import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
+import PluginCard from "../PluginCard/PluginCard";
 import { useEffect } from "react";
 
 export default function ExploreTrip({ exploreTrip, setExploreTrip }) {
@@ -39,9 +37,7 @@ export default function ExploreTrip({ exploreTrip, setExploreTrip }) {
           Book your trip through our integrations with the following services:
         </h4>
         <div className="comingSoonIntegrations">
-          <DirectionsCarIcon />
-          <HotelIcon />
-          <RestaurantMenuIcon />
+          <PluginCard />
         </div>
       </div>
     </div>

@@ -102,5 +102,7 @@
 }
 
 .comingSoonIntegrations > * {
-  margin-top: 5px;
+  align-self: center;
+  width: 90%;
+  margin-top: 10px;
 }

@@ -1,0 +1,50 @@
+.pluginCardContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pluginCardIcon {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pluginCardIcon > div {
+  color: white;
+}
+
+#Kayak {
+  background: #fd690f;
+}
+
+#OpenTable {
+  background: #d43541;
+}
+
+#Expedia {
+  background: #f7bf0f;
+}
+
+.pluginCardDescription {
+  padding: 20px;
+}
+
+.pluginCardDescriptionTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.pluginCardDescriptionBody {
+  font-size: 18px;
+  color: #666666;
+}
