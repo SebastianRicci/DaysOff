@@ -438,6 +438,14 @@ export default function Dashboard() {
     fetchData();
   }, [country, region, startDate, endDate, holidayLanguage]);
 
+  //Reset calendar, overview, analytics and trips everytime location is changed
+  useEffect(() => {
+    setCalendar([]);
+    setOverview([]);
+    setAnalytics({});
+    setTrips([]);
+  }, [country, region]);
+
   //Scrolls to top of page on render
   useEffect(() => {
     window.scrollTo(0, 0);
