@@ -438,6 +438,11 @@ export default function Dashboard() {
     fetchData();
   }, [country, region, startDate, endDate, holidayLanguage]);
 
+  //Scrolls to top of page on render
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [action]);
+
   function renderAction(action) {
     switch (action) {
       case 0:
