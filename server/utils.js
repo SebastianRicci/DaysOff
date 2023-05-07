@@ -296,38 +296,8 @@ module.exports = {
     };
   },
 
-  generateTrips: async function (calendar) {
-    //OpenAI API Trip Recommendations
-    // const OpenAI = require("openai");
-    // const { Configuration, OpenAIApi } = OpenAI;
-    // const configuration = new Configuration({
-    //   organization: process.env.OPENAI_ORG,
-    //   apiKey: process.env.OPENAI_API_KEY,
-    // });
-    // const openai = new OpenAIApi(configuration);
-    //Build request object
-    // const ranges = this.findRanges(calendar);
-    // const request = {
-    //   Loc: "es-md",
-    //   Budg: "3000$",
-    //   Trips: ranges.length,
-    // };
-
-    //     const response = await openai.createCompletion({
-    //       model: "text-davinci-003",
-    //       prompt: `As a travel recommendation AI, I receive json objects with location and budget fields based on the user's current location, trip duration and budget for all trips. Here are two sample requests and responses:
-    //       Request: {Loc: es-md, Budg: 3000$, Trips: 3}
-    //       Response: [{Loc: "Ibiza",Price:"100$",Desc: "Ibiza is a beautiful Spanish island with stunning beaches, lively nightlife, rich history and culture."}, {Loc: "Amalfi Coast", Price: "1600$",Desc:"The Amalfi Coast is a picturesque region along the southern coast of Italy, famous for its dramatic cliffs and charming seaside towns."}, {Loc:"San Sebastian", Price: "400$", Desc:"San Sebastian is a stunning coastal city in northern Spain, known for its beautiful beaches, rich culture, and delicious cuisine."}]
-
-    //       Request: ${request}
-    //       Response:
-    // `,
-    //       max_tokens: 500,
-    //       temperature: 0,
-    //     });
-    //     const tripRecommendations = response.data.choices[0].text;
-
-    const ranges = this.findRanges(calendar);
+  generateTrips: function (calendar) {
+    let ranges = this.findRanges(calendar);
     const tripRecommendations = [
       {
         Location: "Ibiza, Spain",
@@ -572,6 +542,11 @@ module.exports = {
 
     let date;
     const trips = [];
+    //Check to see we are not going over the end of the tripRecommendations array
+    if (tripRecommendations.length < ranges.length) {
+      ranges = ranges.slice(0, tripRecommendations.length);
+    }
+
     ranges.forEach((range, index) => {
       if (
         moment(calendar[range.start].date).year() ==
@@ -585,7 +560,6 @@ module.exports = {
           "MMMM Do, YYYY"
         )} to ${moment(calendar[range.end].date).format("MMMM Do, YYYY")}`;
       }
-
       trips.push({
         location: tripRecommendations[index].Location,
         date: date,
@@ -593,8 +567,8 @@ module.exports = {
         description: tripRecommendations[index].Description,
         img: tripRecommendations[index].img,
       });
+      console.log(`Trip ${index}: ${tripRecommendations[index].Location}`);
     });
-
     return trips;
   },
 };

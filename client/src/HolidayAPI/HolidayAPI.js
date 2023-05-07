@@ -40,7 +40,6 @@ export const HolidayAPI = {
         startDate: startDate,
         endDate: endDate,
       };
-
       const result = await fetch(`${this.url}calendar`, {
         method: "POST",
         body: JSON.stringify(requestBody),

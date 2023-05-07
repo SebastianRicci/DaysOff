@@ -11,7 +11,6 @@ import ErrorModal from "../../Components/ErrorModal/ErrorModal";
 import CalendarLegend from "../../Components/CalendarLegend/CalendarLegend";
 import { motion } from "framer-motion";
 import getWeeksInMonth from "date-fns/getWeeksInMonth";
-import moment from "moment";
 
 export default function CalendarView({
   setTrips,
