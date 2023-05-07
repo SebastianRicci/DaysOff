@@ -6,7 +6,7 @@ export default function Navbar({ action, setSettings, settings }) {
   function renderTitle(action) {
     switch (action) {
       case 0:
-        return "Optimized Calendar 🎉";
+        return "Optimized Calendar";
       case 1:
         return "Trip Recommendations";
       case 2:
@@ -31,7 +31,7 @@ export default function Navbar({ action, setSettings, settings }) {
       ) : (
         <div className="dashboardHeader">
           <div className="selections">
-            <p>Logo</p>
+            <p>DaysOff</p>
             <h3>{renderTitle(action)}</h3>
             <SettingsIcon
               color="white"

@@ -130,6 +130,7 @@ export default function MonthCalendar({
       }
     }
   }
+
   return (
     <Calendar
       onClickDay={(date) => setOpenModal(true)}

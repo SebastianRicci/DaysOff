@@ -32,4 +32,10 @@
 .selections > h3,
 .settingsSelections > h3 {
   cursor: default;
+  margin-right: 30px;
+}
+
+.selections > p {
+  font-weight: bold;
+  font-size: 17px;
 }

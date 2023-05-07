@@ -9,6 +9,9 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CalendarModal from "../../Components/CalendarModal/CalendarModal";
 import ErrorModal from "../../Components/ErrorModal/ErrorModal";
 import CalendarLegend from "../../Components/CalendarLegend/CalendarLegend";
+import { motion } from "framer-motion";
+import getWeeksInMonth from "date-fns/getWeeksInMonth";
+import moment from "moment";
 
 export default function CalendarView({
   setTrips,
@@ -67,6 +70,8 @@ export default function CalendarView({
     }
   }
 
+  let numWeeks = getWeeksInMonth(activeDate, { weekStartsOn: 1 });
+  const containerMaxHeight = numWeeks * 90 + 20;
   return (
     <div className="CalendarContainer">
       <CalendarModal
@@ -76,20 +81,25 @@ export default function CalendarView({
         choices={choices}
         setChoices={setChoices}
       />
-
       <ErrorModal error={error} setError={setError} />
+      <motion.div
+        className="CalendarAnimation"
+        animate={{ height: containerMaxHeight }}
+        transition={{ type: "spring", bounce: 0.2, duration: 1 }}
+      >
+        <MonthCalendar
+          calendar={calendar}
+          choices={choices}
+          setOpenModal={setOpenModal}
+          setActiveDate={setActiveDate}
+          holidays={holidays}
+          startDate={startDate}
+          endDate={endDate}
+          weekends={weekends}
+          setSelectedDate={setSelectedDate}
+        ></MonthCalendar>
+      </motion.div>
 
-      <MonthCalendar
-        calendar={calendar}
-        choices={choices}
-        setOpenModal={setOpenModal}
-        setActiveDate={setActiveDate}
-        holidays={holidays}
-        startDate={startDate}
-        endDate={endDate}
-        weekends={weekends}
-        setSelectedDate={setSelectedDate}
-      ></MonthCalendar>
       {calendar.length > 0 && <CalendarLegend calendar={calendar} />}
       <Holidays activeDate={activeDate} holidays={holidays}></Holidays>
       <CalendarOverview overview={overview}></CalendarOverview>

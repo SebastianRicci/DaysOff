@@ -14,7 +14,11 @@ export default function ExploreTrip({ exploreTrip, setExploreTrip }) {
       <div className="exploreTripCard">
         <div className="exploreTripImage">
           <ArrowBackIosNewIcon onClick={() => setExploreTrip({})} />
-          <img src={exploreTrip.img} alt="trip images" />
+          <img
+            src={exploreTrip.img}
+            alt="trip images"
+            crossOrigin="anonymous"
+          />
         </div>
         <div className="exploreTripHeader">
           <div className="exploreTripHeaderLeft">
