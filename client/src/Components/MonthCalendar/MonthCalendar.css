@@ -138,3 +138,10 @@ abbr[title] {
 .react-calendar__month-view__days__day--neighboringMonth {
   color: lightgray;
 }
+
+/* Media Query for navigation text in phone view */
+@media (max-width: 350px) {
+  .react-calendar__navigation__label__labelText {
+    font-size: 15px;
+  }
+}
