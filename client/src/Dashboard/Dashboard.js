@@ -16,6 +16,23 @@ export default function Dashboard() {
   const [onboarding, setOnboarding] = useState(true);
   const [action, setAction] = useState(0);
   const [settings, setSettings] = useState(false);
+
+  //Countries and Languages Data on Mount
+  const [countries, setCountries] = useState([]);
+  const [languages, setLanguages] = useState([]);
+  useEffect(() => {
+    const getCountries = async () => {
+      const countries = await HolidayAPI.getCountries();
+      setCountries(countries);
+    };
+    getCountries();
+    const getLanguages = async () => {
+      const languages = await HolidayAPI.getLanguages();
+      setLanguages(languages);
+    };
+    getLanguages();
+  }, []);
+
   //User Inputs
   const [country, setCountry] = useState({
     code: "ES",
@@ -491,6 +508,8 @@ export default function Dashboard() {
           />
           {settings ? (
             <Settings
+              countries={countries}
+              languages={languages}
               country={country}
               region={region}
               PTO={PTO}

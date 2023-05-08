@@ -542,6 +542,7 @@ module.exports = {
 
     let date;
     const trips = [];
+
     //Check to see we are not going over the end of the tripRecommendations array
     if (tripRecommendations.length < ranges.length) {
       ranges = ranges.slice(0, tripRecommendations.length);
@@ -567,7 +568,6 @@ module.exports = {
         description: tripRecommendations[index].Description,
         img: tripRecommendations[index].img,
       });
-      console.log(`Trip ${index}: ${tripRecommendations[index].Location}`);
     });
     return trips;
   },

@@ -5,6 +5,7 @@ const controller = require("./controller");
 
 //Set router endpoints
 router.get("/countries", controller.getCountries);
+router.get("/languages", controller.getLanguages);
 router.get("/holidays/:location/:language", controller.getHolidays);
 router.post("/calendar", controller.getCalendar);
 

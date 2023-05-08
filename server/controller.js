@@ -7,7 +7,20 @@ const getCountries = async (req, res) => {
       `${process.env.BASE_URL}countries?pretty&key=${process.env.API_KEY}`
     );
     const countries = await response.json();
-    res.status(200).send(countries);
+    res.status(200).send(countries.countries);
+  } catch (err) {
+    res.status(500);
+    res.send(err);
+  }
+};
+
+const getLanguages = async (req, res) => {
+  try {
+    const response = await fetch(
+      `${process.env.BASE_URL}languages?pretty&key=${process.env.API_KEY}`
+    );
+    const languages = await response.json();
+    res.status(200).send(languages.languages);
   } catch (err) {
     res.status(500);
     res.send(err);
@@ -60,4 +73,4 @@ const getCalendar = async (req, res) => {
   }
 };
 
-module.exports = { getCountries, getHolidays, getCalendar };
+module.exports = { getCountries, getLanguages, getHolidays, getCalendar };

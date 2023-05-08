@@ -11,6 +11,16 @@ export const HolidayAPI = {
     }
   },
 
+  getLanguages: async function () {
+    try {
+      const languages = await fetch(`${this.url}languages`);
+      const languagesArray = await languages.json();
+      return languagesArray;
+    } catch (err) {
+      console.warn("Error in getLanguages: ", err);
+    }
+  },
+
   getHolidays: async function (location, language) {
     try {
       const holidays = await fetch(

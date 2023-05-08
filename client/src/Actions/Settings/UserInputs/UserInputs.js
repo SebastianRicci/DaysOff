@@ -6,6 +6,8 @@ import WeekendsInput from "./WeekendsInput/WeekendsInput";
 import HolidayLanguageInput from "./HolidayLanguageInput/HolidayLanguageInput";
 
 export default function UserInputs({
+  countries,
+  languages,
   country,
   region,
   PTO,
@@ -24,6 +26,7 @@ export default function UserInputs({
   return (
     <div className="settingsBody">
       <LocationInput
+        countries={countries}
         country={country}
         setCountry={setCountry}
         region={region}
@@ -38,6 +41,7 @@ export default function UserInputs({
       />
       <WeekendsInput weekends={weekends} setWeekends={setWeekends} />
       <HolidayLanguageInput
+        languages={languages}
         holidayLanguage={holidayLanguage}
         setHolidayLanguage={setHolidayLanguage}
       />
