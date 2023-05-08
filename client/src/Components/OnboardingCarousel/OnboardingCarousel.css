@@ -60,3 +60,10 @@
   height: 200px;
   fill: white;
 }
+
+/* Media query for mobile Onboarding Card */
+@media (max-width: 600px) {
+  .OnboardingCard > p {
+    font-size: 18px;
+  }
+}
