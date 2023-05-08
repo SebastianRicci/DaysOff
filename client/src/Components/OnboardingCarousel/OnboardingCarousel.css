@@ -62,7 +62,7 @@
 }
 
 /* Media query for mobile Onboarding Card */
-@media (max-width: 350px) {
+@media (max-width: 390px) {
   .OnboardingCard > p {
     font-size: 18px;
   }
