@@ -52,10 +52,10 @@ export default function CalendarView({
       setError(
         "You have more vacation days selected than available PTO, please change your selections."
       );
-      //Check start date and end date are no more than 5 years apart
-    } else if (endDate.diff(startDate, "years") > 5) {
+      //Check start date and end date are no more than 3 years apart
+    } else if (endDate.diff(startDate, "years") > 3) {
       setError(
-        "Your start date and end date for your calendar are more than 5 years apart, please change your selections."
+        "Your start date and end date for your calendar are more than 3 years apart, please change your selections."
       );
     } else {
       HolidayAPI.getCalendar(

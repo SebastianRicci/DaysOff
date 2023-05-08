@@ -35,7 +35,7 @@ const getHolidays = async (req, res) => {
   const endDate = moment(req.params.endDate);
   const holidays = [];
   //loop from startDate year to endDate year and fetch holidays for each year
-  if (endDate.diff(startDate, "years") < 5) {
+  if (endDate.diff(startDate, "years") <= 3) {
     try {
       for (let year = startDate.year(); year <= endDate.year(); year++) {
         const response = await fetch(
