@@ -448,7 +448,9 @@ export default function Dashboard() {
     async function fetchData() {
       const response = await HolidayAPI.getHolidays(
         location,
-        holidayLanguage.code
+        holidayLanguage.code,
+        startDate,
+        endDate
       );
       setHolidays(response);
     }

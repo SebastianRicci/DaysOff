@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const utils = require("./utils");
+const moment = require("moment");
 
 const getCountries = async (req, res) => {
   try {
@@ -30,15 +31,25 @@ const getLanguages = async (req, res) => {
 const getHolidays = async (req, res) => {
   const location = req.params.location;
   const language = req.params.language;
-  try {
-    const response = await fetch(
-      `${process.env.BASE_URL}holidays?pretty&key=${process.env.API_KEY}&country=${location}&language=${language}&public&year=2022`
-    );
-    const data = await response.json();
-    res.status(200).send(data.holidays);
-  } catch (err) {
-    res.status(500);
-    res.send(err.message);
+  const startDate = moment(req.params.startDate);
+  const endDate = moment(req.params.endDate);
+  const holidays = [];
+  //loop from startDate year to endDate year and fetch holidays for each year
+  if (endDate.diff(startDate, "years") < 5) {
+    try {
+      for (let year = startDate.year(); year <= endDate.year(); year++) {
+        const response = await fetch(
+          `${process.env.BASE_URL}holidays?pretty&key=${process.env.API_KEY}&country=${location}&language=${language}&public&year=${year}`
+        );
+        const data = await response.json();
+        holidays.push(...data.holidays);
+        console.log(holidays);
+      }
+      res.status(200).send(holidays);
+    } catch (err) {
+      res.status(500);
+      res.send(err.message);
+    }
   }
 };
 

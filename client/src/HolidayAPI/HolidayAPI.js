@@ -21,10 +21,10 @@ export const HolidayAPI = {
     }
   },
 
-  getHolidays: async function (location, language) {
+  getHolidays: async function (location, language, startDate, endDate) {
     try {
       const holidays = await fetch(
-        `${this.url}holidays/${location}/${language}`
+        `${this.url}holidays/${location}/${language}/${startDate}/${endDate}`
       );
       const holidaysArray = await holidays.json();
       return holidaysArray;
