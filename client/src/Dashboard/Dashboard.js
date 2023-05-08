@@ -153,10 +153,8 @@ export default function Dashboard() {
     languages: ["es"],
   });
   const [PTO, setPTO] = useState("");
-  //  FIX: useState(moment());
-  const [startDate, setStartDate] = useState(moment("2022-01-01"));
-  // FIX: useState(moment(`${moment().year()}-12-31`));
-  const [endDate, setEndDate] = useState(moment("2022-12-31"));
+  const [startDate, setStartDate] = useState(moment());
+  const [endDate, setEndDate] = useState(moment(`${moment().year()}-12-31`));
   const [weekends, setWeekends] = useState(["6", "0"]);
   const [holidayLanguage, setHolidayLanguage] = useState({
     code: "es",
