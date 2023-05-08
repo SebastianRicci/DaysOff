@@ -43,7 +43,6 @@ const getHolidays = async (req, res) => {
         );
         const data = await response.json();
         holidays.push(...data.holidays);
-        console.log(holidays);
       }
       res.status(200).send(holidays);
     } catch (err) {
