@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import PublicIcon from "@mui/icons-material/Public";
-import { HolidayAPI } from "../../../../HolidayAPI/HolidayAPI";
+
 export default function LocationInput({
   countries,
   country,

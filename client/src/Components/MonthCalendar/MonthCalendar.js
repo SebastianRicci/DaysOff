@@ -46,7 +46,7 @@ export default function MonthCalendar({
       const isAlgorithm = calendar.find(
         (el) =>
           moment.utc(new Date(el.date)).format("YYYY-MM-DD") ===
-            moment.utc(new Date(date)).format("YYYY-MM-DD") && el.algo == 1
+            moment.utc(new Date(date)).format("YYYY-MM-DD") && el.algo === 1
       );
 
       //Check if the date is a highlighted weekend picked by the algorithm
@@ -54,7 +54,7 @@ export default function MonthCalendar({
         (el) =>
           moment.utc(new Date(el.date)).format("YYYY-MM-DD") ===
             moment.utc(new Date(date)).format("YYYY-MM-DD") &&
-          el.algoWeekend == 1
+          el.algoWeekend === 1
       );
 
       // Determine which class to apply
@@ -118,7 +118,7 @@ export default function MonthCalendar({
       } else if (
         holidays.find(
           (holiday) =>
-            moment.utc(new Date(holiday.observed)).format("YYYY-MM-DD") ==
+            moment.utc(new Date(holiday.observed)).format("YYYY-MM-DD") ===
             moment.utc(new Date(date)).format("YYYY-MM-DD")
         )
       ) {

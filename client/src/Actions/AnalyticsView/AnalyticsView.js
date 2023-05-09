@@ -7,7 +7,7 @@ import EmptyState from "../../Components/EmptyState/EmptyState";
 export default function AnalyticsView({ analytics }) {
   return (
     <>
-      {Object.keys(analytics).length != 0 ? (
+      {Object.keys(analytics).length !== 0 ? (
         <div className="AnalyticsContainer">
           <OptimizationCard
             pickedDays={analytics.totalPickedDays}
