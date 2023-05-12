@@ -40,10 +40,16 @@ export default function CalendarModal({
 
     if (choiceIndex > -1) {
       const updatedChoices = [...choices];
-      updatedChoices[choiceIndex] = { date: selectedDate, choice: choice };
+      updatedChoices[choiceIndex] = {
+        date: moment.utc(new Date(selectedDate)),
+        choice: choice,
+      };
       setChoices(updatedChoices);
     } else {
-      setChoices([...choices, { date: selectedDate, choice: choice }]);
+      setChoices([
+        ...choices,
+        { date: moment.utc(new Date(selectedDate)), choice: choice },
+      ]);
     }
 
     setOpenModal(false);
