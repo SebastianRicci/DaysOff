@@ -18,19 +18,24 @@ export default function MonthCalendar({
 
   function tileClassName({ date, view }) {
     if (view === "month") {
+      // Convert date to UTC format
+      const utcDate = new Date(
+        Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+      );
+
       // Check if the date is a chosen weekend
-      const dayOfWeek = date.getDay();
+      const dayOfWeek = utcDate.getUTCDay();
       const isWeekend = weekends.includes(dayOfWeek.toString());
 
       // Check if the date is a holiday
       const isHoliday = holidays.find(
         (holiday) =>
           moment.utc(new Date(holiday.observed)).format("YYYY-MM-DD") ===
-            moment.utc(new Date(date)).format("YYYY-MM-DD") ||
+            moment.utc(new Date(utcDate)).format("YYYY-MM-DD") ||
           choices.find(
             (choice) =>
               moment.utc(new Date(choice.date)).format("YYYY-MM-DD") ===
-                moment.utc(new Date(date)).format("YYYY-MM-DD") &&
+                moment.utc(new Date(utcDate)).format("YYYY-MM-DD") &&
               choice.choice === "publicHoliday"
           )
       );
@@ -39,21 +44,21 @@ export default function MonthCalendar({
       const choice = choices.find(
         (choice) =>
           moment.utc(new Date(choice.date)).format("YYYY-MM-DD") ===
-          moment.utc(new Date(date)).format("YYYY-MM-DD")
+          moment.utc(new Date(utcDate)).format("YYYY-MM-DD")
       );
 
       //Check if the date is a picked algorithm date
       const isAlgorithm = calendar.find(
         (el) =>
           moment.utc(new Date(el.date)).format("YYYY-MM-DD") ===
-            moment.utc(new Date(date)).format("YYYY-MM-DD") && el.algo === 1
+            moment.utc(new Date(utcDate)).format("YYYY-MM-DD") && el.algo === 1
       );
 
       //Check if the date is a highlighted weekend picked by the algorithm
       const isAlgorithmWeekend = calendar.find(
         (el) =>
           moment.utc(new Date(el.date)).format("YYYY-MM-DD") ===
-            moment.utc(new Date(date)).format("YYYY-MM-DD") &&
+            moment.utc(new Date(utcDate)).format("YYYY-MM-DD") &&
           el.algoWeekend === 1
       );
 
@@ -87,11 +92,15 @@ export default function MonthCalendar({
     // Add class to tiles in month view only
     if (view === "month") {
       // Check if a date React-Calendar wants to check is on the list of dates to add class to
+      // Convert date to UTC format
+      const utcDate = new Date(
+        Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+      );
 
       const choice = choices.find(
         (choice) =>
           moment.utc(new Date(choice.date)).format("YYYY-MM-DD") ===
-          moment.utc(new Date(date)).format("YYYY-MM-DD")
+          moment.utc(new Date(utcDate)).format("YYYY-MM-DD")
       );
 
       if (choice) {
@@ -119,7 +128,7 @@ export default function MonthCalendar({
         holidays.find(
           (holiday) =>
             moment.utc(new Date(holiday.observed)).format("YYYY-MM-DD") ===
-            moment.utc(new Date(date)).format("YYYY-MM-DD")
+            moment.utc(new Date(utcDate)).format("YYYY-MM-DD")
         )
       ) {
         return (
