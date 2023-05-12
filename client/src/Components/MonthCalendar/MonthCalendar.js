@@ -142,6 +142,7 @@ export default function MonthCalendar({
 
   return (
     <Calendar
+      maxDetail="year"
       onClickDay={(date) => setOpenModal(true)}
       onChange={(date) => setSelectedDate(date)}
       defaultValue={startDate._d}
