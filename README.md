@@ -1,37 +1,50 @@
-# DaysOff
+# DaysOff - Optimize Your Work Calendar and Extend Your Vacation
 
-Welcome to the Daysoff project! This project aims to help employees make the most of their paid time off (PTO) days by creating a vacation schedule that takes into account local bank holidays.
+DaysOff is a web application designed to help you optimize your work calendar by considering your country and region's bank holidays, enabling you to take advantage of weekends and holidays to extend your vacation. With a user-friendly interface and powerful features, DaysOff makes it easy for you to plan your time off effectively. This repository contains the full-stack application developed using React for the front-end and a Node.js server on the back-end, with data retrieved through an external holiday data API.
 
 ## Features
 
-- Input your PTO days and the location where you live.
-- Our algorithm will take into account local bank holidays and suggest the best possible vacation schedule.
-- The suggested schedule will maximize the number of consecutive days off, so you can take longer, more enjoyable trips.
-- Export your suggested schedule into Google calendar.
+- **Personalized Calendar Optimization**: Input your country, region, available paid time off (PTO), and preferred language to tailor the calendar optimization to your specific needs.
 
-## Demo
+- **Easy Day Selection**: Mark days on the calendar with various labels, such as desired vacation day, mandatory work day, public holiday, and default value, to customize your schedule.
 
-Try out our project at the following link: [DaysOff](https://www.daysoff.me/)
+- **Vacation Recommendations**: Get trip recommendations based on different ranges of vacation days, helping you make the most of your time off.
 
-## Usage
+- **Stats Dashboard**: Monitor and evaluate how well your calendar is optimized through the interactive stats section dashboard.
 
-To use DaysOff, follow these steps:
+## Live Demo
 
-1. Download and install the project on your device.
-2. Open the project and input your PTO days and location.
-3. View the suggested vacation schedule and make any necessary adjustments.
-4. Save the schedule and start planning your trips!
+Check out the live demo of DaysOff at [www.daysoff.me](https://www.daysoff.me/)!
+
+Feel free to try out the app to experience the seamless calendar optimization and vacation planning firsthand. Maximize your time off with DaysOff!
 
 ## Tech Stack
-<!-- 
-- Front End: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" width="100"> React
-- Back End: ![Node JS with Express logo](https://raw.githubusercontent.com/expressjs/express/master/Media/favicon.png) Node JS with Express -->
+
+The application is built using the following technologies:
+
+### Back End
+
+- Node.js: Server-side scripting and development.
+- External Holiday Data API: Retrieve country-specific bank holidays to enhance calendar optimization.
+
+### Front End
+
+- React: A popular JavaScript library for building user interfaces.
+- Material-UI: A component library for creating responsive and visually appealing UI elements.
+
+## Installation and Setup
+
+To run the DaysOff application locally, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/SebastianRicci/daysoff.git`
+2. Navigate to the project folder: `cd daysoff`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm start`
 
 ## Contributing
 
-We welcome contributions to the DaysOff project! If you have an idea for a new feature or have found a bug, please open a new issue on our GitHub page.
+We welcome contributions from the open-source community. If you find any issues or have suggestions for improvements, please feel free to submit a pull request.
 
-## License
+## Acknowledgements
 
-DaysOff is licensed under the [MIT License](LICENSE.txt).
-
+Thank you for using DaysOff - Your ultimate tool for optimizing your work calendar and making the most of your time off! Enjoy your vacations and weekends to the fullest!
