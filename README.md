@@ -14,7 +14,7 @@ DaysOff is a web application designed to help you optimize your work calendar by
 
 ## Live Demo
 
-Check out the live demo of DaysOff at [www.daysoff.me](https://www.daysoff.me/)!
+Check out the live demo of DaysOff at [www.daysoff.me](https://www.daysoff.me/)
 
 Feel free to try out the app to experience the seamless calendar optimization and vacation planning firsthand. Maximize your time off with DaysOff!
 
