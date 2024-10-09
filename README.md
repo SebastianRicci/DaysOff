@@ -1,6 +1,6 @@
 # DaysOff - Optimize Your Work Calendar and Extend Your Vacation
 
-DaysOff is a web application designed to help you optimize your work calendar by considering your country and region's bank holidays, enabling you to take advantage of weekends and holidays to extend your vacation. With a user-friendly interface and powerful features, DaysOff makes it easy for you to plan your time off effectively. This repository contains the full-stack application developed using React for the front-end and a Node.js server on the back-end, with data retrieved through an external holiday data API.
+DaysOff is a web application designed to help you optimize your work calendar by considering your country and region's bank holidays, enabling you to take advantage of weekends and holidays to extend your vacation. With a user-friendly interface and powerful features, DaysOff makes it easy for you to plan your time off effectively. This repository contains the full-stack application developed using React for the front-end and a Node.js server on the back-end, with data retrieved through an external holiday data API.!!!
 
 ## Features
 
