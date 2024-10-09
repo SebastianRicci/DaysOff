@@ -4,7 +4,7 @@ DaysOff is a web application designed to help you optimize your work calendar by
 
 ## Features
 
-- **Personalized Calendar Optimization**: Input your country, region, available paid time off (PTO), and preferred language to tailor the calendar optimization to your specific needs.
+- **Personalized Calendar Optimization**: Input your country, region, available paid time off (PTO), and preferred language to tailor the calendar optimization to your specific needs.!
 
 - **Easy Day Selection**: Mark days on the calendar with various labels, such as desired vacation day, mandatory work day, public holiday, and default value, to customize your schedule.
 
